@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/media/Store/project/projects_for_home_work/hw_02/src/library.cpp
+iostream
+-
+library.h
+/media/Store/project/projects_for_home_work/hw_02/src/library.h
+version.h
+/media/Store/project/projects_for_home_work/hw_02/src/version.h
+
+/media/Store/project/projects_for_home_work/hw_02/src/library.h
+cassert
+-
+cstdlib
+-
+iostream
+-
+string
+-
+list
+-
+vector
+-
+deque
+-
+regex
+-
+tuple
+-
+algorithm
+-
+initializer_list
+-
+
+/media/Store/project/projects_for_home_work/hw_02/src/version.h
+

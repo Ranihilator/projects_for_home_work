@@ -52,7 +52,8 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
             {
                 BOOST_TEST_MESSAGE(test_data.str());
                 BOOST_TEST_MESSAGE("FAILED");
-                BOOST_TEST_FAIL("return must be " << ip);
+                std::string str(std::string("return must be ") + ip);
+                BOOST_TEST_FAIL(str);
             }
         }
         else
