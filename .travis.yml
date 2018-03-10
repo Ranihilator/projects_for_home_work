@@ -6,6 +6,7 @@ before_script:
   - sudo apt-get install -qq g++-7 gcc-7
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 90
+  - sudo apt-cache search libboost
 script:
 - cd hw_02
 - mkdir build
