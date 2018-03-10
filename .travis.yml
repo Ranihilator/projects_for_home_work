@@ -14,9 +14,10 @@ script:
 - cmake --build .
 - cmake --build . --target ip_filter_testing
 - cmake --build . --target package
+- cd ../..
 deploy:
   provider: bintray
-  file: "~/projects_for_home_work/.travis.json"
+  file: ".travis.json"
   user: $BINTRAY_USER
   key: $BINTRAY_API_KEY
   passphrase: $BINTRAY_PASS
