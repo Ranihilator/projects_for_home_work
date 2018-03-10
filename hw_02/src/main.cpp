@@ -5,7 +5,7 @@
 \brief Точка входа
 
 Функция main
-*/
+*/ 
 int main()
 {
     IP_List<std::deque,IP_Filter<1>> data_filter_task1;         ///Список ИП адрессов в отсортированном виде по первому байту
