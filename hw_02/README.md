@@ -1,4 +1,4 @@
-# ip_filter
+# ip_filter (Home work №2)
 
 [![Build Status](https://travis-ci.org/Ranihilator/projects_for_home_work.svg?branch=master)](https://travis-ci.org/Ranihilator/projects_for_home_work)
 
@@ -32,6 +32,9 @@ text1 \t text2 \t text3 \n
 
 ### Задание №2
 http://acm.timus.ru/author.aspx?id=246783
+
+### Задание №3 Опциоально
+Реализация в BOOST TEST #3 (external_test) файил test/filter.cpp
 
 
 ### Сборка, тест и выполнение
