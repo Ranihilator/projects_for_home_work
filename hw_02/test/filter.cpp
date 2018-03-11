@@ -89,7 +89,7 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
                                     std::get<3>(random_test_value));
     test("Creating IP_Header with string constructor",std::get<4>(random_test_value));
 
-/*
+
     IP_Header lower_data,high_data; ///Проверяем работу операторов сравнения класса
 
     ///Оператор ==
@@ -101,7 +101,7 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
         if (lower_data!=high_data)
         {
             BOOST_TEST_MESSAGE("FAILED");
-            BOOST_TEST_FAIL("overloading operator == of IP_Header error ");
+            BOOST_FAIL("overloading operator == of IP_Header error ");
         }
     }
     BOOST_TEST_MESSAGE("SUCCESS");
@@ -115,7 +115,7 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
         if (lower_data==high_data)
         {
             BOOST_TEST_MESSAGE("FAILED");
-            BOOST_TEST_FAIL("overloading operator != of IP_Header error ");
+            BOOST_FAIL("overloading operator != of IP_Header error ");
         }
     }
     BOOST_TEST_MESSAGE("SUCCESS");
@@ -129,14 +129,14 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
         if (lower_data<high_data)
         {
             BOOST_TEST_MESSAGE("FAILED");
-            BOOST_TEST_FAIL("overloading operator < of IP_Header error ");
+            BOOST_FAIL("overloading operator < of IP_Header error ");
         }
 
         lower_data = high_data;
         if (lower_data<high_data)
         {
             BOOST_TEST_MESSAGE("FAILED");
-            BOOST_TEST_FAIL("overloading operator < of IP_Header error ");
+            BOOST_FAIL("overloading operator < of IP_Header error ");
         }
     }
     BOOST_TEST_MESSAGE("SUCCESS");
@@ -150,7 +150,7 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
         if (lower_data<=high_data)
         {
             BOOST_TEST_MESSAGE("FAILED");
-            BOOST_TEST_FAIL("overloading operator <= of IP_Header error ");
+            BOOST_FAIL("overloading operator <= of IP_Header error ");
         }
 
         lower_data = high_data;
@@ -161,7 +161,7 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
             else
             {
                 BOOST_TEST_MESSAGE("FAILED");
-                BOOST_TEST_FAIL("overloading operator <= of IP_Header error ");
+                BOOST_FAIL("overloading operator <= of IP_Header error ");
             }
         }
     }
@@ -177,14 +177,14 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
         if (lower_data>high_data)
         {
             BOOST_TEST_MESSAGE("FAILED");
-            BOOST_TEST_FAIL("overloading operator > of IP_Header error ");
+            BOOST_FAIL("overloading operator > of IP_Header error ");
         }
 
         lower_data = high_data;
         if (lower_data>high_data)
         {
             BOOST_TEST_MESSAGE("FAILED");
-            BOOST_TEST_FAIL("overloading operator > of IP_Header error ");
+            BOOST_FAIL("overloading operator > of IP_Header error ");
         }
     }
     BOOST_TEST_MESSAGE("SUCCESS");
@@ -198,7 +198,7 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
         if (lower_data>=high_data)
         {
             BOOST_TEST_MESSAGE("FAILED");
-            BOOST_TEST_FAIL("overloading operator >= of IP_Header error ");
+            BOOST_FAIL("overloading operator >= of IP_Header error ");
         }
 
         lower_data = high_data;
@@ -209,16 +209,16 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
             else
             {
                 BOOST_TEST_MESSAGE("FAILED");
-                BOOST_TEST_FAIL("overloading operator >= of IP_Header error ");
+                BOOST_FAIL("overloading operator >= of IP_Header error ");
             }
         }
     }
-    BOOST_TEST_MESSAGE("SUCCESS");*/
+    BOOST_TEST_MESSAGE("SUCCESS");
 }
 
 BOOST_AUTO_TEST_CASE(ip_filter_test)
 {
-    /*IP_List<std::deque,IP_Filter<1>> data_filter_task1;         ///Список ИП адрессов в отсортированном виде по первому байту
+    IP_List<std::deque,IP_Filter<1>> data_filter_task1;         ///Список ИП адрессов в отсортированном виде по первому байту
     IP_List<std::deque,IP_Filter<46,70>> data_filter_task2;     ///Список ИП адрессов в отсортированном виде по первому и второму байту
     IP_List<std::deque,IP_Filter_Any<46>> data_filter_task3;    ///Список ИП адрессов в отсортированном виде по любому байту
 
@@ -247,7 +247,7 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
 
     if (data.str()!=ss.str())
     {
-        BOOST_TEST_FAIL("IP_List without filter is not equal ");
+        BOOST_FAIL("IP_List without filter is not equal ");
     }
     else
     {
@@ -259,7 +259,7 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
     ss1 << "1.169.2.1" << std::endl;
     if (data_filter_task1.str()!=ss1.str())
     {
-        BOOST_TEST_FAIL("IP_List with filter (first byte == 1) is not equal ");
+        BOOST_FAIL("IP_List with filter (first byte == 1) is not equal ");
     }
     else
     {
@@ -271,7 +271,7 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
     ss2 << "46.70.0.2" << std::endl;
     if (data_filter_task2.str()!=ss2.str())
     {
-        BOOST_TEST_FAIL("IP_List with filter (first byte == 46 and second byte == 70) is not equal ");
+        BOOST_FAIL("IP_List with filter (first byte == 46 and second byte == 70) is not equal ");
     }
     else
     {
@@ -284,13 +284,13 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
     ss3 << "9.6.0.46" << std::endl;
     if (data_filter_task3.str()!=ss3.str())
     {
-        BOOST_TEST_FAIL("IP_List with filter (any byte == 46) is not equal ");
+        BOOST_FAIL("IP_List with filter (any byte == 46) is not equal ");
     }
     else
     {
         BOOST_TEST_MESSAGE(data_filter_task3.str());
         BOOST_TEST_MESSAGE("IP_List with (any byte == 46) filter output SUCCESS");
-    }*/
+    }
 }
 
 
