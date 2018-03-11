@@ -34,7 +34,7 @@ BOOST_AUTO_TEST_SUITE(test_suite_main)
 
 BOOST_AUTO_TEST_CASE(ip_header_test)
 {
-	/*IP_Header test_data;
+	IP_Header test_data;
 	ip_address test_value;
     auto random_test_value = random_test();
 
@@ -53,13 +53,13 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
                 BOOST_TEST_MESSAGE(test_data.str());
                 BOOST_TEST_MESSAGE("FAILED");
                 std::string str(std::string("return must be ") + ip);
-                BOOST_TEST_FAIL(str);
+                BOOST_FAIL(str);
             }
         }
         else
         {
             BOOST_TEST_MESSAGE("FAILED");
-            BOOST_TEST_FAIL("IP Header return nullptr in data method");
+            BOOST_FAIL("IP Header return nullptr in data method");
         }
     };
 
@@ -89,7 +89,7 @@ BOOST_AUTO_TEST_CASE(ip_header_test)
                                     std::get<3>(random_test_value));
     test("Creating IP_Header with string constructor",std::get<4>(random_test_value));
 
-
+/*
     IP_Header lower_data,high_data; ///Проверяем работу операторов сравнения класса
 
     ///Оператор ==
