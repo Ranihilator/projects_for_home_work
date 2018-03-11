@@ -15,7 +15,7 @@ script:
 - cmake --build . --target ip_filter_testing
 - cmake --build . --target package
 - ctest -V
-- cat ../ip.tsv | ip_filter > out.tsv
+- cat ../ip.tsv | ./ip_filter > out.tsv
 - md5sum out.tsv
 deploy:
   provider: script
