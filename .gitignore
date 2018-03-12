@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# Build directory
+hw_02/build/

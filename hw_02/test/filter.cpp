@@ -295,30 +295,9 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
 
 
 ///Задание №3 Реализовать constexpr функцию bin_id - определения ближайшей большей степени двойки
-constexpr size_t pow(size_t n)
+constexpr uint64_t bin_id(uint64_t x, uint64_t t=0x8000000000000000, int c=64)
 {
-    long result=1;
-    for(int i=0; i < n; i++) result=2*result;
-
-    return result;
-}
-
-constexpr size_t bin_id(size_t x)
-{
-    uint8_t result=0;
-    for (auto i=0;i<32;++i)
-    {
-        size_t l = pow(i);
-        size_t h = pow(i+1);
-
-        if (x>l && x<=h)
-        {
-            result = i+1;
-            break;
-        }
-    }
-
-    return result;
+	return (c>=0)?((x<=t)?(bin_id(x,t>>1,--c)):(c)):(0);
 }
 
 BOOST_AUTO_TEST_CASE(external_test)
@@ -339,6 +318,11 @@ BOOST_AUTO_TEST_CASE(external_test)
 	BOOST_STATIC_ASSERT(bin_id(1024*1024*1024-127) == 30);
 	BOOST_STATIC_ASSERT(bin_id(1024*1024*1024) == 30);
 	BOOST_STATIC_ASSERT(bin_id(1024*1024*1024+127) == 31);
+        BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000-127) == 63);
+        BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000) == 63);
+        BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000+127) == 64);
+
+
 }
 
 
