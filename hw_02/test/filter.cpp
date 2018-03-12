@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
     ss << "79.21.1.12" << std::endl;
     if (data.str().str()!=ss.str())
     {
-        BOOST_TEST_FAIL("Fill container without filter [ERROR]");
+        BOOST_FAIL("Fill container without filter [ERROR]");
     }
     else
     {
@@ -89,7 +89,7 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
     ss1 << "1.5.13.2" << std::endl;
     if (data_filter_task1.str().str()!=ss1.str())
     {
-        BOOST_TEST_FAIL("Fill container with filter by first byte == 1 [ERROR]");
+        BOOST_FAIL("Fill container with filter by first byte == 1 [ERROR]");
     }
     else
     {
@@ -101,7 +101,7 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
     ss1_sort << "1.1.7.2" << std::endl;
     if (data_filter_task1.str().str()!=ss1_sort.str())
     {
-        BOOST_TEST_FAIL("Sort container with filter by first byte == 1 [ERROR]");
+        BOOST_FAIL("Sort container with filter by first byte == 1 [ERROR]");
     }
     else
     {
@@ -126,7 +126,7 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
     ss2 << "46.70.13.2" << std::endl;
     if (data_filter_task2.str().str()!=ss2.str())
     {
-        BOOST_TEST_FAIL("Fill container with filter by first byte == 46 and second byte == 70 [ERROR]");
+        BOOST_FAIL("Fill container with filter by first byte == 46 and second byte == 70 [ERROR]");
     }
     else
     {
@@ -138,7 +138,7 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
     ss2_sort << "46.70.7.2" << std::endl;
     if (data_filter_task2.str().str()!=ss2_sort.str())
     {
-        BOOST_TEST_FAIL("Sort container with filter by first byte == 46 and second byte == 70 [ERROR]");
+        BOOST_FAIL("Sort container with filter by first byte == 46 and second byte == 70 [ERROR]");
     }
     else
     {
@@ -163,7 +163,7 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
     ss3 << "21.61.46.12" << std::endl;
     if (data_filter_task3.str().str()!=ss3.str())
     {
-        BOOST_TEST_FAIL("Fill container with filter by any byte == 46 [ERROR]");
+        BOOST_FAIL("Fill container with filter by any byte == 46 [ERROR]");
     }
     else
     {
@@ -177,7 +177,7 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
     ss3_sort << "0.46.0.0" << std::endl;
     if (data_filter_task3.str().str()!=ss3_sort.str())
     {
-        BOOST_TEST_FAIL("Sort container with filter by any byte == 46  [ERROR]");
+        BOOST_FAIL("Sort container with filter by any byte == 46  [ERROR]");
     }
     else
     {
@@ -210,9 +210,9 @@ BOOST_AUTO_TEST_CASE(external_test)
 	BOOST_STATIC_ASSERT(bin_id(1024*1024*1024-127) == 30);
 	BOOST_STATIC_ASSERT(bin_id(1024*1024*1024) == 30);
 	BOOST_STATIC_ASSERT(bin_id(1024*1024*1024+127) == 31);
-    BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000-127) == 63);
-    BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000) == 63);
-    BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000+127) == 64);
+	BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000-127) == 63);
+	BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000) == 63);
+	BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000+127) == 64);
 }
 
 
