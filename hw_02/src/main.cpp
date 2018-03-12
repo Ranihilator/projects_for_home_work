@@ -5,14 +5,15 @@
 \brief Точка входа
 
 Функция main
-*/ 
+*/
+
+
 int main()
 {
-    IP_List<std::deque,IP_Filter<1>> data_filter_task1;         ///Список ИП адрессов в отсортированном виде по первому байту
-    IP_List<std::deque,IP_Filter<46,70>> data_filter_task2;     ///Список ИП адрессов в отсортированном виде по первому и второму байту
-    IP_List<std::deque,IP_Filter_Any<46>> data_filter_task3;    ///Список ИП адрессов в отсортированном виде по любому байту
-
-    IP_List<std::deque> data({&data_filter_task1,&data_filter_task2,&data_filter_task3});   ///Общий Список ИП адрессов со связанными списками
+    IP_Address_Sort<std::deque> data;
+    IP_Address_Sort<std::deque> data_filter_task1(1);
+    IP_Address_Sort<std::deque> data_filter_task2(46,70);
+    IP_Address_Sort_Any<std::deque> data_filter_task3(46);
 
     ///Регулярное выражение для поиска ип адресса в веденной строке
     std::regex ip_filter ("(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)");
@@ -25,14 +26,23 @@ int main()
         if (pieces.size()>=5)
         {
             ///Добавление строки в общий список
-            data.push_back(IP_Header(pieces[1],pieces[2],pieces[3],pieces[4]));
+            ip_address value = std::make_tuple(std::stoi(pieces[1]),std::stoi(pieces[2]),std::stoi(pieces[3]),std::stoi(pieces[4]));
+            data(value);
+            data_filter_task1(value);data_filter_task2(value);data_filter_task3(value);
         }
     }
 
-    data.sort();                                ///Сортировка списка включая связанные списки
-    std::cout << data.str(true);                ///Вывод общего списка
-    std::cout << data_filter_task1.str(true);   ///Вывод списка по первому байту
-    std::cout << data_filter_task2.str(true);   ///Вывод списка по первому и второму байту
-    std::cout << data_filter_task3.str(true);   ///Вывод списка по любому байту
+    std::sort(data.rbegin(),data.rend());
+    std::sort(data_filter_task1.rbegin(),data_filter_task1.rend());
+    std::sort(data_filter_task2.rbegin(),data_filter_task2.rend());
+    std::sort(data_filter_task3.rbegin(),data_filter_task3.rend());
+
+    std::cout << data.str().str();
+    std::cout << data_filter_task1.str().str();
+    std::cout << data_filter_task2.str().str();
+    std::cout << data_filter_task3.str().str();
+
     return 0;
+
+
 }

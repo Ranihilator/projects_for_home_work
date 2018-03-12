@@ -63,6 +63,5 @@ include (CPack)
 
 enable_testing()
 
-add_test(ip_header_test ip_filter_testing)
 add_test(ip_filter_test ip_filter_testing)
 add_test(external_test ip_filter_testing)
