@@ -5,26 +5,31 @@
 
 #include <boost/test/unit_test.hpp>
 
-std::tuple<uint8_t,uint8_t,uint8_t,uint8_t,std::string> random_test()
+auto random_test(std::string left_dust=std::string(), std::string right_dust=std::string())
 {
-    std::tuple<uint8_t,uint8_t,uint8_t,uint8_t,std::string> result;
+    auto result = std::tuple<ip_address,std::string>();
     std::stringstream ss;
     static auto counter=0;
 
     std::mt19937 gen(std::time(0)+counter);
     counter++;
 
-    std::get<0>(result) = gen();
-    std::get<1>(result) = gen();
-    std::get<2>(result) = gen();
-    std::get<3>(result) = gen();
+    ss << left_dust;
 
-    ss << std::to_string(std::get<0>(result))<<".";
-    ss << std::to_string(std::get<1>(result))<<".";
-    ss << std::to_string(std::get<2>(result))<<".";
-    ss << std::to_string(std::get<3>(result));
+    auto ip=ip_address();
+    std::get<0>(ip) = gen();
+    std::get<1>(ip) = gen();
+    std::get<2>(ip) = gen();
+    std::get<3>(ip) = gen();
 
-    std::get<4>(result) = ss.str();
+    ss << std::to_string(std::get<0>(ip))<<".";
+    ss << std::to_string(std::get<1>(ip))<<".";
+    ss << std::to_string(std::get<2>(ip))<<".";
+    ss << std::to_string(std::get<3>(ip));
+    ss << right_dust;
+
+    std::get<0>(result) = std::move(ip);
+    std::get<1>(result) = ss.str();
 
     return std::move(result);
 }
@@ -33,156 +38,31 @@ BOOST_AUTO_TEST_SUITE(test_suite_main)
 
 BOOST_AUTO_TEST_CASE(ip_filter_test)
 {
-    IP_Address_Sort<std::deque> data;
-    data(std::make_tuple(0,0,0,0));
-    data(std::make_tuple(5,2,1,7));
-    data(std::make_tuple(1,1,7,2));
-    data(std::make_tuple(21,61,71,12));
-    data(std::make_tuple(79,21,1,12));
+    BOOST_REQUIRE_THROW(split_ip(""),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("fsafsafsafsa"),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("1,2,3,4"),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("a.b.c.d"),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("1.2.3.4a"),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("f1.2.3.4"),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("1.a2.3.4"),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("1.2.s3.4"),std::invalid_argument);
 
-    std::stringstream ss,ss_sort;
-    ss << "0.0.0.0" << std::endl;
-    ss << "5.2.1.7" << std::endl;
-    ss << "1.1.7.2" << std::endl;
-    ss << "21.61.71.12" << std::endl;
-    ss << "79.21.1.12" << std::endl;
-    if (data.str().str()!=ss.str())
+    auto check_correct = [](std::string &&left_dust, std::string &&right_dust)
     {
-        BOOST_FAIL("Fill container without filter [ERROR]");
-    }
-    else
-    {
-        BOOST_TEST_MESSAGE("Fill container without filter [SUCCESS]");
-    }
-
-    std::sort(data.rbegin(),data.rend());
-    ss_sort << "79.21.1.12" << std::endl;
-    ss_sort << "21.61.71.12" << std::endl;
-    ss_sort << "5.2.1.7" << std::endl;
-    ss_sort << "1.1.7.2" << std::endl;
-    ss_sort << "0.0.0.0" << std::endl;
-
-    if (data.str().str()!=ss_sort.str())
-    {
-        BOOST_FAIL("Sort container without filter [ERROR]");
-    }
-    else
-    {
-        BOOST_TEST_MESSAGE("Sort container without filter [SUCCESS]");
-    }
+        auto result = random_test(left_dust,right_dust);
+        BOOST_CHECK(split_ip(std::move(std::get<1>(result)))==std::get<0>(result));
+    };
+    check_correct("","");
+    check_correct(""," 1.2.3.4");
+    check_correct(""," 64,84,97,63");
+    check_correct("65,86,87,96 "," 65,44,27,1");
+    check_correct("ljhgcfcg "," gdffghjk");
+    check_correct("5 .86.97.76 "," 0.4 .85.123");
+    check_correct("5.86.97. 76 "," 0.4.85. 123");
 
 
 
 
-
-
-    IP_Address_Sort<std::deque> data_filter_task1(1);
-    data_filter_task1(std::make_tuple(0,0,0,0));
-    data_filter_task1(std::make_tuple(5,2,1,7));
-    data_filter_task1(std::make_tuple(1,1,7,2));
-    data_filter_task1(std::make_tuple(1,5,13,2));
-    data_filter_task1(std::make_tuple(21,61,71,12));
-    data_filter_task1(std::make_tuple(79,21,1,12));
-
-    std::stringstream ss1,ss1_sort;
-    ss1 << "1.1.7.2" << std::endl;
-    ss1 << "1.5.13.2" << std::endl;
-    if (data_filter_task1.str().str()!=ss1.str())
-    {
-        BOOST_FAIL("Fill container with filter by first byte == 1 [ERROR]");
-    }
-    else
-    {
-        BOOST_TEST_MESSAGE("Fill container with filter by first byte == 1 [SUCCESS]");
-    }
-
-    std::sort(data_filter_task1.rbegin(),data_filter_task1.rend());
-    ss1_sort << "1.5.13.2" << std::endl;
-    ss1_sort << "1.1.7.2" << std::endl;
-    if (data_filter_task1.str().str()!=ss1_sort.str())
-    {
-        BOOST_FAIL("Sort container with filter by first byte == 1 [ERROR]");
-    }
-    else
-    {
-        BOOST_TEST_MESSAGE("Sort container with filter by first byte == 1 [SUCCESS]");
-    }
-
-
-
-
-
-
-    IP_Address_Sort<std::deque> data_filter_task2(46,70);
-    data_filter_task2(std::make_tuple(0,0,0,0));
-    data_filter_task2(std::make_tuple(5,2,1,7));
-    data_filter_task2(std::make_tuple(46,70,7,2));
-    data_filter_task2(std::make_tuple(46,70,13,2));
-    data_filter_task2(std::make_tuple(21,61,71,12));
-    data_filter_task2(std::make_tuple(79,21,1,12));
-
-    std::stringstream ss2,ss2_sort;
-    ss2 << "46.70.7.2" << std::endl;
-    ss2 << "46.70.13.2" << std::endl;
-    if (data_filter_task2.str().str()!=ss2.str())
-    {
-        BOOST_FAIL("Fill container with filter by first byte == 46 and second byte == 70 [ERROR]");
-    }
-    else
-    {
-        BOOST_TEST_MESSAGE("Fill container with filter by first byte == 46 and second byte == 70 [SUCCESS]");
-    }
-
-    std::sort(data_filter_task2.rbegin(),data_filter_task2.rend());
-    ss2_sort << "46.70.13.2" << std::endl;
-    ss2_sort << "46.70.7.2" << std::endl;
-    if (data_filter_task2.str().str()!=ss2_sort.str())
-    {
-        BOOST_FAIL("Sort container with filter by first byte == 46 and second byte == 70 [ERROR]");
-    }
-    else
-    {
-        BOOST_TEST_MESSAGE("Sort container with filter by first byte == 46 and second byte == 70 [SUCCESS]");
-    }
-
-
-
-
-    IP_Address_Sort_Any<std::deque> data_filter_task3(46);
-    data_filter_task3(std::make_tuple(0,46,0,0));
-    data_filter_task3(std::make_tuple(5,2,1,7));
-    data_filter_task3(std::make_tuple(46,70,7,2));
-    data_filter_task3(std::make_tuple(46,70,13,2));
-    data_filter_task3(std::make_tuple(21,61,46,12));
-    data_filter_task3(std::make_tuple(79,21,1,12));
-
-    std::stringstream ss3,ss3_sort;
-    ss3 << "0.46.0.0" << std::endl;
-    ss3 << "46.70.7.2" << std::endl;
-    ss3 << "46.70.13.2" << std::endl;
-    ss3 << "21.61.46.12" << std::endl;
-    if (data_filter_task3.str().str()!=ss3.str())
-    {
-        BOOST_FAIL("Fill container with filter by any byte == 46 [ERROR]");
-    }
-    else
-    {
-        BOOST_TEST_MESSAGE("Fill container with filter by any byte == 46  [SUCCESS]");
-    }
-
-    std::sort(data_filter_task3.rbegin(),data_filter_task3.rend());
-    ss3_sort << "46.70.13.2" << std::endl;
-    ss3_sort << "46.70.7.2" << std::endl;
-    ss3_sort << "21.61.46.12" << std::endl;
-    ss3_sort << "0.46.0.0" << std::endl;
-    if (data_filter_task3.str().str()!=ss3_sort.str())
-    {
-        BOOST_FAIL("Sort container with filter by any byte == 46  [ERROR]");
-    }
-    else
-    {
-        BOOST_TEST_MESSAGE("Sort container with filter by any byte == 46  [SUCCESS]");
-    }
 }
 
 
@@ -213,6 +93,7 @@ BOOST_AUTO_TEST_CASE(external_test)
 	BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000-127) == 63);
 	BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000) == 63);
 	BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000+127) == 64);
+    BOOST_STATIC_ASSERT(bin_id((uint64_t)0xFFFFFFFFFFFFFFFF) == 64);
 }
 
 

@@ -10,37 +10,49 @@
 
 int main()
 {
-    IP_Address_Sort<std::deque> data;
-    IP_Address_Sort<std::deque> data_filter_task1(1);
-    IP_Address_Sort<std::deque> data_filter_task2(46,70);
-    IP_Address_Sort_Any<std::deque> data_filter_task3(46);
+    auto data=IP_Address_Sort<std::deque>();                        ///Контейнер ип адрессов без фильтрацией
+    auto data_filter_task1 = IP_Address_Sort<std::deque>(1);        ///Контейнер ип адрессов с фильтрацией по 1 байту (1)
+    auto data_filter_task2 = IP_Address_Sort<std::deque>(46,70);    ///Контейнер ип адрессов с фильтрацией по 1,2 байту (46,70)
+    auto data_filter_task3 = IP_Address_Sort_Any<std::deque>(46);   ///Контейнер ип адрессов с фильтрацией по любому байту (46)
 
-    ///Регулярное выражение для поиска ип адресса в веденной строке
-    std::regex ip_filter ("(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)");
-    std::smatch pieces;
-
-    ///Чтение данных
     for(std::string line; std::getline(std::cin, line);)
     {
-        std::regex_search(line,pieces,ip_filter);
-        if (pieces.size()>=5)
+        ///Заполнить контейнер
+        auto value=ip_address();
+        try
         {
-            ///Добавление строки в общий список
-            ip_address value = std::make_tuple(std::stoi(pieces[1]),std::stoi(pieces[2]),std::stoi(pieces[3]),std::stoi(pieces[4]));
-            data(value);
-            data_filter_task1(value);data_filter_task2(value);data_filter_task3(value);
+            value = split_ip(std::move(line));
+            data << value;
         }
+        catch (std::invalid_argument &e){}
     }
 
-    std::sort(data.rbegin(),data.rend());
-    std::sort(data_filter_task1.rbegin(),data_filter_task1.rend());
-    std::sort(data_filter_task2.rbegin(),data_filter_task2.rend());
-    std::sort(data_filter_task3.rbegin(),data_filter_task3.rend());
+    std::sort(data.rbegin(),data.rend());   ///Отсортировать контейнер в обратном порядке
 
-    std::cout << data.str().str();
-    std::cout << data_filter_task1.str().str();
-    std::cout << data_filter_task2.str().str();
-    std::cout << data_filter_task3.str().str();
+    for (auto &i:data)  ///Перебрать результаты не фильтровонного контейнера для копирования значений в другие контейнеры
+    {
+        data_filter_task1 << i;
+        data_filter_task2 << i;
+        data_filter_task3 << i;
+    }
+
+
+    for (auto &i:data)
+    {
+        std::cout << i;
+    }
+    for (auto &i:data_filter_task1)
+    {
+        std::cout << i;
+    }
+    for (auto &i:data_filter_task2)
+    {
+        std::cout << i;
+    }
+    for (auto &i:data_filter_task3)
+    {
+        std::cout << i;
+    }
 
     return 0;
 
