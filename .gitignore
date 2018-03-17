@@ -31,5 +31,8 @@
 *.out
 *.app
 
+# version.h
+version.h
+
 # Build directory
 hw_02/build/
