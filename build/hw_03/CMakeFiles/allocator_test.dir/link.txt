@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/allocator_test.dir/test/test.cpp.o  -o allocator_test -lboost_unit_test_framework lib_alloc.a lib_manager.a 

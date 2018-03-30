@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/media/Store/project/projects_for_home_work/hw_03/src/manager.cpp
+manager.h
+/media/Store/project/projects_for_home_work/hw_03/src/manager.h
+system_error
+-
+
+/media/Store/project/projects_for_home_work/hw_03/src/manager.h
+cstring
+-
+memory
+-
+
