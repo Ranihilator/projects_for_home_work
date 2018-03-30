@@ -2,7 +2,7 @@
 
 ACTION="${1}"
 
-if [[ ${ACTION} == 'build' ]]; 
+if [ ${ACTION} == 'build' ]
 then
     echo 'build...'
     
@@ -25,7 +25,7 @@ then
     cat hw_02/ip.tsv | hw_02/build/ip_filter > hw_02/out.tsv
     md5sum hw_02/out.tsv
     
-elif [[ ${ACTION} == 'deploy' ]]; 
+elif [ ${ACTION} == 'deploy' ]
 then
     echo 'Deploying...'
     
