@@ -20,8 +20,8 @@ script:
 - cmake --build hw_01/build --target package
 - cmake --build hw_02/build --target package
 - cmake --build hw_03/build --target package
-- cat hw_02/build/ip.tsv | hw_02/build/ip_filter > hw_02/build/out.tsv
-- md5sum hw_02/build/out.tsv
+- cat hw_02/ip.tsv | hw_02/build/ip_filter > hw_02/out.tsv
+- md5sum hw_02/out.tsv
 - chmod +x ./.travis_script.sh
 deploy:
   provider: script

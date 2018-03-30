@@ -18,18 +18,18 @@ set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
 add_executable(allocator ${SOURCE_PATH}/main.cpp)
-add_executable(allocator_test ${TEST_PATH}/test.cpp)
+add_executable(allocator_testing ${TEST_PATH}/test.cpp)
 
 add_library(_alloc ${SOURCE_PATH}/allocator.cpp)
 add_library(_manager ${SOURCE_PATH}/manager.cpp)
 
-set_target_properties(allocator _alloc _manager allocator_test PROPERTIES
+set_target_properties(allocator _alloc _manager allocator_testing PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-set_target_properties(allocator_test PROPERTIES
+set_target_properties(allocator_testing PROPERTIES
   COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
   INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
   INCLUDE_DIRECTORIES ${SOURCE_PATH}
@@ -39,7 +39,7 @@ target_link_libraries(allocator
     _alloc _manager
 )
 
-target_link_libraries(allocator_test 
+target_link_libraries(allocator_testing 
     ${Boost_LIBRARIES} 
     _alloc _manager
 )
@@ -58,6 +58,6 @@ include (CPack)
 
 enable_testing()
 
-add_test(allocator_test allocator_test)
+add_test(allocator_testing allocator_test)
 add_test(container_test allocator_test)
 add_test(task_test allocator_test)
