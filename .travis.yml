@@ -2,11 +2,12 @@ language: cpp
 before_script:
   - sudo apt-get install libboost-test-dev -y
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq g++-7 gcc-7
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 90
 script:
-- mkdir dist
-- mkdir hw_01/build
-- mkdir hw_02/build
-- mkdir hw_03/build
+- mkdir dist hw_01/build hw_02/build hw_03/build
 - cmake -Hhw_01 -Bhw_01/build
 - cmake -Hhw_02 -Bhw_02/build
 - cmake -Hhw_03 -Bhw_03/build
@@ -19,9 +20,8 @@ script:
 - cmake --build hw_01/build --target package
 - cmake --build hw_02/build --target package
 - cmake --build hw_03/build --target package
-- cat ../ip.tsv | ./ip_filter > out.tsv
-- md5sum out.tsv
-- cp *.deb ../
+- cat hw_02/build/ip.tsv | hw_02/build/ip_filter > hw_02/build/out.tsv
+- md5sum hw_02/build/out.tsv
 - chmod +x ./.travis_script.sh
 deploy:
   provider: script
