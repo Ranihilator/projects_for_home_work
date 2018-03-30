@@ -7,6 +7,16 @@ before_script:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 90
 script:
+- cd hw_01
+- mkdir build
+- cmake -H. -Bbuild
+- cd build
+- cmake --build .
+- cmake --build . --target helloworld_test
+- cmake --build . --target package
+- ctest -V
+- cp *.deb ../
+- cd ..
 - cd hw_02
 - mkdir build
 - cmake -H. -Bbuild
@@ -17,7 +27,9 @@ script:
 - ctest -V
 - cat ../ip.tsv | ./ip_filter > out.tsv
 - md5sum out.tsv
+- cp *.deb ../
+- chmod +x ./.travis_script.sh
 deploy:
   provider: script
   skip_cleanup: true
-  script: ./.travis_script
+  script: sh ./.travis_script.sh
