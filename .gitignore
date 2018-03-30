@@ -35,4 +35,6 @@
 version.h
 
 # Build directory
+hw_01/build/
 hw_02/build/
+hw_03/build/
