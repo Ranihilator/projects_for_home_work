@@ -1,33 +1,28 @@
 #!/bin/bash
 
-build()
-{
-    echo "Building $1"
-    mkdir -p $1/build
-    cmake -H$1 -B$1/build
-    cmake --build $1/build
-    cmake --build $1/build --target $2
-    cmake --build $1/build --target package
-    sh -c 'cd $1/build && ctest -V'
-    mv $1/build/*.deb dist/
-}
-
 ACTION="${1}"
 
 if [[ ${ACTION} == 'build' ]]; then
 
     echo "Building..."
-    mkdir -p dist
-
-    build hw_01 helloworld_test
     
-    build hw_02 ip_filter_testing
-    cat hw_02/ip.tsv | hw_02/build/ip_filter > hw_02/out.tsv
+    mkdir -p dist
+    cmake -H. -Bbuild
+    cmake --build build
+    cmake --build build --target 
+    cmake --build build --target package
+    
+    sh -c 'cd build/hw_01 && ctest -V'
+    sh -c 'cd build/hw_02 && ctest -V'
+    sh -c 'cd build/hw_03 && ctest -V'
+    
+    mv build/*.deb dist/
+
+    cat hw_02/ip.tsv | build/hw_02/ip_filter > hw_02/out.tsv
     md5sum hw_02/out.tsv
 
-    build hw_03 allocator_testing
-    ltrace -e malloc -e free hw_03/build/allocator
-    valgrind --leak-check=full hw_03/build/allocator
+    ltrace -e malloc -e free build/hw_03/allocator
+    valgrind --leak-check=full build/hw_03/allocator
 
 elif [[ ${ACTION} == 'deploy' ]]; then
 

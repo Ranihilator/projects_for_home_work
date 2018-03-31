@@ -44,9 +44,7 @@ target_link_libraries(helloworld_test
 )
 
 
-
-
-install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
+install(TARGETS helloworld_cli RUNTIME DESTINATION bin COMPONENT helloworld)
 
 
 set(CPACK_GENERATOR DEB)

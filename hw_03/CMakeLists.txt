@@ -17,10 +17,11 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
-add_executable(allocator ${SOURCE_PATH}/main.cpp)
-add_executable(allocator_testing ${TEST_PATH}/test.cpp)
+set(HEADER_FILES ${SOURCE_PATH}/main.h ${SOURCE_PATH}/allocator.h ${SOURCE_PATH}/container.h ${SOURCE_PATH}/manager.h)
 
-set(HEADER_FILES ${PROJECT_SOURCE_DIR}/allocator.h ${PROJECT_SOURCE_DIR}/container.h)
+add_executable(allocator ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
+add_executable(allocator_testing ${TEST_PATH}/test.cpp  ${HEADER_FILES})
+
 
 set_target_properties(allocator allocator_testing PROPERTIES
   CXX_STANDARD 14
@@ -43,9 +44,10 @@ target_link_libraries(allocator_testing
     
 )
 
-install(TARGETS allocator RUNTIME DESTINATION bin)
+install(TARGETS allocator RUNTIME DESTINATION bin COMPONENT allocator)
 
 set(CPACK_GENERATOR DEB)
+
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
@@ -54,6 +56,7 @@ set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 set(CPACK_PACKAGE_CONTACT ranihilaltor@gmail.com)
 
 include (CPack)
+set(CPACK_DEB_COMPONENT_INSTALL 1)
 
 enable_testing()
 

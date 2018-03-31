@@ -46,12 +46,11 @@ target_link_libraries(ip_filter_testing
 )
 
 
-
-
-install(TARGETS ip_filter RUNTIME DESTINATION bin)
+install(TARGETS ip_filter RUNTIME DESTINATION bin COMPONENT ip_filter)
 
 
 set(CPACK_GENERATOR DEB)
+
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
@@ -60,6 +59,7 @@ set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 set(CPACK_PACKAGE_CONTACT ranihilaltor@gmail.com)
 
 include (CPack)
+set(CPACK_DEB_COMPONENT_INSTALL 1)
 
 enable_testing()
 
