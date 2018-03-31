@@ -6,31 +6,8 @@ before_script:
   - sudo apt-get install -qq g++-7 gcc-7 valgrind ltrace
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 90
-script:
-- mkdir dist hw_01/build hw_02/build hw_03/build
-- cmake -Hhw_01 -Bhw_01/build
-- cmake -Hhw_02 -Bhw_02/build
-- cmake -Hhw_03 -Bhw_03/build
-- cmake --build hw_01/build
-- cmake --build hw_02/build
-- cmake --build hw_03/build
-- cmake --build hw_01/build --target helloworld_test
-- cmake --build hw_02/build --target ip_filter_testing
-- cmake --build hw_03/build --target allocator_testing
-- cmake --build hw_01/build --target package
-- cmake --build hw_02/build --target package
-- cmake --build hw_03/build --target package
-- sh -c 'cd hw_01/build && ctest -V'
-- sh -c 'cd hw_02/build && ctest -V'
-- sh -c 'cd hw_03/build && ctest -V'
-- mv hw_01/build/*.deb dist/
-- mv hw_02/build/*.deb dist/
-- mv hw_03/build/*.deb dist/
-- cat hw_02/ip.tsv | hw_02/build/ip_filter > hw_02/out.tsv
-- md5sum hw_02/out.tsv
-- ltrace -e malloc -e free hw_03/build/allocator
-- valgrind --leak-check=full hw_03/build/allocator
+script: bash ./.travis_script.sh build
 deploy:
   provider: script
   skip_cleanup: true
-  script: sh ./.travis_script.sh
+  script: bash ./.travis_script.sh deploy

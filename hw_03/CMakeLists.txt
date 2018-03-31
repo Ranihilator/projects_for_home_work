@@ -58,6 +58,6 @@ include (CPack)
 
 enable_testing()
 
-add_test(allocator_testing allocator_test)
-add_test(container_test allocator_test)
-add_test(task_test allocator_test)
+add_test(allocator_test allocator_testing)
+add_test(container_test allocator_testing)
+add_test(task_test allocator_testing)
