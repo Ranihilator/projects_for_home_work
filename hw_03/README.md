@@ -1,8 +1,6 @@
 # allocator (Home work №3)
 
-[![Build Status](https://travis-ci.org/Ranihilator/projects_for_home_work.svg?branch=master)](https://travis-ci.org/Ranihilator/projects_for_home_work)
-
-### Задание №1
+### Задание
 Реализовать свой аллокатор памяти, который позволит выполнять
 операцию reserve для контейнера std::map. Аллокатор должен параметризоваться
 количеством выделяемых за раз элементов. Освобождение конкретного

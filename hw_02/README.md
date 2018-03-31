@@ -1,7 +1,5 @@
 # ip_filter (Home work №2)
 
-[![Build Status](https://travis-ci.org/Ranihilator/projects_for_home_work.svg?branch=master)](https://travis-ci.org/Ranihilator/projects_for_home_work)
-
 ### Задание №1
 Программа из стандартного ввода читает данные. 
 Данные хранятся построчно.

@@ -20,6 +20,9 @@ script:
 - cmake --build hw_01/build --target package
 - cmake --build hw_02/build --target package
 - cmake --build hw_03/build --target package
+- sh -c 'cd hw_01/build && ctest -V'
+- sh -c 'cd hw_02/build && ctest -V'
+- sh -c 'cd hw_03/build && ctest -V'
 - mv hw_01/build/*.deb dist/
 - mv hw_02/build/*.deb dist/
 - mv hw_03/build/*.deb dist/
