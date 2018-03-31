@@ -1,38 +1,31 @@
 #!/bin/bash
 
+build()
+{
+    echo "Building $1"
+    mkdir -p $1/build
+    cmake -H$1 -B$1/build
+    cmake --build $1/build
+    cmake --build $1/build --target $2
+    cmake --build $1/build --target package
+    sh -c 'cd $1/build && ctest -V'
+    mv $1/build/*.deb dist/
+}
+
 ACTION="${1}"
 
 if [[ ${ACTION} == 'build' ]]; then
 
     echo "Building..."
+    mkdir -p dist
 
-    mkdir dist hw_01/build hw_02/build hw_03/build
-
-    echo "Building hw_01"
-    cmake -Hhw_01 -Bhw_01/build
-    cmake --build hw_01/build
-    cmake --build hw_01/build --target helloworld_test
-    cmake --build hw_01/build --target package
-    sh -c 'cd hw_01/build && ctest -V'
-    mv hw_01/build/*.deb dist/
-
-    echo "Building hw_02"
-    cmake -Hhw_02 -Bhw_02/build
-    cmake --build hw_02/build
-    cmake --build hw_02/build --target ip_filter_testing
-    cmake --build hw_02/build --target package
-    sh -c 'cd hw_02/build && ctest -V'
-    mv hw_02/build/*.deb dist/
+    build hw_01 helloworld_test
+    
+    build hw_02 ip_filter_testing
     cat hw_02/ip.tsv | hw_02/build/ip_filter > hw_02/out.tsv
     md5sum hw_02/out.tsv
 
-    echo "Building hw_03"
-    cmake -Hhw_03 -Bhw_03/build
-    cmake --build hw_03/build
-    cmake --build hw_03/build --target allocator_testing
-    cmake --build hw_03/build --target package
-    sh -c 'cd hw_03/build && ctest -V'
-    mv hw_03/build/*.deb dist/
+    build hw_03 allocator_testing
     ltrace -e malloc -e free hw_03/build/allocator
     valgrind --leak-check=full hw_03/build/allocator
 
