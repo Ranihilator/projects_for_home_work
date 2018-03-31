@@ -20,10 +20,9 @@ set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 add_executable(allocator ${SOURCE_PATH}/main.cpp)
 add_executable(allocator_testing ${TEST_PATH}/test.cpp)
 
-add_library(_alloc ${SOURCE_PATH}/allocator.cpp)
-add_library(_manager ${SOURCE_PATH}/manager.cpp)
+set(HEADER_FILES ${PROJECT_SOURCE_DIR}/allocator.h ${PROJECT_SOURCE_DIR}/container.h)
 
-set_target_properties(allocator _alloc _manager allocator_testing PROPERTIES
+set_target_properties(allocator allocator_testing PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
@@ -36,12 +35,12 @@ set_target_properties(allocator_testing PROPERTIES
 )
 
 target_link_libraries(allocator 
-    _alloc _manager
+    
 )
 
 target_link_libraries(allocator_testing 
     ${Boost_LIBRARIES} 
-    _alloc _manager
+    
 )
 
 install(TARGETS allocator RUNTIME DESTINATION bin)

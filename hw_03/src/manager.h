@@ -13,7 +13,6 @@ namespace ALLOCATOR
 template <class T>
 class PointerManager
 {
-	friend class ArenaMemoryManager;
 public:
 
 	/*!
@@ -44,6 +43,8 @@ public:
 	@brief получить указатель на последний добавленных блок
 	 */
 	T* data();
+
+	std::size_t length() {return pos;}
 
 	/*!
 	@brief получить указатель на указанный блок
@@ -177,69 +178,5 @@ const T* PointerManager<T>::data(std::size_t n) const
 	mem += n;
 	return mem;
 }
-
-/*!
-@brief Класс менеджер памяти
-@detailed Позволяет выделить n байтов, и в случае нехватки выделяет еще n байтов в отдельном блоки. Блоки не пересоздаются.
-Память организована в виде матрицы N x M ( N - номер блока, M - кол-во байт в блоке)
-Класс позволяет выполнять операции копирования
-*/
-class ArenaMemoryManager
-{
-	using chunk_t = std::pair<std::size_t, uint8_t*>; /// блок данных (размер блока, данные)
-	using chunks_t = PointerManager<chunk_t>; /// Контейнер для хранения блоков данных
-
-public:
-
-	/*!
-	@brief конструктор по умолчанию
-	@detailed выделяет память в куче под новые данные
-	@param asize - кол-во блоков
-	@param adata - кол-во байтов в блоке
-	 */
-	ArenaMemoryManager(std::size_t asize = 1, std::size_t adata = 10);
-
-	/*!
-	@brief конструктор копирования
-	@detailed выделет память под новые данные
-	 */
-	ArenaMemoryManager(const ArenaMemoryManager &other);
-
-	/*!
-	@brief деструктор
-	@detailed освобождает выделеную память из общей кучи
-	 */
-	~ArenaMemoryManager();
-
-	/*!
-	@brief оператор копирования
-	@detailed освобождает выделеную память из общей кучи и заново выделет память под новые данные
-	 */
-	ArenaMemoryManager& operator=(const ArenaMemoryManager &other);
-
-public:
-	/*!
-	@brief выделить блок данных с указанием кол-во байт из общей кучи
-	@param n - кол-во байт
-	\return Nothing
-	 */
-	void* allocate(std::size_t n);
-
-	/*!
-	@brief освободить блок данных с указанием кол-во байт в общую кучу
-	@param p - указатель на блок данных
-	@param n - кол-во байт
-	\return Nothing
-	 */
-	void deallocate(void* p, std::size_t n);
-
-private:
-	chunks_t m_chunks; ///Данные
-	uint8_t* m_memory = nullptr; ///указатель на текущую позицию в блоке данных
-
-	std::size_t m_available = 0; ///Сколько байт свободно в куче
-
-	const std::size_t data_size; ///размер блока в куче
-};
 
 }
