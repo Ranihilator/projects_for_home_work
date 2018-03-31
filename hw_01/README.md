@@ -1,17 +1,18 @@
 # hello_world
 it just hello world.
 
-run cmake,compile,and run application
+### Сборка, тест и выполнение
 ```shell
    cmake -H. -Bbuild
-   cd build
-   cmake --build .
-   ctest -V
+   cmake --build build
+   cmake --build build --target helloworld_test
+   cmake --build build --target package
+   sh -c 'cd build && ctest -V'
    helloworld_cli
    helloworld_test
 ```
 
-generated doxygen documentation to doc folder
+### Генерация документации
 ```shell
     doxygen
 ```

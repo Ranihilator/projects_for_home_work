@@ -15,12 +15,11 @@
 ### Сборка, тест и выполнение
 ```shell
    cmake -H. -Bbuild
-   cd build
-   cmake --build . --target allocator_test
-   cmake --build . --target package
-   ctest -V
-   ltrace -e malloc -e free ./allocator
-   valgrind --leak-check=full ./allocator
+   cmake --build build --target allocator_test
+   cmake --build build --target package
+   sh -c 'cd build && ctest -V'
+   ltrace -e malloc -e free build/allocator
+   valgrind --leak-check=full build/allocator
 ```
 ### Установка пакета deb
 ```shell
