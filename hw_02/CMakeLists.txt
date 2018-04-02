@@ -17,14 +17,12 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
-configure_file(version.h.in ${SOURCE_PATH}/version.h)
+set(HEADER_FILES ${SOURCE_PATH}/library.h)
 
-add_executable(ip_filter ${SOURCE_PATH}/main.cpp)
-add_executable(ip_filter_testing ${TEST_PATH}/filter.cpp)
+add_executable(ip_filter ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
+add_executable(ip_filter_testing ${TEST_PATH}/filter.cpp ${HEADER_FILES})
 
-add_library(ip_filter_lib ${SOURCE_PATH}/library.cpp)
-
-set_target_properties(ip_filter ip_filter_lib ip_filter_testing PROPERTIES
+set_target_properties(ip_filter ip_filter_testing PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
@@ -37,12 +35,10 @@ set_target_properties(ip_filter_testing PROPERTIES
 )
 
 target_link_libraries(ip_filter 
-    ip_filter_lib
 )
 
 target_link_libraries(ip_filter_testing 
     ${Boost_LIBRARIES} 
-    ip_filter_lib
 )
 
 

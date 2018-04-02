@@ -38,19 +38,22 @@ BOOST_AUTO_TEST_SUITE(test_suite_main)
 
 BOOST_AUTO_TEST_CASE(ip_filter_test)
 {
-    BOOST_REQUIRE_THROW(split_ip(""),std::invalid_argument);
-    BOOST_REQUIRE_THROW(split_ip("fsafsafsafsa"),std::invalid_argument);
-    BOOST_REQUIRE_THROW(split_ip("1,2,3,4"),std::invalid_argument);
-    BOOST_REQUIRE_THROW(split_ip("a.b.c.d"),std::invalid_argument);
-    BOOST_REQUIRE_THROW(split_ip("1.2.3.4a"),std::invalid_argument);
-    BOOST_REQUIRE_THROW(split_ip("f1.2.3.4"),std::invalid_argument);
-    BOOST_REQUIRE_THROW(split_ip("1.a2.3.4"),std::invalid_argument);
-    BOOST_REQUIRE_THROW(split_ip("1.2.s3.4"),std::invalid_argument);
+    ///Регулярное выражение для поиска ип адресса в веденной строке
+    std::regex ip_filter (FILTER_REGEX);
 
-    auto check_correct = [](std::string &&left_dust, std::string &&right_dust)
+    BOOST_REQUIRE_THROW(split_ip("",ip_filter),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("fsafsafsafsa",ip_filter),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("1,2,3,4",ip_filter),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("a.b.c.d",ip_filter),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("1.2.3.4a",ip_filter),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("f1.2.3.4",ip_filter),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("1.a2.3.4",ip_filter),std::invalid_argument);
+    BOOST_REQUIRE_THROW(split_ip("1.2.s3.4",ip_filter),std::invalid_argument);
+
+    auto check_correct = [&ip_filter](std::string &&left_dust, std::string &&right_dust)
     {
         auto result = random_test(left_dust,right_dust);
-        BOOST_CHECK(split_ip(std::move(std::get<1>(result)))==std::get<0>(result));
+        BOOST_CHECK(split_ip(std::move(std::get<1>(result)),ip_filter)==std::get<0>(result));
     };
     check_correct("","");
     check_correct(""," 1.2.3.4");
@@ -69,30 +72,30 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
 ///Задание №3 Реализовать constexpr функцию bin_id - определения ближайшей большей степени двойки
 constexpr uint64_t bin_id(uint64_t x, uint64_t t=0x8000000000000000, int c=64)
 {
-	return (c>=0)?((x<=t)?(bin_id(x,t>>1,--c)):(c)):(0);
+    return (c>=0)?((x<=t)?(bin_id(x,t>>1,--c)):(c)):(0);
 }
 
 BOOST_AUTO_TEST_CASE(external_test)
 {
-	BOOST_STATIC_ASSERT(bin_id(0) == 0);
-	BOOST_STATIC_ASSERT(bin_id(1) == 0);
-	BOOST_STATIC_ASSERT(bin_id(2) == 1);
-	BOOST_STATIC_ASSERT(bin_id(4) == 2);
-	BOOST_STATIC_ASSERT(bin_id(7) == 3);
-	BOOST_STATIC_ASSERT(bin_id(8) == 3);
-	BOOST_STATIC_ASSERT(bin_id(9) == 4);
-	BOOST_STATIC_ASSERT(bin_id(1023) == 10);
-	BOOST_STATIC_ASSERT(bin_id(1024) == 10);
-	BOOST_STATIC_ASSERT(bin_id(1025) == 11);
-	BOOST_STATIC_ASSERT(bin_id(1024*1024-33) == 20);
-	BOOST_STATIC_ASSERT(bin_id(1024*1024) == 20);
-	BOOST_STATIC_ASSERT(bin_id(1024*1024+33) == 21);
-	BOOST_STATIC_ASSERT(bin_id(1024*1024*1024-127) == 30);
-	BOOST_STATIC_ASSERT(bin_id(1024*1024*1024) == 30);
-	BOOST_STATIC_ASSERT(bin_id(1024*1024*1024+127) == 31);
-	BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000-127) == 63);
-	BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000) == 63);
-	BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000+127) == 64);
+    BOOST_STATIC_ASSERT(bin_id(0) == 0);
+    BOOST_STATIC_ASSERT(bin_id(1) == 0);
+    BOOST_STATIC_ASSERT(bin_id(2) == 1);
+    BOOST_STATIC_ASSERT(bin_id(4) == 2);
+    BOOST_STATIC_ASSERT(bin_id(7) == 3);
+    BOOST_STATIC_ASSERT(bin_id(8) == 3);
+    BOOST_STATIC_ASSERT(bin_id(9) == 4);
+    BOOST_STATIC_ASSERT(bin_id(1023) == 10);
+    BOOST_STATIC_ASSERT(bin_id(1024) == 10);
+    BOOST_STATIC_ASSERT(bin_id(1025) == 11);
+    BOOST_STATIC_ASSERT(bin_id(1024*1024-33) == 20);
+    BOOST_STATIC_ASSERT(bin_id(1024*1024) == 20);
+    BOOST_STATIC_ASSERT(bin_id(1024*1024+33) == 21);
+    BOOST_STATIC_ASSERT(bin_id(1024*1024*1024-127) == 30);
+    BOOST_STATIC_ASSERT(bin_id(1024*1024*1024) == 30);
+    BOOST_STATIC_ASSERT(bin_id(1024*1024*1024+127) == 31);
+    BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000-127) == 63);
+    BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000) == 63);
+    BOOST_STATIC_ASSERT(bin_id((uint64_t)0x8000000000000000+127) == 64);
     BOOST_STATIC_ASSERT(bin_id((uint64_t)0xFFFFFFFFFFFFFFFF) == 64);
 }
 

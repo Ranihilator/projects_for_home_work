@@ -41,8 +41,8 @@ http://acm.timus.ru/author.aspx?id=246783
    cmake --build build --target ip_filter_testing
    cmake --build build --target package
    sh -c 'cd build && ctest -V'
-   cat hw_02/ip.tsv | build/ip_filter > hw_02/out.tsv
-   md5sum hw_02/out.tsv
+   cat ./ip.tsv | build/ip_filter > out.tsv
+   md5sum ./out.tsv
 ```
 ### Установка пакета deb
 ```shell
