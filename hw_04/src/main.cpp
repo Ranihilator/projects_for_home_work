@@ -15,7 +15,7 @@ int main()
 
     print_ip(std::string("1.2.3.4"));
 
-    print_ip(std::make_tuple(1,2,3,4));
+    print_ip(std::make_tuple(5,"6",'7',8));
 
     return 0;
 }

@@ -10,15 +10,7 @@
 namespace PRINT
 {
 
-using std::cout;
-using std::endl;
-using std::enable_if_t;
-using std::is_arithmetic;
-using std::is_same;
-using std::stringstream;
-using std::string;
-using std::vector;
-using std::list;
+using namespace std;
 
 
 ///-------------------------value---------------------------------------------------///
@@ -32,8 +24,8 @@ enable_if_t<is_arithmetic<T>::value,void> print_ip (T &&arg)
 
     for (auto i = size-1; i >= 0; --i)
     {
-		if (str.tellp() != 0)
-			str << ".";
+        if (str.tellp() != 0)
+            str << ".";
 
         str << static_cast<int64_t>(data[i]);
     }
@@ -50,19 +42,23 @@ enable_if_t<is_same<T, string>::value,void> print_ip (T &&arg)
 
 
 ///-------------------------container---------------------------------------------------///
-template <class T>       struct is_stl_container:std::false_type{};
-template <class... Args> struct is_stl_container<std::vector            <Args...>>:std::true_type{};
-template <class... Args> struct is_stl_container<std::list              <Args...>>:std::true_type{};
+namespace CONTAINER
+{
+template <class T>       struct is_stl_container:false_type {};
+template <class... Args> struct is_stl_container<vector            <Args...>>:true_type {};
+template <class... Args> struct is_stl_container<list              <Args...>>:true_type {};
+}
+
 
 template <class T>
-enable_if_t<is_stl_container<T>::value,void> print_ip (T &&arg)
+enable_if_t<CONTAINER::is_stl_container<T>::value,void> print_ip (T &&arg)
 {
     stringstream str;
 
     for (const auto &i : arg)
     {
         if (str.tellp() != 0)
-			str << "..";
+            str << "..";
 
         str << static_cast<int64_t>(i);
     }
@@ -72,16 +68,46 @@ enable_if_t<is_stl_container<T>::value,void> print_ip (T &&arg)
 
 
 ///-------------------------tuple---------------------------------------------------///
+namespace TUPLE
+{
 template<typename Test, template<typename...> class Ref>
-struct is_specialization : std::false_type {};
+struct is_specialization : false_type {};
 
 template<template<typename...> class Ref, typename... Args>
-struct is_specialization<Ref<Args...>, Ref>: std::true_type {};
+struct is_specialization<Ref<Args...>, Ref>: true_type {};
+}
+
+
+template<int index, class... T>
+struct print_tuple
+{
+    void operator() (tuple<T...>& t)
+    {
+        cout << get<index>(t) << "..";
+        print_tuple<index - 1, T...> {}(t);
+    }
+};
+
+template<class... T>
+struct print_tuple<0, T...>
+{
+    void operator() (tuple<T...>& t)
+    {
+        cout << get<0>(t) << "";
+    }
+};
+
+template<class... T>
+void print(tuple<T...>& t)
+{
+    const auto size = tuple_size<tuple<T...>>::value;
+    print_tuple<size - 1, T...> {}(t);
+}
 
 template <class T>
-enable_if_t<is_specialization<T, std::tuple>::value,void> print_ip (T &&arg)
+enable_if_t<TUPLE::is_specialization<T, tuple>::value,void> print_ip (T &&arg)
 {
-    std::cout << "tuple" << std::endl;
+    print(arg);
 }
 
 }
