@@ -15,6 +15,8 @@ if [[ ${ACTION} == 'build' ]]; then
     sh -c 'cd build/hw_01 && ctest -V'
     sh -c 'cd build/hw_02 && ctest -V'
     sh -c 'cd build/hw_03 && ctest -V'
+    
+    mv build/*.deb dist/
 
     cat hw_02/ip.tsv | build/hw_02/ip_filter > hw_02/out.tsv
     md5sum hw_02/out.tsv
