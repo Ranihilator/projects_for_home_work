@@ -3,22 +3,13 @@
 #include <deque>
 #include <random>
 #include <ctime>
+#include <algorithm>
 
 #define BOOST_TEST_MODULE allocator_test
 
 #include <boost/test/unit_test.hpp>
 
 BOOST_AUTO_TEST_SUITE(test_suite_main)
-
-auto random_test()
-{
-    static auto counter=0;
-
-    std::mt19937 gen(std::time(0)+counter);
-    counter++;
-
-    return gen();
-}
 
 /*!
 @brief Тест аллокатора
@@ -53,7 +44,9 @@ BOOST_AUTO_TEST_CASE(container_test)
 
 	for (auto i = 0; i < 100; ++i)
 	{
-        int val = random_test();
+        int val = 0;
+
+        std::generate_n(&val, 1, std::rand);
 
 		data.push_back(val);
 		data_alloc.push_back(val);
@@ -84,7 +77,9 @@ BOOST_AUTO_TEST_CASE(task_test)
 
     for (auto i = 0; i < 100; ++i)
 	{
-        int val = random_test();
+        int val = 0;
+
+        std::generate_n(&val, 1, std::rand);
 
 		data_map[i] = val;
 		data_container.push_back(val);

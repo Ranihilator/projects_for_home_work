@@ -39,3 +39,5 @@ hw_01/build/
 hw_02/build/
 hw_03/build/
 hw_04/build/
+build/
+dist/

@@ -6,7 +6,7 @@
 #include <map>
 #include <type_traits>
 
-constexpr uint64_t factorial(uint64_t n)
+constexpr auto factorial(auto n) -> decltype(n)
 {
 	return n > 0 ? n * factorial(n - 1) : 1;
 }
@@ -67,7 +67,7 @@ struct CUSTOM_CONTAINER
 			data.push_back(i);
 		}
 
-		for (auto i = 0; i < data.size(); ++i)
+		for (decltype(data.size()) i = 0; i < data.size(); ++i)
 		{
 			std::cout << data[i] << std::endl;
 		}

@@ -17,7 +17,7 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
-set(HEADER_FILES ${SOURCE_PATH}/main.h ${SOURCE_PATH}/allocator.h ${SOURCE_PATH}/container.h ${SOURCE_PATH}/manager.h)
+set(HEADER_FILES ${SOURCE_PATH}/main.h ${SOURCE_PATH}/allocator.h ${SOURCE_PATH}/container.h ${SOURCE_PATH}/memory_rebind.h)
 
 add_executable(allocator ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
 add_executable(allocator_testing ${TEST_PATH}/test.cpp  ${HEADER_FILES})
