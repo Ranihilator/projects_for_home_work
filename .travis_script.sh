@@ -41,7 +41,7 @@ elif [[ ${ACTION} == 'deploy' ]]; then
 
     curl -X POST -u $BINTRAY_USER:$BINTRAY_API_KEY https://api.bintray.com/content/$BINTRAY_USER/projects_for_home_work/allocator/1.0/publish
 
-    curl -T dist/home_work-1.0.$TRAVIS_BUILD_NUMBER-amd64-print-ip.deb -u $BINTRAY_USER:$BINTRAY_API_KEY "https://api.bintray.com/content/$BINTRAY_USER/projects_for_home_work/print_ip/1.0/pool/p/print_ip-1.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+    curl -T dist/home_work-1.0.$TRAVIS_BUILD_NUMBER-amd64-print_ip.deb -u $BINTRAY_USER:$BINTRAY_API_KEY "https://api.bintray.com/content/$BINTRAY_USER/projects_for_home_work/print_ip/1.0/pool/p/print_ip-1.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
 
 
 fi
