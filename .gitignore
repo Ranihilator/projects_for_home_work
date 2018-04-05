@@ -36,8 +36,13 @@ version.h
 
 # Build directory
 hw_01/build/
+hw_01/doc/
 hw_02/build/
+hw_02/doc/
 hw_03/build/
+hw_03/doc/
 hw_04/build/
+hw_04/doc/
 build/
 dist/
+doc/

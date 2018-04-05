@@ -1,13 +1,10 @@
-#include "library.h"
-
 /*!
 \file main.cpp
 \brief Точка входа
 
 Функция main
 */
-
-
+#include "library.h"
 int main()
 {
     ///Регулярное выражение для поиска ип адресса в веденной строке

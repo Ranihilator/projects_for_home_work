@@ -1,3 +1,9 @@
+/*!
+\file
+\brief 
+
+шаблоны print_ip
+*/
 #pragma once
 
 #include <iostream>

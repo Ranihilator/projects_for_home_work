@@ -1,3 +1,7 @@
+/*!
+\file
+\brief Контайнер
+*/
 #pragma once
 
 #include "allocator.h" 

@@ -1,3 +1,7 @@
+/*!
+\file
+\brief Переопределения вызовов работы с память
+*/
 #pragma once
 
 #include <cstdint>

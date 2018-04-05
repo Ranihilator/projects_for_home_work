@@ -60,4 +60,4 @@ set(CPACK_DEB_COMPONENT_INSTALL 1)
 
 enable_testing()
 
-add_test(print print_ip_testing)
+add_test(print_ip_test print_ip_testing)

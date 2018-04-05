@@ -1,3 +1,7 @@
+/*!
+\file
+\brief Описания вызываемых функций main
+*/
 #pragma once
 
 #include "container.h"

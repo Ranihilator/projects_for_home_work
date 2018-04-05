@@ -1,3 +1,7 @@
+/*!
+\file
+\brief Вызов функций print_ip
+*/
 #include "main.h"
 using namespace PRINT;
 

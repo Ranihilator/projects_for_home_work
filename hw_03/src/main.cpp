@@ -1,3 +1,9 @@
+/*!
+\file
+\brief Основная работа
+
+вызов функции version
+*/
 #include "main.h"
 
 int main()

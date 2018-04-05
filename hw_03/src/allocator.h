@@ -1,3 +1,7 @@
+/*!
+\file
+\brief Аллокатор памяти
+*/
 #pragma once
 
 #include <memory>
