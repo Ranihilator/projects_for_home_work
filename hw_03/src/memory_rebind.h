@@ -15,17 +15,20 @@ extern std::size_t alloc_counter;
 void* malloc(std::size_t size) throw (std::bad_alloc)
 {
     void* p = std::malloc(size);
-    std::cout << "malloc: " << ++alloc_counter << " " << std::hex << p << std::dec << " "  << size << " "  << std::endl;
+    alloc_counter++;
+    //std::cout << "malloc: " << ++alloc_counter << " " << std::hex << p << std::dec << " "  << size << " "  << std::endl;
     return p;
 }
 void free(void* p) noexcept
 {
-    std::cout << "free: " << --alloc_counter << " " << std::hex << p << std::endl;
+    alloc_counter--;
+    //std::cout << "free: " << --alloc_counter << " " << std::hex << p << std::endl;
     std::free(p);
     return;
 }
 
 }
+extern "C++" {
 
 inline void* operator new(std::size_t size) throw (std::bad_alloc)
 {
@@ -75,4 +78,5 @@ inline void operator delete(void* p, long unsigned int)
 inline void operator delete [](void* p, long unsigned int)
 {
     ALLOCATOR::free(p);
+}
 }

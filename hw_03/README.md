@@ -14,7 +14,7 @@
 
 ### Сборка, тест и выполнение
 ```shell
-   cmake -H. -Bbuild
+   cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release
    cmake --build build --target allocator_test
    cmake --build build --target package
    sh -c 'cd build && ctest -V'

@@ -3,7 +3,7 @@ it just hello world.
 
 ### Сборка, тест и выполнение
 ```shell
-   cmake -H. -Bbuild
+   cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release
    cmake --build build
    cmake --build build --target helloworld_test
    cmake --build build --target package

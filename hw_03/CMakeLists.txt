@@ -17,19 +17,20 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
-set(HEADER_FILES ${SOURCE_PATH}/main.h ${SOURCE_PATH}/allocator.h ${SOURCE_PATH}/container.h ${SOURCE_PATH}/memory_rebind.h)
+set(HEADER_FILES ${SOURCE_PATH}/allocator.h ${SOURCE_PATH}/container.h ${SOURCE_PATH}/memory_rebind.h)
 
 add_executable(allocator ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
-add_executable(allocator_testing ${TEST_PATH}/test.cpp  ${HEADER_FILES})
+add_executable(allocator_testing ${TEST_PATH}/test_allocator.cpp  ${HEADER_FILES})
+add_executable(container_testing ${TEST_PATH}/test_container.cpp  ${HEADER_FILES})
 
 
-set_target_properties(allocator allocator_testing PROPERTIES
+set_target_properties(allocator allocator_testing container_testing PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-set_target_properties(allocator_testing PROPERTIES
+set_target_properties(allocator_testing container_testing PROPERTIES
   COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
   INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
   INCLUDE_DIRECTORIES ${SOURCE_PATH}
@@ -39,7 +40,12 @@ target_link_libraries(allocator
     
 )
 
-target_link_libraries(allocator_testing 
+target_link_libraries(allocator_testing
+    ${Boost_LIBRARIES} 
+    
+)
+
+target_link_libraries(container_testing
     ${Boost_LIBRARIES} 
     
 )
@@ -60,6 +66,13 @@ set(CPACK_DEB_COMPONENT_INSTALL 1)
 
 enable_testing()
 
-add_test(allocator_test allocator_testing)
-add_test(container_test allocator_testing)
-add_test(task_test allocator_testing)
+add_test(
+  NAME boost_test_allocator
+  COMMAND allocator_testing
+)
+
+add_test(
+  NAME boost_test_container
+  COMMAND container_testing
+)
+

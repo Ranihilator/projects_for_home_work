@@ -37,7 +37,7 @@ http://acm.timus.ru/author.aspx?id=246783
 
 ### Сборка, тест и выполнение
 ```shell
-   cmake -H. -Bbuild
+   cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release
    cmake --build build --target ip_filter_testing
    cmake --build build --target package
    sh -c 'cd build && ctest -V'

@@ -7,13 +7,11 @@
 
 #include <iostream>
 #include "library.h"
-
 /*!
 Точка вызова программы
 \return {возвращает 0}
 
-*/
-int main()
+*/ int main()
 {
     std::cout << "Hello world!" << std::endl;
 #ifdef PROJECT_VERSION_MINOR
@@ -21,7 +19,7 @@ int main()
 #else
     std::cout << "Version " << PROJECT_VERSION_MAJOR << "." << 0  << "." << version() << std::endl;
 #endif
-    
-    return 0; 
+
+    return 0;
 }
 

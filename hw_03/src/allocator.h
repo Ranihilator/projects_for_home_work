@@ -9,6 +9,7 @@
 #include <cstdint>
 #include <vector>
 #include <iostream>
+#include <limits>
 
 #ifdef REBIND
 #include "memory_rebind.h"
@@ -22,135 +23,116 @@ std::size_t alloc_counter = 0;
 
 using size_type = std::size_t;
 
-template <class T, size_type A = 1, size_type S = 10 >
+template <class T, size_type S = 10>
 class allocator
 {
+    static_assert(S != 0, "no zero capacity!");
+
 public:
     using value_type = T;
 
-    using chunk_t  = std::vector<uint8_t>; /// блок данных
-    using chunks_t = std::vector<chunk_t>; /// Контейнер для хранения блоков данных
+    using chunks_t = std::vector<uint8_t>; /// Контейнер с данными
 
-    /*!
-    @brief конструктор по умолчанию
-    @param arena_size - кол-во блоков
-    @param size - кол-во байтов в блоке
-    */
+    using blocks_t = std::vector<chunks_t>; /// Контейнер блоков данных
+
     allocator() noexcept
-    {
-        m_chunks.reserve(A);
-    }
-
-    /*!
-    @brief конструктор копирования
-    @detailed выделет память под новые данные
-    */
-    allocator(const allocator &other);
-
-
-    /*!
-    @brief оператор копирования
-    @detailed освобождает выделеную память из общей кучи и заново выделет память под новые данные
-    */
-    allocator& operator=(const allocator &other)
-    {
-        m_chunks.clear();
-
-        if (m_chunks.capacity() < other.m_chunks.capacity())
-        {
-            m_chunks.reserve(other.capacity());
-        }
-
-        for (decltype(m_chunks.size()) i = 0; i < m_chunks.size(); ++i)
-        {
-            m_chunks.emplace_back(chunk_t());
-            m_chunks.back().reserve(other.m_chunks[i].capacity());
-            m_chunks.back() = other.m_chunk[i];
-
-        }
-
-        return *this;
-    }
-
-public:
-
-    /*!
-    @brief выделить блок данных с указанием кол-во байт из общей кучи
-    @param n - кол-во байт
-    \return Nothing
-     */
-    T* allocate(size_type n);
-
-    /*!
-    @brief освободить блок данных с указанием кол-во байт в общую кучу
-    @param p - указатель на блок данных
-    @param n - кол-во байт
-    \return Nothing
-     */
-    void deallocate(T* p, size_type n);
+    {}
 
     template <class U>
     struct rebind
     {
-        using other = allocator<U, A, S>;
+        using other = allocator<U, S>;
     };
 
-private:
-    chunks_t m_chunks; ///Данные
-    uint8_t* m_memory = nullptr; ///указатель на текущую позицию в блоке данных
-
-    size_type m_available = 0; ///Сколько байт свободно в куче
-};
-
-template <class T, size_type arena_size, size_type size>
-allocator<T, arena_size, size>::allocator(const allocator &other)// : m_chunks(std::vector<chunk_t>(other.m_chunks.capacity()))
-{
-    for (decltype(m_chunks.size()) i = 0; i < m_chunks.size(); ++i)
+    /*!
+    @brief Выделить память под элемент T
+    @param n - кол-во элементов T
+    */
+    T* allocate(size_type n)
     {
-        m_chunks.emplace_back(chunk_t());
-        m_chunks.back().reserve(other.m_chunks[i].capacity());
-        m_chunks.back() = other.m_chunks[i];
-    }
-}
+        size_type m_available = 0;  /// количество свободных элементов в текущем блоке
+        n = n * sizeof (T);         /// кол-во элементов -> кол-во байт
 
-template <class T, size_type A, size_type S>
-void allocator<T, A, S>::deallocate(T* p, size_type n)
-{
-    if (p)
-    {
-        n = n * sizeof (T);
-        auto mem = (uint8_t*) p;
+        if (n > std::numeric_limits<uint16_t>::max() || n == 0)
+            throw std::bad_alloc();
 
-        if (mem + n == m_memory)
+        if (m_start.capacity() != 0 && m_start.capacity() == m_start.size())
         {
-            m_memory = mem;
-            m_available += n;
+            if (m_blocks.capacity()==0)
+                m_blocks.reserve(S);
+
+            m_blocks.emplace_back(std::move(m_start));
         }
-    }
-}
 
-template <class T, size_type A, size_type S>
-T* allocator<T, A, S>::allocate(size_type n)
-{
-    n = n * sizeof (T);
-    if (n > m_available)
+        if (!m_start.empty())
+            m_available = m_start.capacity() - m_start.size();
+
+        if (n > m_available)
+        {
+            if (n > m_start.capacity())
+            {
+                m_start.reserve(n * S);
+                if (m_start.capacity() != n * S)
+                    throw std::bad_alloc();
+            }
+
+            m_available = m_start.capacity();
+        }
+
+        uint8_t* m_memory = (uint8_t*)&m_start.back() + 1;
+        if (!m_memory)
+            throw std::bad_alloc();
+
+        m_start.insert(m_start.end(), n, 0);
+
+        return (T*)m_memory;
+    }
+
+    /*!
+    @brief Освободить память элементов T
+    @param p - указатель на память
+    @param n - кол-во элементов T
+    */
+    void deallocate(void* p, size_type n)
     {
-        m_chunks.emplace_back(chunk_t());
+        if (p)
+        {
+            size_type m_available = 0;  /// количество свободных элементов в текущем блоке
+            n = n * sizeof (T);         /// кол-во элементов -> кол-во байт
 
-        m_chunks.back().reserve(n * S);
-        m_available = m_chunks.back().capacity();
+            if (!m_start.empty())
+                m_available = m_start.size();
 
-        if (m_available != n * S)
-            std::bad_alloc();
+            if (n > m_available && m_blocks.empty())
+                return;
 
-        m_memory = m_chunks.back().data();
+            if (m_start.empty())
+            {
+                if (m_blocks.empty())
+                    return;
+
+                m_start = std::move(m_blocks.back());
+
+                m_available = m_start.size();
+
+                m_blocks.pop_back();
+            }
+
+            uint8_t *m_memory = (uint8_t*)&m_start.back() + 1;
+
+            if ((uint8_t*)p + n == m_memory)
+                m_start.resize(m_available - n);
+            else
+                throw std::bad_alloc();
+        }
+        else
+            throw std::bad_alloc();
     }
 
-    auto mem = m_memory;
-    m_available -= n;
-    m_memory += n;
-    return (T*)mem;
-}
+private:
+    blocks_t m_blocks;      /// Блок последующих данных
+    chunks_t m_start;       /// Текущий блок данных
+};
 
 template< class T1, class T2 >
 bool operator==(const allocator<T1>& lhs, const allocator<T2>& rhs)
@@ -165,3 +147,95 @@ bool operator!=(const allocator<T1>& lhs, const allocator<T2>& rhs)
 }
 
 }
+
+/*
+namespace TEST
+{
+
+#include <type_traits>
+#include <memory>
+
+template <typename T, size_t Size = 10>
+struct ArenaAllocator
+{
+
+private:
+    //unsigned char * const data; // no dtor!
+    std::unique_ptr<unsigned char *> data; // no dtor!
+    std::size_t const size;
+    std::size_t offset;
+
+public:
+    template <typename U, size_t> friend struct ArenaAllocator;
+
+    using value_type = T;
+    using pointer = T *;
+
+    ~ArenaAllocator() = default;
+
+    template <class U>
+    struct rebind {
+        using other =  ArenaAllocator<U, Size>;
+    };
+
+    //ArenaAllocator() //: arena(std::make_unique<Arena>(Size))
+    //: data(static_cast<unsigned char *>(::operator new(Size)))
+    //, size(Size)
+    //, offset(0)
+    //{ }
+
+    ArenaAllocator() //: arena(std::make_unique<Arena>(Size))
+    : data(std::make_unique<unsigned char*>
+           (
+            static_cast<unsigned char *>( ::operator new(sizeof(value_type) * Size) )
+           )
+          )
+    , size(Size)
+    , offset(0)
+    { }
+
+    template <typename U>
+    ArenaAllocator(ArenaAllocator<U> const & rhs)
+    : data(rhs.data)
+    , size(rhs.size)
+    , offset(rhs.offset)
+    { }
+
+    pointer allocate(std::size_t n)
+    {
+        if (offset + n > size)
+        {
+            throw std::bad_alloc();
+        }
+
+        void * result = data.get() + offset;
+        offset += sizeof(value_type) * n;
+
+        return static_cast<pointer>(result);
+    }
+
+    void deallocate(pointer p, std::size_t n)
+    {
+        //arena->deallocate(p, n * sizeof(T));
+    }
+
+    template <typename ... Args >
+    void construct(T* p, Args&& ... args) {
+        new(p) T(std::forward <Args>(args) ... );
+    };
+
+    template <typename U>
+    bool operator==(ArenaAllocator<U> const & rhs) const
+    {
+        return data == rhs.data;
+    }
+
+    template <typename U>
+    bool operator!=(ArenaAllocator<U> const & rhs) const
+    {
+        return data != rhs.data;
+    }
+};
+
+}
+*/

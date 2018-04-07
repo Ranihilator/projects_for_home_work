@@ -12,8 +12,9 @@ endif()
 
 project(helloworld VERSION ${VERSION_BUILD_MAJOR}.${VERSION_BUILD_MINOR}.${VERSION_BUILD})
 
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
-
+find_package(Boost COMPONENTS unit_test_framework REQUIRED) 
+find_package(spdlog REQUIRED)
+find_package(Threads REQUIRED)
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 
 configure_file(version.h.in ${SOURCE_PATH}/version.h)
@@ -22,6 +23,7 @@ add_executable(helloworld_cli ${SOURCE_PATH}/main.cpp)
 add_executable(helloworld_test ${SOURCE_PATH}/test_main.cpp)
 
 add_library(helloworld_lib ${SOURCE_PATH}/library.cpp)
+
 
 set_target_properties(helloworld_cli helloworld_lib helloworld_test PROPERTIES
   CXX_STANDARD 14
@@ -34,7 +36,7 @@ set_target_properties(helloworld_test PROPERTIES
   INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 )
 
-target_link_libraries(helloworld_cli 
+target_link_libraries(helloworld_cli spdlog::spdlog Threads::Threads
     helloworld_lib
 )
 
@@ -42,6 +44,8 @@ target_link_libraries(helloworld_test
     ${Boost_LIBRARIES} 
     helloworld_lib
 )
+
+
 
 
 install(TARGETS helloworld_cli RUNTIME DESTINATION bin COMPONENT helloworld)
