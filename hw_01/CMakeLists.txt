@@ -13,8 +13,6 @@ endif()
 project(helloworld VERSION ${VERSION_BUILD_MAJOR}.${VERSION_BUILD_MINOR}.${VERSION_BUILD})
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED) 
-find_package(spdlog REQUIRED)
-find_package(Threads REQUIRED)
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 
 configure_file(version.h.in ${SOURCE_PATH}/version.h)
@@ -36,7 +34,7 @@ set_target_properties(helloworld_test PROPERTIES
   INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
 )
 
-target_link_libraries(helloworld_cli spdlog::spdlog Threads::Threads
+target_link_libraries(helloworld_cli
     helloworld_lib
 )
 
