@@ -9,6 +9,8 @@
 
 BOOST_AUTO_TEST_SUITE(test_suite_main)
 
+using namespace HW_03;
+
 const auto number = 100;        /// Элементов тестирования
 
 /*!

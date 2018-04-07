@@ -7,6 +7,9 @@
 #include "allocator.h"
 #include <cstdint>
 
+namespace HW_03
+{
+
 namespace CONTAINER
 {
 
@@ -132,4 +135,5 @@ private:
 
 }
 
+}
 

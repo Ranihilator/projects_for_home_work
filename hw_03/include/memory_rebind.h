@@ -8,6 +8,9 @@
 #include <cstddef>
 #include <new>
 
+namespace HW_03
+{
+
 namespace ALLOCATOR
 {
 
@@ -28,7 +31,13 @@ void free(void* p) noexcept
 }
 
 }
-extern "C++" {
+
+}
+
+
+extern "C++"
+{
+using namespace HW_03;
 
 inline void* operator new(std::size_t size) throw (std::bad_alloc)
 {

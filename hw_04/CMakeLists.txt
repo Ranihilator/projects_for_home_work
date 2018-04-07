@@ -14,14 +14,16 @@ project(print_ip VERSION ${VERSION_BUILD_MAJOR}.${VERSION_BUILD_MINOR}.${VERSION
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
+set(HEADER_PATH "${PROJECT_SOURCE_DIR}/include")
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
-set(HEADER_FILES ${SOURCE_PATH}/main.h)
+set(HEADER_FILES ${HEADER_PATH}/print.h)
 
 add_executable(print_ip ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
 add_executable(print_ip_testing ${TEST_PATH}/test.cpp  ${HEADER_FILES})
 
+target_include_directories(print_ip PRIVATE ${HEADER_PATH})
 
 set_target_properties(print_ip print_ip_testing PROPERTIES
   CXX_STANDARD 14
@@ -32,7 +34,7 @@ set_target_properties(print_ip print_ip_testing PROPERTIES
 set_target_properties(print_ip_testing PROPERTIES
   COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
   INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
-  INCLUDE_DIRECTORIES ${SOURCE_PATH}
+  INCLUDE_DIRECTORIES ${HEADER_PATH}
 )
 
 target_link_libraries(print_ip 

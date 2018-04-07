@@ -11,7 +11,11 @@
 Точка вызова программы
 \return {возвращает 0}
 
-*/ int main()
+*/ 
+
+using namespace HW_01;
+
+int main()
 {
     std::cout << "Hello world!" << std::endl;
 #ifdef PROJECT_VERSION_MINOR

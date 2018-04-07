@@ -15,6 +15,9 @@
 #include "memory_rebind.h"
 #endif
 
+namespace HW_03
+{
+
 namespace ALLOCATOR
 {
 #ifdef REBIND
@@ -148,94 +151,4 @@ bool operator!=(const allocator<T1>& lhs, const allocator<T2>& rhs)
 
 }
 
-/*
-namespace TEST
-{
-
-#include <type_traits>
-#include <memory>
-
-template <typename T, size_t Size = 10>
-struct ArenaAllocator
-{
-
-private:
-    //unsigned char * const data; // no dtor!
-    std::unique_ptr<unsigned char *> data; // no dtor!
-    std::size_t const size;
-    std::size_t offset;
-
-public:
-    template <typename U, size_t> friend struct ArenaAllocator;
-
-    using value_type = T;
-    using pointer = T *;
-
-    ~ArenaAllocator() = default;
-
-    template <class U>
-    struct rebind {
-        using other =  ArenaAllocator<U, Size>;
-    };
-
-    //ArenaAllocator() //: arena(std::make_unique<Arena>(Size))
-    //: data(static_cast<unsigned char *>(::operator new(Size)))
-    //, size(Size)
-    //, offset(0)
-    //{ }
-
-    ArenaAllocator() //: arena(std::make_unique<Arena>(Size))
-    : data(std::make_unique<unsigned char*>
-           (
-            static_cast<unsigned char *>( ::operator new(sizeof(value_type) * Size) )
-           )
-          )
-    , size(Size)
-    , offset(0)
-    { }
-
-    template <typename U>
-    ArenaAllocator(ArenaAllocator<U> const & rhs)
-    : data(rhs.data)
-    , size(rhs.size)
-    , offset(rhs.offset)
-    { }
-
-    pointer allocate(std::size_t n)
-    {
-        if (offset + n > size)
-        {
-            throw std::bad_alloc();
-        }
-
-        void * result = data.get() + offset;
-        offset += sizeof(value_type) * n;
-
-        return static_cast<pointer>(result);
-    }
-
-    void deallocate(pointer p, std::size_t n)
-    {
-        //arena->deallocate(p, n * sizeof(T));
-    }
-
-    template <typename ... Args >
-    void construct(T* p, Args&& ... args) {
-        new(p) T(std::forward <Args>(args) ... );
-    };
-
-    template <typename U>
-    bool operator==(ArenaAllocator<U> const & rhs) const
-    {
-        return data == rhs.data;
-    }
-
-    template <typename U>
-    bool operator!=(ArenaAllocator<U> const & rhs) const
-    {
-        return data != rhs.data;
-    }
-};
-
 }
-*/

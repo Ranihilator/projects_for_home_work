@@ -14,13 +14,16 @@ project(ip_filter VERSION ${VERSION_BUILD_MAJOR}.${VERSION_BUILD_MINOR}.${VERSIO
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
+set(HEADER_PATH "${PROJECT_SOURCE_DIR}/include")
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
-set(HEADER_FILES ${SOURCE_PATH}/library.h)
+set(HEADER_FILES ${HEADER_PATH}/filter.h)
 
 add_executable(ip_filter ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
-add_executable(ip_filter_testing ${TEST_PATH}/filter.cpp ${HEADER_FILES})
+add_executable(ip_filter_testing ${TEST_PATH}/test.cpp ${HEADER_FILES})
+
+target_include_directories(ip_filter PRIVATE ${HEADER_PATH})
 
 set_target_properties(ip_filter ip_filter_testing PROPERTIES
   CXX_STANDARD 14
@@ -31,7 +34,7 @@ set_target_properties(ip_filter ip_filter_testing PROPERTIES
 set_target_properties(ip_filter_testing PROPERTIES
   COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
   INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
-  INCLUDE_DIRECTORIES ${SOURCE_PATH}
+  INCLUDE_DIRECTORIES ${HEADER_PATH}
 )
 
 target_link_libraries(ip_filter 

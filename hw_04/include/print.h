@@ -1,6 +1,6 @@
 /*!
 \file
-\brief 
+\brief
 
 шаблоны print_ip
 */
@@ -12,6 +12,9 @@
 #include <vector>
 #include <deque>
 #include <tuple>
+
+namespace HW_04
+{
 
 namespace PRINT
 {
@@ -126,6 +129,8 @@ enable_if_t
 > print_ip (T &&arg)
 {
     print_tuple<std::tuple_size<T>::value, T>()(arg);
+}
+
 }
 
 }

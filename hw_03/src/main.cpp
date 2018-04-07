@@ -13,6 +13,9 @@
 #include <type_traits>
 #include <algorithm>
 
+namespace HW_03
+{
+
 constexpr auto factorial(auto n) -> decltype(n)
 {
 	return n > 0 ? n * factorial(n - 1) : 1;
@@ -77,6 +80,10 @@ void Container_Allocator()
         std::cout << data.at(i) << std::endl;
 	}
 }
+
+}
+
+using namespace HW_03;
 
 int main()
 {

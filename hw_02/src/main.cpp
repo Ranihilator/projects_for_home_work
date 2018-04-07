@@ -4,7 +4,10 @@
 
 Функция main
 */
-#include "library.h"
+#include "filter.h"
+
+using namespace HW_02::FILTER;
+
 int main()
 {
     ///Регулярное выражение для поиска ип адресса в веденной строке

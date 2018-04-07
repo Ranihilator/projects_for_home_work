@@ -1,9 +1,11 @@
-#include "library.h"
+#include "filter.h"
 #include <random>
 #include <ctime>
 #define BOOST_TEST_MODULE test_filter
 
 #include <boost/test/unit_test.hpp>
+
+using namespace HW_02::FILTER;
 
 auto random_test(std::string left_dust=std::string(), std::string right_dust=std::string())
 {

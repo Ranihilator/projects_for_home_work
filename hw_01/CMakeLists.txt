@@ -13,14 +13,22 @@ endif()
 project(helloworld VERSION ${VERSION_BUILD_MAJOR}.${VERSION_BUILD_MINOR}.${VERSION_BUILD})
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED) 
+
+set(HEADER_PATH "${PROJECT_SOURCE_DIR}/include")
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
+set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
-configure_file(version.h.in ${SOURCE_PATH}/version.h)
+configure_file(version.h.in ${HEADER_PATH}/version.h)
 
-add_executable(helloworld_cli ${SOURCE_PATH}/main.cpp)
-add_executable(helloworld_test ${SOURCE_PATH}/test_main.cpp)
+set(HEADER_FILES ${HEADER_PATH}/version.h ${HEADER_PATH}/library.h)
 
-add_library(helloworld_lib ${SOURCE_PATH}/library.cpp)
+add_executable(helloworld_cli ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
+add_executable(helloworld_test ${TEST_PATH}/test.cpp ${HEADER_FILES})
+add_library(helloworld_lib ${SOURCE_PATH}/library.cpp ${HEADER_FILES})
+
+
+target_include_directories(helloworld_cli PRIVATE ${HEADER_PATH})
+target_include_directories(helloworld_lib PRIVATE ${HEADER_PATH})
 
 
 set_target_properties(helloworld_cli helloworld_lib helloworld_test PROPERTIES
@@ -32,6 +40,7 @@ set_target_properties(helloworld_cli helloworld_lib helloworld_test PROPERTIES
 set_target_properties(helloworld_test PROPERTIES
   COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
   INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+  INCLUDE_DIRECTORIES ${HEADER_PATH}
 )
 
 target_link_libraries(helloworld_cli
@@ -61,4 +70,7 @@ include (CPack)
 
 enable_testing()
 
-add_test(test_version_valid helloworld_test)
+add_test(
+  NAME boost_test
+  COMMAND helloworld_test
+)

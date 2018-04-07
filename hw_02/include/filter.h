@@ -17,6 +17,12 @@
 вызов функции version, описания классов для работы с ип адрессами
 */
 
+namespace HW_02
+{
+    
+namespace FILTER
+{
+
 using ip_address = std::tuple<uint8_t,uint8_t,uint8_t,uint8_t>;         ///Контейнер ип адресса
 
 #define FILTER_REGEX                           \
@@ -114,4 +120,9 @@ auto split_ip(std::string &&line, std::regex &filter)
     }
 
     return std::move(value);
+}
+
+
+}
+
 }

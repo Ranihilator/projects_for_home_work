@@ -2,8 +2,8 @@
 \file
 \brief Вызов функций print_ip
 */
-#include "main.h"
-using namespace PRINT;
+#include "print.h"
+using namespace HW_04::PRINT;
 
 int main()
 {

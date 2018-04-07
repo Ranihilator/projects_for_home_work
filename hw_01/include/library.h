@@ -6,5 +6,7 @@
 */
 
 #include "version.h"
-
+namespace HW_01
+{
 int version(); 
+}

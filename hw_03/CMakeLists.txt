@@ -14,15 +14,17 @@ project(allocator VERSION ${VERSION_BUILD_MAJOR}.${VERSION_BUILD_MINOR}.${VERSIO
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
+set(HEADER_PATH "${PROJECT_SOURCE_DIR}/include")
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
-set(HEADER_FILES ${SOURCE_PATH}/allocator.h ${SOURCE_PATH}/container.h ${SOURCE_PATH}/memory_rebind.h)
+set(HEADER_FILES ${HEADER_PATH}/allocator.h ${HEADER_PATH}/container.h ${HEADER_PATH}/memory_rebind.h)
 
 add_executable(allocator ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
 add_executable(allocator_testing ${TEST_PATH}/test_allocator.cpp  ${HEADER_FILES})
 add_executable(container_testing ${TEST_PATH}/test_container.cpp  ${HEADER_FILES})
 
+target_include_directories(allocator PRIVATE ${HEADER_PATH})
 
 set_target_properties(allocator allocator_testing container_testing PROPERTIES
   CXX_STANDARD 14
@@ -33,7 +35,7 @@ set_target_properties(allocator allocator_testing container_testing PROPERTIES
 set_target_properties(allocator_testing container_testing PROPERTIES
   COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
   INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
-  INCLUDE_DIRECTORIES ${SOURCE_PATH}
+  INCLUDE_DIRECTORIES ${HEADER_PATH}
 )
 
 target_link_libraries(allocator 
