@@ -114,7 +114,7 @@ public:
                 if (m_blocks.empty())
                     return;
 
-                m_start = std::move(m_blocks.back());
+                m_blocks.back().swap(m_start);
 
                 m_available = m_start.size();
 
