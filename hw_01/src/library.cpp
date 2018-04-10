@@ -5,13 +5,12 @@
 вызов функции version
 */
 
-
 #include <iostream>
 #include "library.h"
 
 namespace HW_01
 {
-    
+
 /*!
 Функция вызова версии ПО
 \return {возвращает число формата INT}
@@ -19,7 +18,7 @@ namespace HW_01
 */
 int version()
 {
-    return PROJECT_VERSION_PATCH;
+	return PROJECT_VERSION_PATCH;
 }
 
 }

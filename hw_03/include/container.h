@@ -1,11 +1,12 @@
 /*!
 \file
 \brief Контайнер
-*/
+ */
 #pragma once
 
 #include "allocator.h"
 #include <cstdint>
+#include <functional>
 
 namespace HW_03
 {
@@ -17,120 +18,112 @@ template<class T, class _A = std::allocator<T>>
 class container
 {
 public:
-    using value_type = T;
-    using size_type = std::size_t;
-    using pointer = T*;
-    using const_pointer = const T*;
-    using reference = T&;
-    using const_reference = const T&;
+	using value_type = T;
+	using size_type = std::size_t;
+	using pointer = T*;
+	using const_pointer = const T*;
+	using reference = T&;
+	using const_reference = const T&;
 
 private:
-    struct element_t
-    {
-        value_type value;
-        element_t *next = nullptr;
-        element_t *prev = nullptr;
-    };
+
+	struct element_t
+	{
+		value_type value;
+		element_t *prev = nullptr;
+	};
+
+	using allocator_type = typename std::allocator_traits<_A>::template rebind_alloc<element_t>;
+	using traits = std::allocator_traits<allocator_type>;
 
 public:
-	container()
+	container() : last(nullptr, [&](element_t *ptr)
+	{
+		while (ptr)
+		{
+			auto prev = ptr->prev;
+
+			traits::destroy(_allocator, &(ptr->value));
+			traits::deallocate(_allocator, ptr, 1);
+
+			ptr = prev;
+		}
+	})
 	{};
 
-	~container()
+	const_reference at(size_type pos)
 	{
-        clear();
+		size_type _pos = _size;
+		auto element = last.get();
+		while (element)
+		{
+			_pos--;
+
+			if (pos == _pos)
+				return element->value;
+
+			element = element->prev;
+		}
+		std::out_of_range("wrong position");
 	}
 
-    const_reference at(size_type pos)
-    {
-        size_type _pos = 0;
-        auto element = first;
-        while(element)
-        {
-            if (pos == _pos)
-                return element->value;
-
-            _pos++;
-            element = element->next;
-        }
-        std::out_of_range("wrong position");
-    }
-
-    void push_back(const_reference value)
-    {
-        element_t *ptr = traits::allocate(_allocator, 1);
+	void push_back(const_reference value)
+	{
+		element_t *ptr = traits::allocate(_allocator, 1);
 
 		if (!ptr)
 			throw std::length_error("allocator return nullptr");
 
-		traits::construct(_allocator, ptr, element_t {value, nullptr, nullptr});
+		traits::construct(_allocator, ptr, element_t{value, nullptr});
 
-        if (first)
-        {
-            auto prev = last;
+		if (last)
+		{
+			auto prev = last.release();
 
-            last->next = ptr;
-            last = ptr;
+			last.reset(ptr);
+			last->prev = prev;
+		}
+		else
+			last.reset(ptr);
 
-            last->prev = prev;
-        }
-        else
-            last = first = ptr;
+		_size++;
+	}
 
-        _size++;
-    }
+	void pop_back()
+	{
+		if (last)
+		{
+			auto save = last->prev;
+			last->prev = nullptr;
 
-    void pop_back()
-    {
-        if (last)
-        {
-            auto del = last;
+			last.reset(save);
 
-            last = last->prev;
-            last->next = nullptr;
+			_size--;
+		}
+	}
 
-            traits::destroy(_allocator, &(del->value));
-			traits::deallocate(_allocator, del, 1);
-
-            _size--;
-        }
-    }
-
-    void clear()
-    {
-        while (last)
-        {
-            auto prev = last->prev;
-
-			traits::destroy(_allocator, &(last->value));
-			traits::deallocate(_allocator, last, 1);
-
-			last = prev;
-        }
-        _size = 0;
-        first = last = nullptr;
-    }
+	void clear()
+	{
+		last.reset(nullptr);
+		_size = 0;
+	}
 
 	size_type size() const
 	{
 		return _size;
 	}
 
-    bool empty() const
+	bool empty() const
 	{
 		return (size() == 0) ? true : false;
 	}
 
 private:
-	using allocator_type = typename std::allocator_traits<_A>::template rebind_alloc<element_t>;
-	using traits = std::allocator_traits<allocator_type>;
+	allocator_type _allocator;
 
-private:
-	element_t *first = nullptr;
-	element_t *last = nullptr;
+	std::unique_ptr<element_t, std::function<void(element_t*) >> last;
 	size_type _size = 0;
 
-	allocator_type _allocator;
 };
 
 }

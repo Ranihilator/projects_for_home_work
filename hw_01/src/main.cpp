@@ -11,19 +11,19 @@
 Точка вызова программы
 \return {возвращает 0}
 
-*/ 
+*/
 
 using namespace HW_01;
 
 int main()
 {
-    std::cout << "Hello world!" << std::endl;
-#ifdef PROJECT_VERSION_MINOR
-    std::cout << "Version " << PROJECT_VERSION_MAJOR << "." << PROJECT_VERSION_MINOR << "." << version() << std::endl;
-#else
-    std::cout << "Version " << PROJECT_VERSION_MAJOR << "." << 0  << "." << version() << std::endl;
-#endif
+	std::cout << "Hello world!" << std::endl;
+	#ifdef PROJECT_VERSION_MINOR
+	std::cout << "Version " << PROJECT_VERSION_MAJOR << "." << PROJECT_VERSION_MINOR << "." << version() << std::endl;
+	#else
+	std::cout << "Version " << PROJECT_VERSION_MAJOR << "." << 0  << "." << version() << std::endl;
+	#endif
 
-    return 0;
+	return 0;
 }
 
