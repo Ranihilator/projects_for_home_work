@@ -75,6 +75,6 @@ add_test(
 
 add_test(
   NAME boost_test_container
-  COMMAND container_testing
+  COMMAND print_ip_testing
 )
 

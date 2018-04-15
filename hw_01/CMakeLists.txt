@@ -20,7 +20,7 @@ set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
 configure_file(version.h.in ${HEADER_PATH}/version.h)
 
-set(HEADER_FILES ${HEADER_PATH}/version.h ${HEADER_PATH}/library.h)
+set(HEADER_FILES ${HEADER_PATH}/version.h ${HEADER_PATH}/version_library.h)
 
 add_executable(helloworld_cli ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
 add_executable(helloworld_test ${TEST_PATH}/test.cpp ${HEADER_FILES})

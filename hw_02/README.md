@@ -1,6 +1,7 @@
-# ip_filter (Home work №2)
+#### ip_filter (Home work №2)
+Application sort ip address
 
-### Задание №1
+## Task
 Программа из стандартного ввода читает данные. 
 Данные хранятся построчно.
 Каждая строка состоит из трех полей разделенных одним символом табуляции и завершается символом конца строки.
@@ -28,14 +29,10 @@ text1 \t text2 \t text3 \n
 
 Сразу продолжается список адресов любой байт которых равен 46. Порядок сортировк
 
-### Задание №2
-http://acm.timus.ru/author.aspx?id=246783
-
-### Задание №3 Опциоально
 Реализация в BOOST TEST #3 (external_test) файил test/filter.cpp
 
 
-### Сборка, тест и выполнение
+## Build, Test & Run
 ```shell
    cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release
    cmake --build build --target ip_filter_testing
@@ -44,7 +41,7 @@ http://acm.timus.ru/author.aspx?id=246783
    cat ./ip.tsv | build/ip_filter > out.tsv
    md5sum ./out.tsv
 ```
-### Установка пакета deb
+### Installation deb package
 ```shell
     echo "deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty main" | sudo tee -a /etc/apt/sources.list
     echo "deb https://dl.bintray.com/ranihilator/projects_for_home_work trusty main" | sudo tee -a /etc/apt/sources.list

@@ -1,11 +1,7 @@
 /*!
 \file
-\brief заголовок функции version
-
-вызов функции version, шаблон для cmake (генерация версии)
+\brief Header current build number
 */
-
-
 #pragma ones
 
 #cmakedefine PROJECT_VERSION_PATCH @PROJECT_VERSION_PATCH@

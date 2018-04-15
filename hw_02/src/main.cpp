@@ -1,14 +1,26 @@
 /*!
-\file main.cpp
-\brief Точка входа
+\file
+\brief Основной файл main
 
-Функция main
+Приложения filter
+На входящий поток ип адрессов выводит их в отсортированном лексиграфическм виде.
+- ИП адресс в обратном порядке.
+- ИП адресс в обратном порядке, где в 1 байте содержиться 1
+- ИП адресс в обратном порядке, где в 1 байте содержиться 46 а во втором байте содержиться 70
+- ИП адресс в обратном порядке, где в любом байте содержится 46
 */
+
 #include "filter.h"
 
 using namespace HW_02::FILTER;
 
-int main()
+/*!
+Начала программы
+\param[in] argc кол-во аргументов
+\param[in] argv массив аргументов
+\return Код завершения
+*/
+int main(int argc, char* argv[])
 {
 	///Регулярное выражение для поиска ип адресса в веденной строке
 	std::regex ip_filter (FILTER_REGEX);
@@ -42,10 +54,13 @@ int main()
 
 	for (auto &i : data)
 		std::cout << i;
+
 	for (auto &i : data_filter_task1)
 		std::cout << i;
+
 	for (auto &i : data_filter_task2)
 		std::cout << i;
+
 	for (auto &i : data_filter_task3)
 		std::cout << i;
 

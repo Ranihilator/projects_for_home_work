@@ -1,4 +1,8 @@
-#include "library.h"
+/*!
+\file
+\brief Test to check build number
+*/
+#include "version_library.h"
 
 #define BOOST_TEST_MODULE helloworld_test
 
