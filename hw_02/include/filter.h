@@ -1,6 +1,7 @@
 /*!
 \file
-\brief Заголовок алгоритмов фильтраций
+\brief Header of ip address filter
+
 */
 #pragma once
 
@@ -22,7 +23,7 @@ namespace HW_02
 namespace FILTER
 {
 
-using ip_address = std::tuple<uint8_t, uint8_t, uint8_t, uint8_t>;      ///Контейнер ип адресса
+using ip_address = std::tuple<uint8_t, uint8_t, uint8_t, uint8_t>;  ///< IP address type in tuple format
 
 #define FILTER_REGEX                           \
 "\\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\." \
@@ -32,10 +33,10 @@ using ip_address = std::tuple<uint8_t, uint8_t, uint8_t, uint8_t>;      ///Ко�
 ""
 
 /*!
-Оператор вывода ип адресса
-\param[in] out поток вывода
-\param[in] ip ип адресс
-\return поток вывода
+operator output ip address
+\param[in] out output stream
+\param[in] ip ip address
+\return output stream
 */
 std::ostream& operator<<(std::ostream &out, const ip_address &ip)
 {
@@ -47,9 +48,9 @@ std::ostream& operator<<(std::ostream &out, const ip_address &ip)
 }
 
 /*!
-\brief Класс отсортированных или неотсортированных ип адрессов
+\brief Sorting and unsorting ip address class
 
-Класс позволяет добавлять ип адресса по маски или добавлять все адресса если маска не назначена
+\details Add ip address by mask.
 */
 struct IP_Address_Sort: public std::deque<ip_address>
 {
@@ -76,13 +77,13 @@ struct IP_Address_Sort: public std::deque<ip_address>
 		return flag;
 	}
 
-	const int N0, N1, N2, N3; ///маска ип адрессов для фильтрации, где -1 байт не участвующий в фильтраций
+	const int N0, N1, N2, N3;
 };
 
 /*!
-\brief Класс отсортированных ип адрессов
+\brief Sorting ip address by any byte
 
-Класс позволяет добавлять ип адресса при совпадение любово заданного байта
+\details Add ip address by mask.
 */
 struct IP_Address_Sort_Any: public std::deque<ip_address>
 {
@@ -104,10 +105,11 @@ struct IP_Address_Sort_Any: public std::deque<ip_address>
 };
 
 /*!
-Получение ип адрессов из строкового ввода
-\param[in] line строка с представлением ип адресса
-\param[in] filter регулярное выражение
-\return выводит ип адресс
+\brief Get ip address from string stream
+\param[in] line string contain ip address 
+\param[in] filter regex string
+\see HW_02::FILTER::ip_address
+\return ip address
 */
 auto split_ip(std::string &&line, std::regex &filter)
 {

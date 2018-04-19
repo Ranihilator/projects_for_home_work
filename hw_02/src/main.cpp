@@ -1,13 +1,12 @@
 /*!
 \file
-\brief Основной файл main
+\brief Develop application to sorting ip address
 
-Приложения filter
-На входящий поток ип адрессов выводит их в отсортированном лексиграфическм виде.
-- ИП адресс в обратном порядке.
-- ИП адресс в обратном порядке, где в 1 байте содержиться 1
-- ИП адресс в обратном порядке, где в 1 байте содержиться 46 а во втором байте содержиться 70
-- ИП адресс в обратном порядке, где в любом байте содержится 46
+In input stream ip address, application outputing it's to lexicographic sorting 
+- IP address in backward order.
+- IP address in backward order, where first byte equal 1
+- IP address in backward order, where first byte equal 46 and second byte equal 70
+- IP address in backward order, where any byte equal 46
 */
 
 #include "filter.h"
@@ -15,24 +14,33 @@
 using namespace HW_02::FILTER;
 
 /*!
-Начала программы
-\param[in] argc кол-во аргументов
-\param[in] argv массив аргументов
-\return Код завершения
+\brief Start program
+
+\see print_ip()
+
+\param[in] argc argument's count
+\param[in] argv array of arguments
+\return process code
 */
 int main(int argc, char* argv[])
-{
-	///Регулярное выражение для поиска ип адресса в веденной строке
+{   
+    /// Regex value to search ip address in input stream
+	/// \code
 	std::regex ip_filter (FILTER_REGEX);
+	/// \endcode
 
-	auto data = IP_Address_Sort();                      ///Контейнер ип адрессов без фильтрацией
-	auto data_filter_task1 = IP_Address_Sort(1);        ///Контейнер ип адрессов с фильтрацией по 1 байту (1)
-	auto data_filter_task2 = IP_Address_Sort(46, 70);   ///Контейнер ип адрессов с фильтрацией по 1,2 байту (46,70)
-	auto data_filter_task3 = IP_Address_Sort_Any(46);   ///Контейнер ип адрессов с фильтрацией по любому байту (46)
+	/// IP Address containers
+	/// \code
+	auto data = IP_Address_Sort();
+	auto data_filter_task1 = IP_Address_Sort(1);
+	auto data_filter_task2 = IP_Address_Sort(46, 70);
+	auto data_filter_task3 = IP_Address_Sort_Any(46);
+	/// \endcode
 
+    /// Filling container
+	/// \code
 	for(std::string line; std::getline(std::cin, line);)
 	{
-		///Заполнить контейнер
 		auto value = ip_address();
 		try
 		{
@@ -41,17 +49,22 @@ int main(int argc, char* argv[])
 		}
 		catch (std::invalid_argument &e) {}
 	}
+	/// \endcode
 
-	std::sort(data.rbegin(), data.rend());  ///Отсортировать контейнер в обратном порядке
+	/// \code lexicographic sorting containers in backward order
+	std::sort(data.rbegin(), data.rend());  
+	/// \endcode
 
-	for (auto &i : data) ///Скопировать результат в другие контейнеры
+	/// \code copy data to other containers
+	for (auto &i : data) 
 	{
-		/// т.к. основной контейнер отсортирован, то и копируемые результаты будут уже отсортированные в других контейнерах
-		data_filter_task1 << i; ///Контейнер получит ип адресс, но сохранит у себя только те, что соответствуют фильтраций по 1 байту
-		data_filter_task2 << i; ///Контейнер получит ип адресс, но сохранит у себя только те, что соответствуют фильтраций по 1,2 байту
-		data_filter_task3 << i; ///Контейнер получит ип адресс, но сохранит у себя только те, что соответствуют фильтраций по любому байту
+		data_filter_task1 << i;
+		data_filter_task2 << i;
+		data_filter_task3 << i;
 	}
+	/// \endcode
 
+	/// \code output result from containers
 	for (auto &i : data)
 		std::cout << i;
 
@@ -63,6 +76,7 @@ int main(int argc, char* argv[])
 
 	for (auto &i : data_filter_task3)
 		std::cout << i;
+    /// \endcode 
 
 	return 0;
 

@@ -2,35 +2,33 @@
 Application sort ip address
 
 ## Task
-Программа из стандартного ввода читает данные. 
-Данные хранятся построчно.
-Каждая строка состоит из трех полей разделенных одним символом табуляции и завершается символом конца строки.
+Application read data from stdin.
+Data store by line.
+Every line consist in 3 field, where each field's delimiter symbol \t and ending line \n.
 text1 \t text2 \t text3 \n
-Поля text2 и text3 игнорируются. 
-поле text1 имеет следующую структуру (ip4 address): n1.n2.n3.n4 где n1..4 - число от 0 до 255
+field text2 and text3 is ignoring
+field text1 have next struct (ip4 address): n1.n2.n3.n4 where n1..4 - is number from 0 to 255
 
-Необходимо загрузить список ip-адресов в память и вывести в следующем порядке:
-Список адресов отсортированных в обратном лексикографическом порядке адресов. Одна строка один адрес.
+It's need loading ip address list from memory and output in next order:
+ip address list must be sorting in back lexicographic order. One line is one address.
 
-Пример лексикографической сортировки (по первому числу, затем по второму и так далее):
+Example of lexicographic sort order (by first number, two, three and etc.)
 1.1.1.1
 1.2.1.1
 1.10.1.1
-Соответственно обратная:
+respectively backward sort:
 1.10.1.1
 1.2.1.1
 1.1.1.1
 
-Сразу продолжается список адресов первый байт которых равен 1. 
-Порядок сортировки не меняется. Одна строка один адрес. Списки ничем не разделяются. 
+At once continue list of address where first byte equal 1
+Sort order not changing. One line is one address. The list is not dividing.
 
-Сразу продолжается список адресов первый байт которых равен 46, а второй 70. 
-Порядок сортировки не меняется. Одна строка один адрес. Списки ничем не разделяются. 
+At once continue list of address where first byte equal 46 and second byte equal 70
+Sort order not changing. One line is one address. The list is not dividing.
 
-Сразу продолжается список адресов любой байт которых равен 46. Порядок сортировк
-
-Реализация в BOOST TEST #3 (external_test) файил test/filter.cpp
-
+At once continue list of address where any byte equal 70.
+Sort order not changing. One line is one address. The list is not dividing.
 
 ## Build, Test & Run
 ```shell
