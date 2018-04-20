@@ -6,6 +6,7 @@ if [[ ${ACTION} == 'build' ]]; then
 
     echo "Building..."
 
+    doxygen -u
     doxygen
     
     mkdir -p dist doc build
