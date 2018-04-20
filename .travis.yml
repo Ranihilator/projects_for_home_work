@@ -23,7 +23,10 @@ deploy:
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
     keep-history: true
+<<<<<<< HEAD
     local-dir: doc
+=======
+>>>>>>> master
     on:
       branch: master
   - provider: script
