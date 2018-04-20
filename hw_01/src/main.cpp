@@ -15,7 +15,7 @@ using namespace HW_01;
 \param[in] argv array of arguments
 \return process code
 */
-int main()
+int main(int argc, char* argv[])
 {
 	std::cout << "Hello world!" << std::endl;
     version();

@@ -6,7 +6,9 @@ if [[ ${ACTION} == 'build' ]]; then
 
     echo "Building..."
 
-    mkdir -p dist
+    doxygen
+    
+    mkdir -p dist doc build
     cmake -H. -Bbuild
     cmake --build build
     cmake --build build --target
@@ -18,8 +20,6 @@ if [[ ${ACTION} == 'build' ]]; then
     sh -c 'cd build/hw_04 && ctest -V'
 
     mv build/*.deb dist/
-
-    doxygen
 
     cat hw_02/ip.tsv | build/hw_02/ip_filter > hw_02/out.tsv
     md5sum hw_02/out.tsv
