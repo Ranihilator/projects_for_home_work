@@ -1,15 +1,13 @@
 /*!
 \file
-\brief Основной файл main
+\brief application allocator example
 
-Приложения allocator
-- Заполняет std::map 10 элементами со стандартным аллокатором (элементы факториал от инкрементирующего счетчика)
-- Заполняет std::map 10 элементами с специфическим аллокатором и делает вывод в консоль (элементы факториал от инкрементирующего счетчика)
-- Заполняет специфический контейнер 10 элементами со стандартным аллокатором (обычный инкрементирующий счетчик)
-- Заполняет специфический контейнер 10 элементами с специфическим аллокатором и делает вывод в консоль (обычный инкрементирующий счетчик)
+allocator
+- fill the std::map 10 elements with std::allocator (each element is factorial from counter)
+- fill the std::map 10 elements with Allocator::allocator and stdout (each element is factorial from counter)
+- fill the CONTAINER::container 10 elements with std::allocator (each element is counter's state)
+- fill the CONTAINER::container 10 elements with Allocator::allocator and stdout (each element is counter's state)
 */
-
-#pragma once
 
 #include "container.h"
 #include <iostream>
@@ -22,20 +20,22 @@ namespace HW_03
 {
 
 /*!
-Вычисление факториала
-\param[in] n число
-\return результат факториала
+\brief factorial calculate
+\param[in] n digit
+\return factorial result
 */
-constexpr auto factorial(auto n) -> decltype(n)
+template <class T>
+constexpr decltype(auto) factorial(T n) -> decltype(n)
 {
 	return n > 0 ? n * factorial(n - 1) : 1;
 }
 
 /*!
-Вычисление факториала с инкрементирующим счетчиком
-\return результат факториала
+\brief calculate factorial with increment counters
+\details lamda mutable function for counter `i` 
+mutable lamda for `i` because `i` is const
+\return factorial result
 */
-
 auto make_factorial_value = [i = 0] () mutable
                             {
                                 auto f = factorial(i);
@@ -94,7 +94,14 @@ void Container_Allocator()
 
 using namespace HW_03;
 
-int main()
+/*!
+\brief Start program
+
+\param[in] argc argument's count
+\param[in] argv array of arguments
+\return process code
+*/
+int main(int argc, char* argv[])
 {
 	try
 	{
@@ -103,9 +110,9 @@ int main()
 		Container_Standart();
 		Container_Allocator();
 	}
-	catch (...)
+	catch (std::bad_alloc)
 	{
-		std::cout << "default catch" << std::endl;
+		std::cout << "bad allocate" << std::endl;
 	}
 	return 0;
 }
