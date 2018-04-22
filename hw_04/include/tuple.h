@@ -20,6 +20,7 @@ namespace PRINT
 
 using namespace std;
 
+/// Tuple template
 namespace TUPLE
 {
 

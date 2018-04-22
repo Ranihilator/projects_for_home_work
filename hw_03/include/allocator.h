@@ -1,6 +1,6 @@
 /*!
 \file
-\brief Аллокатор памяти
+\brief Allocator
  */
 #pragma once
 
@@ -15,32 +15,38 @@
 #include "memory_rebind.h"
 #endif
 
+/// Home work #3 (allocator and containers)
 namespace HW_03
 {
 
+/// Allocator class
 namespace ALLOCATOR
 {
 #ifdef REBIND
-std::size_t alloc_counter = 0;
+std::size_t alloc_counter = 0;  ///< counter of memory allocated
 #endif
 
-using size_type = std::size_t;
+using size_type = std::size_t;  ///< Current type of size
 
+/*!
+\brief allocator class
+\tparam T type of data to memory allocating
+\tparam S size of pre allocated memory
+*/
 template <class T, size_type S = 10 >
 class allocator
 {
 	static_assert(S != 0, "no zero capacity!");
 
 public:
-	using value_type = T;
+	using value_type = T;                      ///< Current type of data
 
-	using chunks_t = std::vector<uint8_t>; /// Контейнер с данными
+	using chunks_t = std::vector<uint8_t>;     ///< Current block data
 
-	using blocks_t = std::vector<chunks_t>; /// Контейнер блоков данных
+	using blocks_t = std::vector<chunks_t>;    ///< Poll block data
 
 	allocator() noexcept
-	{
-	}
+	{}
 
 	template <class U>
 	struct rebind
@@ -49,13 +55,13 @@ public:
 	};
 
 	/*!
-	@brief Выделить память под элемент T
-	@param n - кол-во элементов T
+	\brief allocate memory to element of type T
+	\param[in] n - count element of T
 	 */
 	T* allocate(size_type n)
 	{
-		size_type m_available = 0; /// количество свободных элементов в текущем блоке
-		n = n * sizeof (T); /// кол-во элементов -> кол-во байт
+		size_type m_available = 0;
+		n = n * sizeof (T);
 
 		if (n > std::numeric_limits<uint16_t>::max() || n == 0)
 			throw std::bad_alloc();
@@ -93,16 +99,16 @@ public:
 	}
 
 	/*!
-	@brief Освободить память элементов T
-	@param p - указатель на память
-	@param n - кол-во элементов T
-	 */
+	\brief freeing memory element type of T
+	\param[in] p - Pointer to memory
+	\param[in] n - Count of element T
+    */
 	void deallocate(void* p, size_type n)
 	{
 		if (p)
 		{
-			size_type m_available = 0; /// количество свободных элементов в текущем блоке
-			n = n * sizeof (T); /// кол-во элементов -> кол-во байт
+			size_type m_available = 0;
+			n = n * sizeof (T);
 
 			if (!m_start.empty())
 				m_available = m_start.size();
@@ -133,8 +139,8 @@ public:
 			throw std::bad_alloc();
 	}
 private:
-	blocks_t m_blocks; /// Блок последующих данных
-	chunks_t m_start; /// Текущий блок данных
+	blocks_t m_blocks; ///< Poll block data
+	chunks_t m_start; ///< Current block data
 };
 
 template< class T1, class T2 >

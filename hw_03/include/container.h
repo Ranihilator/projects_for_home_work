@@ -1,6 +1,6 @@
 /*!
 \file
-\brief Контайнер
+\brief Container
  */
 #pragma once
 
@@ -8,12 +8,19 @@
 #include <cstdint>
 #include <functional>
 
+/// Home work #3 (allocator and containers)
 namespace HW_03
 {
 
+/// Container class
 namespace CONTAINER
 {
 
+/*!
+\brief container class
+\tparam T type of data in container
+\tparam A type of allocators
+*/
 template<class T, class _A = std::allocator<T>>
 class container
 {
@@ -27,16 +34,20 @@ public:
 
 private:
 
+	/*!
+	\brief Node with data
+	*/
 	struct element_t
 	{
-		value_type value;
-		element_t *prev = nullptr;
+		value_type value;             ///< current value
+		element_t *prev = nullptr;    ///< pointer to previos element
 	};
 
 	using allocator_type = typename std::allocator_traits<_A>::template rebind_alloc<element_t>;
 	using traits = std::allocator_traits<allocator_type>;
 
 public:
+    
 	container() : last(nullptr, [&](element_t *ptr)
 	{
 		while (ptr)
@@ -51,6 +62,12 @@ public:
 	})
 	{};
 
+	/*!
+	\brief get access to element
+	\param[in] pos element position
+	\throw std::out_of_range if element not found
+	\return reference to element
+    */
 	const_reference at(size_type pos)
 	{
 		size_type _pos = _size;
@@ -67,6 +84,9 @@ public:
 		std::out_of_range("wrong position");
 	}
 
+    /*!
+	\brief push element to end
+    */
 	void push_back(const_reference value)
 	{
 		element_t *ptr = traits::allocate(_allocator, 1);
@@ -89,6 +109,9 @@ public:
 		_size++;
 	}
 
+    /*!
+	\brief remove element from end
+	*/
 	void pop_back()
 	{
 		if (last)
@@ -102,27 +125,38 @@ public:
 		}
 	}
 
+    /*!
+	\brief clear data from container
+	*/
 	void clear()
 	{
 		last.reset(nullptr);
 		_size = 0;
 	}
 
+    /*!
+	\brief check container size
+	\return size of container
+    */
 	size_type size() const
 	{
 		return _size;
 	}
 
+	/*!
+	\brief check if container have zero size
+	\return container is empty
+	*/
 	bool empty() const
 	{
 		return (size() == 0) ? true : false;
 	}
 
 private:
-	allocator_type _allocator;
+	allocator_type _allocator;                                             ///< current work allocator
 
-	std::unique_ptr<element_t, std::function<void(element_t*) >> last;
-	size_type _size = 0;
+	std::unique_ptr<element_t, std::function<void(element_t*) >> last;     ///< pointer to the last element
+	size_type _size = 0;                                                   ///< size of container
 
 };
 

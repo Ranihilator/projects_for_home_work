@@ -6,6 +6,7 @@
 #include <iostream>
 #include "version_library.h"
 
+/// Home work #1 (return version number of build)
 namespace HW_01
 {
 

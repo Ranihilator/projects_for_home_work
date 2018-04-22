@@ -17,9 +17,11 @@
 #include <algorithm>
 #include <initializer_list>
 
+/// Home work #2 (filtering ip address)
 namespace HW_02
 {
 
+/// Filter algorithm
 namespace FILTER
 {
 

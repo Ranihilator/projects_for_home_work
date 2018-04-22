@@ -12,9 +12,11 @@
 #include <list>
 #include <vector>
 
+/// Home work #4 (print ip)
 namespace HW_04
 {
 
+/// Print IP template
 namespace PRINT
 {
 
