@@ -28,6 +28,8 @@ if [[ ${ACTION} == 'build' ]]; then
     ltrace -e malloc -e free build/hw_03/allocator
     valgrind --leak-check=full build/hw_03/allocator
 
+    build/hw_04/print_ip
+
 elif [[ ${ACTION} == 'deploy' ]]; then
 
     echo "Deploying..."
