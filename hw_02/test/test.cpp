@@ -1,18 +1,18 @@
 /*!
 \file
 \brief Test ip address sort and filtering
-
 */
 
 #include "filter.h"
 #include <random>
 #include <ctime>
+#include <sstream>
 #define BOOST_TEST_MODULE test_filter
 
 #include <boost/test/unit_test.hpp>
 
 using namespace HW_02::FILTER;
-
+/*
 auto random_test(std::string left_dust = std::string(), std::string right_dust = std::string())
 {
 	auto result = std::tuple<ip_address, std::string>();
@@ -40,15 +40,16 @@ auto random_test(std::string left_dust = std::string(), std::string right_dust =
 	std::get<1>(result) = ss.str();
 
 	return std::move(result);
-}
+}*/
 
 BOOST_AUTO_TEST_SUITE(test_suite_main)
 
-BOOST_AUTO_TEST_CASE(ip_filter_test)
+BOOST_AUTO_TEST_CASE(split_ip_test)
 {
-	///Регулярное выражение для поиска ип адресса в веденной строке
 	std::regex ip_filter (FILTER_REGEX);
 
+	/// Checking that split ip throw std::invalid_argument if ip address has invalid
+	/// \code
 	BOOST_REQUIRE_THROW(split_ip("", ip_filter), std::invalid_argument);
 	BOOST_REQUIRE_THROW(split_ip("fsafsafsafsa", ip_filter), std::invalid_argument);
 	BOOST_REQUIRE_THROW(split_ip("1,2,3,4", ip_filter), std::invalid_argument);
@@ -57,23 +58,116 @@ BOOST_AUTO_TEST_CASE(ip_filter_test)
 	BOOST_REQUIRE_THROW(split_ip("f1.2.3.4", ip_filter), std::invalid_argument);
 	BOOST_REQUIRE_THROW(split_ip("1.a2.3.4", ip_filter), std::invalid_argument);
 	BOOST_REQUIRE_THROW(split_ip("1.2.s3.4", ip_filter), std::invalid_argument);
+	/// \endcode
 
-	auto check_correct = [&ip_filter](std::string && left_dust, std::string && right_dust)
+	/// Split ip test
+	/// \code
+	BOOST_CHECK(split_ip("0.0.0.0",ip_filter) == std::make_tuple(0,0,0,0));
+	BOOST_CHECK(split_ip("1.2.3.4",ip_filter) == std::make_tuple(1,2,3,4));
+	BOOST_CHECK(split_ip("255.255.255.255",ip_filter) == std::make_tuple(255,255,255,255));
+	BOOST_CHECK(split_ip("7 3 1garbage 127.0.0.25 garbage 1 2 6 1",ip_filter) == std::make_tuple(127,0,0,25));
+	BOOST_CHECK(split_ip("1.2.3,5 192.168.0.1 1,2,3,4",ip_filter) == std::make_tuple(192,168,0,1));
+	BOOST_CHECK(split_ip("1.2.3.5 192.168.0.1 127.0.0.1",ip_filter) == std::make_tuple(1,2,3,5));
+	BOOST_CHECK(split_ip("10.0.0.1 \t \t \t \n 192.168.1.1",ip_filter) == std::make_tuple(10,0,0,1));
+	BOOST_CHECK(split_ip("\t \t \t \n 192.168.1.1",ip_filter) == std::make_tuple(192,168,1,1));
+	/// \endcode
+}
+
+BOOST_AUTO_TEST_CASE(filter_test)
+{
+	/// Sorting without filtering
+	/// \code
+	auto data = IP_Address_Sort();
+	data << std::make_tuple(0,0,0,0);
+	data << std::make_tuple(0,0,0,127);
+	data << std::make_tuple(0,0,0,1);
+	data << std::make_tuple(255,255,127,255);
+	data << std::make_tuple(127,1,1,1);
+	data << std::make_tuple(0,0,0,64);
+	data << std::make_tuple(0,0,0,254);
+
+	const std::deque<ip_address> model
 	{
-		auto result = random_test(left_dust, right_dust);
-		BOOST_CHECK(split_ip(std::move(std::get<1>(result)), ip_filter) == std::get<0>(result));
+		{std::make_tuple(255,255,127,255)},
+		{std::make_tuple(127,1,1,1)},
+		{std::make_tuple(0,0,0,254)},
+		{std::make_tuple(0,0,0,127)},
+		{std::make_tuple(0,0,0,64)},
+		{std::make_tuple(0,0,0,1)},
+		{std::make_tuple(0,0,0,0)}
 	};
-	check_correct("", "");
-	check_correct("", " 1.2.3.4");
-	check_correct("", " 64,84,97,63");
-	check_correct("65,86,87,96 ", " 65,44,27,1");
-	check_correct("ljhgcfcg ", " gdffghjk");
-	check_correct("5 .86.97.76 ", " 0.4 .85.123");
-	check_correct("5.86.97. 76 ", " 0.4.85. 123");
 
+	std::sort(data.rbegin(), data.rend());
 
+	std::deque<ip_address> object;
+	for (auto &i : data)
+	{
+		object.emplace_back(i);
+	}
 
+	BOOST_CHECK(model == object);
+	/// \endcode
 
+	/// Sorting with filtering
+	/// \code
+	auto data_s = IP_Address_Sort(-1,-1,-1,1);
+
+	const std::deque<ip_address> model_s
+	{
+		{std::make_tuple(127,1,1,1)},
+		{std::make_tuple(0,0,0,1)},
+	};
+
+	data_s << std::make_tuple(0,0,0,0);
+	data_s << std::make_tuple(0,0,0,127);
+	data_s << std::make_tuple(0,0,0,1);
+	data_s << std::make_tuple(255,255,127,255);
+	data_s << std::make_tuple(127,1,1,1);
+	data_s << std::make_tuple(0,0,0,64);
+	data_s << std::make_tuple(0,0,0,254);
+
+	std::sort(data_s.rbegin(), data_s.rend());
+
+	std::deque<ip_address> object_s;
+	for (auto &i : data_s)
+	{
+		object_s.emplace_back(i);
+	}
+
+	BOOST_CHECK(model_s == object_s);
+	/// \endocde
+
+	/// Sorting with filtering any byte
+	/// \code
+	auto data_a = IP_Address_Sort_Any(0);
+
+	const std::deque<ip_address> model_a
+	{
+		{std::make_tuple(0,0,0,254)},
+		{std::make_tuple(0,0,0,127)},
+		{std::make_tuple(0,0,0,64)},
+		{std::make_tuple(0,0,0,1)},
+		{std::make_tuple(0,0,0,0)}
+	};
+
+	data_a << std::make_tuple(0,0,0,0);
+	data_a << std::make_tuple(0,0,0,127);
+	data_a << std::make_tuple(0,0,0,1);
+	data_a << std::make_tuple(255,255,127,255);
+	data_a << std::make_tuple(127,1,1,1);
+	data_a << std::make_tuple(0,0,0,64);
+	data_a << std::make_tuple(0,0,0,254);
+
+	std::sort(data_a.rbegin(), data_a.rend());
+
+	std::deque<ip_address> object_a;
+	for (auto &i : data_a)
+	{
+		object_a.emplace_back(i);
+	}
+
+	BOOST_CHECK(model_a == object_a);
+	/// \endocde
 }
 
 

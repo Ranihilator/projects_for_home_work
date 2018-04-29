@@ -47,31 +47,53 @@ int main(int argc, char* argv[])
 
 	/// Output integer type
 	/// \code
-	print_ip(static_cast<char>(-1));
-	print_ip(static_cast<short>(0));
-	print_ip(static_cast<int>(2130706433));
-	print_ip(static_cast<long>(8875824491850138409));
+	print_ip(static_cast<uint8_t>(-1));
+	print_ip(static_cast<int16_t>(0));
+	print_ip(static_cast<int32_t>(2130706433));
+	print_ip(static_cast<int64_t>(8875824491850138409));
 	/// \endcode
-
 	std::cout << std::endl;
 	/// Output string
 	/// \code
-	print_ip(std::string("abc 12.52.13.44 fsafsaf 127.0.0.1 efg"));
+	try
+    {
+		print_ip(std::string("1.2.3.4"));
+	}
+	catch (std::bad_alloc)
+	{
+		std::cout << "error allocate memory in string" << std::endl;
+	}
 	/// \endcode
 
 	std::cout << std::endl;
 	/// Output container
 	/// \code
-	print_ip(std::vector<int> {-1, 2130706433, 127, -128, 64, -64});
-	print_ip(std::list<long> {256, 8875824491850138409, 8192, 2048, 128});
-	print_ip(std::vector<char> {-1, 1, 127, -128, 64, -64});
-	print_ip(std::list<short> {256, 4096, 8192, 2048, 128});
+	try
+    {
+		print_ip(std::vector<int32_t> {1, 2, 3, 4, 5, 6});
+		print_ip(std::vector<std::list<int32_t>> {{-1, 0, 1, 2, 3, 4},{-5, 6, 7, 8, 9, 10}});
+		print_ip(std::list<int64_t> {5, 10, 15, 20, 30});
+		print_ip(std::vector<int8_t> {-1, 1, 127, -128, 64, -64});
+		print_ip(std::list<int32_t> {256, 4096, 8192, 2048, 128});
+		print_ip(std::list<std::string> {"1","2","3","12"});
+	}
+	catch (std::bad_alloc)
+	{
+		std::cout << "error allocate memory in container" << std::endl;
+	}
 	/// \endcode
 
 	std::cout << std::endl;
 	/// Output tuple
 	/// \code
-	print_ip(std::make_tuple(256, 4096, 8192, 2048, 128, -1, -256, -1024, -4096, -8192));
+	try
+    {
+		print_ip(std::make_tuple(256, "4096", (int64_t)8192, 2048, "128", '5', -256, (int32_t)-1024, -4096, "-8192"));
+	}
+	catch (std::bad_alloc)
+	{
+		std::cout << "error allocate memory in container during copy from tuple" << std::endl;
+	}
 	/// \endcode
 
 	return 0;

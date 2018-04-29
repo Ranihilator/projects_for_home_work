@@ -58,15 +58,21 @@ namespace TUPLE
 \details enumearate all tuple element, and copy to list
 \param[in] arg input data
 \param[in] buffer list container
+\tparam index number of tuple
+\tparam T Type of data
+\tparam size of tuple
 \return void
 */
-template<size_t index, class T, class Q, size_t size = index>
+template<size_t index, class T, size_t size = index>
 struct print_tuple
 {
-	void operator()(T &arg, std::list<Q> &buffer)
+	void operator()(T &arg, stringstream &buffer)
 	{
-		print_tuple < index - 1, T, Q, size> ()(arg, buffer);
-		buffer.emplace_back(std::get < index - 1 > (arg));
+		print_tuple < index - 1, T, size> ()(arg, buffer);
+		buffer << get < index - 1 > (arg);
+
+		if (index < size)
+			buffer << "..";
 	}
 };
 
@@ -75,12 +81,14 @@ struct print_tuple
 \details template finish
 \param[in] arg input data
 \param[in] buffer list container
+\tparam T Type of data
+\tparam T size of tuple
 \return void
 */
-template<class T, class Q, size_t size>
-struct print_tuple<0, T, Q, size>
+template<class T, size_t size>
+struct print_tuple<0, T, size>
 {
-	void operator()(T &arg, std::list<Q> &buffer)
+	void operator()(T &arg, stringstream &buffer)
 	{}
 };
 
