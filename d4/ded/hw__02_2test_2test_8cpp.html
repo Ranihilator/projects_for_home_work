@@ -75,6 +75,7 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="../../dd/de7/filter_8h_source.html">filter.h</a>&quot;</code><br />
 <code>#include &lt;random&gt;</code><br />
 <code>#include &lt;ctime&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;boost/test/unit_test.hpp&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for test.cpp:</div>
@@ -92,15 +93,10 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3e9ed80b05b4405cd8a39bed541aeac9"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/ded/hw__02_2test_2test_8cpp.html#a3e9ed80b05b4405cd8a39bed541aeac9">random_test</a> (std::string left_dust=std::string(), std::string right_dust=std::string())</td></tr>
-<tr class="separator:a3e9ed80b05b4405cd8a39bed541aeac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4014d42c709d64e683584563fc596280"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/ded/hw__02_2test_2test_8cpp.html#a4014d42c709d64e683584563fc596280">BOOST_AUTO_TEST_CASE</a> (ip_filter_test)</td></tr>
-<tr class="separator:a4014d42c709d64e683584563fc596280"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d103e8398232e18ca26fba62a22e4ab"><td class="memItemLeft" align="right" valign="top">constexpr uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/ded/hw__02_2test_2test_8cpp.html#a6d103e8398232e18ca26fba62a22e4ab">bin_id</a> (uint64_t x, uint64_t t=0x8000000000000000, int c=64)</td></tr>
-<tr class="memdesc:a6d103e8398232e18ca26fba62a22e4ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Задание №3 Реализовать constexpr функцию bin_id - определения ближайшей большей степени двойки  <a href="#a6d103e8398232e18ca26fba62a22e4ab">More...</a><br /></td></tr>
-<tr class="separator:a6d103e8398232e18ca26fba62a22e4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a350e12cac284c7ba3b079fd8ef9f37f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/ded/hw__02_2test_2test_8cpp.html#a350e12cac284c7ba3b079fd8ef9f37f0">BOOST_AUTO_TEST_CASE</a> (external_test)</td></tr>
-<tr class="separator:a350e12cac284c7ba3b079fd8ef9f37f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a978e96272c1c4245127def4e48fabf2c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/ded/hw__02_2test_2test_8cpp.html#a978e96272c1c4245127def4e48fabf2c">BOOST_AUTO_TEST_CASE</a> (split_ip_test)</td></tr>
+<tr class="separator:a978e96272c1c4245127def4e48fabf2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4942a3304aa1993f8c09d17e4aafec5d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/ded/hw__02_2test_2test_8cpp.html#a4942a3304aa1993f8c09d17e4aafec5d">BOOST_AUTO_TEST_CASE</a> (filter_test)</td></tr>
+<tr class="separator:a4942a3304aa1993f8c09d17e4aafec5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Test ip address sort and filtering. </p>
@@ -120,44 +116,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a6d103e8398232e18ca26fba62a22e4ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d103e8398232e18ca26fba62a22e4ab">&#9670;&nbsp;</a></span>bin_id()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr uint64_t bin_id </td>
-          <td>(</td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>t</em> = <code>0x8000000000000000</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>c</em> = <code>64</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Задание №3 Реализовать constexpr функцию bin_id - определения ближайшей большей степени двойки </p>
-
-</div>
-</div>
-<a id="a4014d42c709d64e683584563fc596280"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4014d42c709d64e683584563fc596280">&#9670;&nbsp;</a></span>BOOST_AUTO_TEST_CASE() <span class="overload">[1/2]</span></h2>
+<a id="a978e96272c1c4245127def4e48fabf2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a978e96272c1c4245127def4e48fabf2c">&#9670;&nbsp;</a></span>BOOST_AUTO_TEST_CASE() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,18 +125,17 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">BOOST_AUTO_TEST_CASE </td>
           <td>(</td>
-          <td class="paramtype">ip_filter_test&#160;</td>
+          <td class="paramtype">split_ip_test&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Регулярное выражение для поиска ип адресса в веденной строке </p>
-
+<p>Checking that split ip throw std::invalid_argument if ip address has invalid </p><div class="fragment"><div class="line">BOOST_REQUIRE_THROW(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;&quot;</span>, ip_filter), std::invalid_argument);</div><div class="line">BOOST_REQUIRE_THROW(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;fsafsafsafsa&quot;</span>, ip_filter), std::invalid_argument);</div><div class="line">BOOST_REQUIRE_THROW(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;1,2,3,4&quot;</span>, ip_filter), std::invalid_argument);</div><div class="line">BOOST_REQUIRE_THROW(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;a.b.c.d&quot;</span>, ip_filter), std::invalid_argument);</div><div class="line">BOOST_REQUIRE_THROW(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;1.2.3.4a&quot;</span>, ip_filter), std::invalid_argument);</div><div class="line">BOOST_REQUIRE_THROW(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;f1.2.3.4&quot;</span>, ip_filter), std::invalid_argument);</div><div class="line">BOOST_REQUIRE_THROW(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;1.a2.3.4&quot;</span>, ip_filter), std::invalid_argument);</div><div class="line">BOOST_REQUIRE_THROW(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;1.2.s3.4&quot;</span>, ip_filter), std::invalid_argument);</div></div><!-- fragment --><p>Split ip test </p><div class="fragment"><div class="line">BOOST_CHECK(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;0.0.0.0&quot;</span>,ip_filter) == std::make_tuple(0,0,0,0));</div><div class="line">BOOST_CHECK(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;1.2.3.4&quot;</span>,ip_filter) == std::make_tuple(1,2,3,4));</div><div class="line">BOOST_CHECK(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;255.255.255.255&quot;</span>,ip_filter) == std::make_tuple(255,255,255,255));</div><div class="line">BOOST_CHECK(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;7 3 1garbage 127.0.0.25 garbage 1 2 6 1&quot;</span>,ip_filter) == std::make_tuple(127,0,0,25));</div><div class="line">BOOST_CHECK(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;1.2.3,5 192.168.0.1 1,2,3,4&quot;</span>,ip_filter) == std::make_tuple(192,168,0,1));</div><div class="line">BOOST_CHECK(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;1.2.3.5 192.168.0.1 127.0.0.1&quot;</span>,ip_filter) == std::make_tuple(1,2,3,5));</div><div class="line">BOOST_CHECK(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;10.0.0.1 \t \t \t \n 192.168.1.1&quot;</span>,ip_filter) == std::make_tuple(10,0,0,1));</div><div class="line">BOOST_CHECK(<a class="code" href="../../d3/d11/namespaceHW__02_1_1FILTER.html#a8d44441fed3f6b2e7b193f4dbd47c633">split_ip</a>(<span class="stringliteral">&quot;\t \t \t \n 192.168.1.1&quot;</span>,ip_filter) == std::make_tuple(192,168,1,1));</div></div><!-- fragment --> 
 </div>
 </div>
-<a id="a350e12cac284c7ba3b079fd8ef9f37f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a350e12cac284c7ba3b079fd8ef9f37f0">&#9670;&nbsp;</a></span>BOOST_AUTO_TEST_CASE() <span class="overload">[2/2]</span></h2>
+<a id="a4942a3304aa1993f8c09d17e4aafec5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4942a3304aa1993f8c09d17e4aafec5d">&#9670;&nbsp;</a></span>BOOST_AUTO_TEST_CASE() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,41 +143,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">BOOST_AUTO_TEST_CASE </td>
           <td>(</td>
-          <td class="paramtype">external_test&#160;</td>
+          <td class="paramtype">filter_test&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3e9ed80b05b4405cd8a39bed541aeac9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e9ed80b05b4405cd8a39bed541aeac9">&#9670;&nbsp;</a></span>random_test()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto random_test </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>left_dust</em> = <code>std::string()</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>right_dust</em> = <code>std::string()</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
+<p>Sorting without filtering </p><div class="fragment"><div class="line"><span class="keyword">auto</span> data = IP_Address_Sort();</div><div class="line">data &lt;&lt; std::make_tuple(0,0,0,0);</div><div class="line">data &lt;&lt; std::make_tuple(0,0,0,127);</div><div class="line">data &lt;&lt; std::make_tuple(0,0,0,1);</div><div class="line">data &lt;&lt; std::make_tuple(255,255,127,255);</div><div class="line">data &lt;&lt; std::make_tuple(127,1,1,1);</div><div class="line">data &lt;&lt; std::make_tuple(0,0,0,64);</div><div class="line">data &lt;&lt; std::make_tuple(0,0,0,254);</div><div class="line"></div><div class="line"><span class="keyword">const</span> std::deque&lt;ip_address&gt; model</div><div class="line">{</div><div class="line">    {std::make_tuple(255,255,127,255)},</div><div class="line">    {std::make_tuple(127,1,1,1)},</div><div class="line">    {std::make_tuple(0,0,0,254)},</div><div class="line">    {std::make_tuple(0,0,0,127)},</div><div class="line">    {std::make_tuple(0,0,0,64)},</div><div class="line">    {std::make_tuple(0,0,0,1)},</div><div class="line">    {std::make_tuple(0,0,0,0)}</div><div class="line">};</div><div class="line"></div><div class="line">std::sort(data.rbegin(), data.rend());</div><div class="line"></div><div class="line">std::deque&lt;ip_address&gt; object;</div><div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;i : data)</div><div class="line">{</div><div class="line">    <span class="keywordtype">object</span>.emplace_back(i);</div><div class="line">}</div><div class="line"></div><div class="line">BOOST_CHECK(model == <span class="keywordtype">object</span>);</div></div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

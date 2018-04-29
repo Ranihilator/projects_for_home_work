@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Home Works: HW_04::PRINT::print_tuple&lt; index, T, Q, size &gt; Struct Template Reference</title>
+<title>Home Works: HW_04::PRINT::print_tuple&lt; index, T, size &gt; Struct Template Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -66,7 +66,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../db/d10/structHW__04_1_1PRINT_1_1print__tuple-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">HW_04::PRINT::print_tuple&lt; index, T, Q, size &gt; Struct Template Reference</div>  </div>
+<div class="title">HW_04::PRINT::print_tuple&lt; index, T, size &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -77,12 +77,12 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6e45cff150148ec553d2219735362168"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d9d/structHW__04_1_1PRINT_1_1print__tuple.html#a6e45cff150148ec553d2219735362168">operator()</a> (T &amp;arg, std::list&lt; Q &gt; &amp;buffer)</td></tr>
-<tr class="separator:a6e45cff150148ec553d2219735362168"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a557cecc425735970f32ab554d8dc604b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d9d/structHW__04_1_1PRINT_1_1print__tuple.html#a557cecc425735970f32ab554d8dc604b">operator()</a> (T &amp;arg, stringstream &amp;buffer)</td></tr>
+<tr class="separator:a557cecc425735970f32ab554d8dc604b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;size_t index, class T, class Q, size_t size = index&gt;<br />
-struct HW_04::PRINT::print_tuple&lt; index, T, Q, size &gt;</h3>
+<div class="textblock"><h3>template&lt;size_t index, class T, size_t size = index&gt;<br />
+struct HW_04::PRINT::print_tuple&lt; index, T, size &gt;</h3>
 
 <p>fill list from tuple </p>
 <p>enumearate all tuple element, and copy to list </p><dl class="params"><dt>Parameters</dt><dd>
@@ -92,21 +92,29 @@ struct HW_04::PRINT::print_tuple&lt; index, T, Q, size &gt;</h3>
   </table>
   </dd>
 </dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">index</td><td>number of tuple </td></tr>
+    <tr><td class="paramname">T</td><td>Type of data </td></tr>
+    <tr><td class="paramname">size</td><td>of tuple </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6e45cff150148ec553d2219735362168"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e45cff150148ec553d2219735362168">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="a557cecc425735970f32ab554d8dc604b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a557cecc425735970f32ab554d8dc604b">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;size_t index, class T, class Q, size_t size = index&gt; </div>
+template&lt;size_t index, class T, size_t size = index&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="../../d8/d9d/structHW__04_1_1PRINT_1_1print__tuple.html">HW_04::PRINT::print_tuple</a>&lt; index, T, Q, size &gt;::operator() </td>
+          <td class="memname">void <a class="el" href="../../d8/d9d/structHW__04_1_1PRINT_1_1print__tuple.html">HW_04::PRINT::print_tuple</a>&lt; index, T, size &gt;::operator() </td>
           <td>(</td>
           <td class="paramtype">T &amp;&#160;</td>
           <td class="paramname"><em>arg</em>, </td>
@@ -114,7 +122,7 @@ template&lt;size_t index, class T, class Q, size_t size = index&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::list&lt; Q &gt; &amp;&#160;</td>
+          <td class="paramtype">stringstream &amp;&#160;</td>
           <td class="paramname"><em>buffer</em>&#160;</td>
         </tr>
         <tr>

@@ -75,6 +75,7 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d2/d20/tuple_8h_source.html">tuple.h</a>&quot;</code><br />
 <code>#include &lt;list&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for print.h:</div>
 <div class="dyncontent">
@@ -106,22 +107,22 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad4720db6f67ffa55eaee6c104ff3fa89"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:ad4720db6f67ffa55eaee6c104ff3fa89"><td class="memTemplItemLeft" align="right" valign="top">enable_if_t&lt; is_arithmetic&lt; T &gt;::value, void &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d22/namespaceHW__04_1_1PRINT.html#ad4720db6f67ffa55eaee6c104ff3fa89">HW_04::PRINT::print_ip</a> (const T &amp;&amp;arg)</td></tr>
-<tr class="memdesc:ad4720db6f67ffa55eaee6c104ff3fa89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print ip address to stdout.  <a href="../../d0/d22/namespaceHW__04_1_1PRINT.html#ad4720db6f67ffa55eaee6c104ff3fa89">More...</a><br /></td></tr>
-<tr class="separator:ad4720db6f67ffa55eaee6c104ff3fa89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5550d867e738ab492b03a49e19a8bea1"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:a5550d867e738ab492b03a49e19a8bea1"><td class="memTemplItemLeft" align="right" valign="top">enable_if_t&lt; is_same&lt; T, string &gt;::value, void &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d22/namespaceHW__04_1_1PRINT.html#a5550d867e738ab492b03a49e19a8bea1">HW_04::PRINT::print_ip</a> (const T arg)</td></tr>
-<tr class="memdesc:a5550d867e738ab492b03a49e19a8bea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print text.  <a href="../../d0/d22/namespaceHW__04_1_1PRINT.html#a5550d867e738ab492b03a49e19a8bea1">More...</a><br /></td></tr>
-<tr class="separator:a5550d867e738ab492b03a49e19a8bea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa08a70a2ffe7fd1fe83ef1b5109d5e38"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:aa08a70a2ffe7fd1fe83ef1b5109d5e38"><td class="memTemplItemLeft" align="right" valign="top">enable_if_t&lt; is_same&lt; T, vector&lt; typename T::value_type &gt; &gt;::value||is_same&lt; T, list&lt; typename T::value_type &gt; &gt;::value, void &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d22/namespaceHW__04_1_1PRINT.html#aa08a70a2ffe7fd1fe83ef1b5109d5e38">HW_04::PRINT::print_ip</a> (const T &amp;arg)</td></tr>
-<tr class="memdesc:aa08a70a2ffe7fd1fe83ef1b5109d5e38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print ip address to stdout from containers.  <a href="../../d0/d22/namespaceHW__04_1_1PRINT.html#aa08a70a2ffe7fd1fe83ef1b5109d5e38">More...</a><br /></td></tr>
-<tr class="separator:aa08a70a2ffe7fd1fe83ef1b5109d5e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac262d883a06cf3704e3d9bcebfe57c4d"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:ac262d883a06cf3704e3d9bcebfe57c4d"><td class="memTemplItemLeft" align="right" valign="top">enable_if_t&lt; is_specialization&lt; T, tuple &gt;::value, void &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d22/namespaceHW__04_1_1PRINT.html#ac262d883a06cf3704e3d9bcebfe57c4d">HW_04::PRINT::print_ip</a> (T &amp;&amp;arg)</td></tr>
-<tr class="memdesc:ac262d883a06cf3704e3d9bcebfe57c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print ip address to stdout from tuple.  <a href="../../d0/d22/namespaceHW__04_1_1PRINT.html#ac262d883a06cf3704e3d9bcebfe57c4d">More...</a><br /></td></tr>
-<tr class="separator:ac262d883a06cf3704e3d9bcebfe57c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1130b61dfcab0e55d114f5910fbe556f"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a1130b61dfcab0e55d114f5910fbe556f"><td class="memTemplItemLeft" align="right" valign="top">enable_if_t&lt; is_integral&lt; typename std::decay&lt; T &gt;::type &gt;::value, void &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d22/namespaceHW__04_1_1PRINT.html#a1130b61dfcab0e55d114f5910fbe556f">HW_04::PRINT::print_ip</a> (const T arg, bool is_number=true)</td></tr>
+<tr class="memdesc:a1130b61dfcab0e55d114f5910fbe556f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print ip address to stdout.  <a href="../../d0/d22/namespaceHW__04_1_1PRINT.html#a1130b61dfcab0e55d114f5910fbe556f">More...</a><br /></td></tr>
+<tr class="separator:a1130b61dfcab0e55d114f5910fbe556f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a971ff9a9a34b6b8221f4720e50e72c18"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a971ff9a9a34b6b8221f4720e50e72c18"><td class="memTemplItemLeft" align="right" valign="top">enable_if_t&lt; is_same&lt; typename std::decay&lt; T &gt;::type, string &gt;::value, void &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d22/namespaceHW__04_1_1PRINT.html#a971ff9a9a34b6b8221f4720e50e72c18">HW_04::PRINT::print_ip</a> (const T arg, bool new_line=true)</td></tr>
+<tr class="memdesc:a971ff9a9a34b6b8221f4720e50e72c18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print text.  <a href="../../d0/d22/namespaceHW__04_1_1PRINT.html#a971ff9a9a34b6b8221f4720e50e72c18">More...</a><br /></td></tr>
+<tr class="separator:a971ff9a9a34b6b8221f4720e50e72c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af13856ae1c668b2d2a0129242fd9ed55"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:af13856ae1c668b2d2a0129242fd9ed55"><td class="memTemplItemLeft" align="right" valign="top">enable_if_t&lt; is_same&lt; typename std::decay&lt; T &gt;::type, vector&lt; typename std::decay&lt; T &gt;::type::value_type &gt; &gt;::value||is_same&lt; typename std::decay&lt; T &gt;::type, list&lt; typename std::decay&lt; T &gt;::type::value_type &gt; &gt;::value, void &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d22/namespaceHW__04_1_1PRINT.html#af13856ae1c668b2d2a0129242fd9ed55">HW_04::PRINT::print_ip</a> (const T arg, bool is_first=true)</td></tr>
+<tr class="memdesc:af13856ae1c668b2d2a0129242fd9ed55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print ip address to stdout from containers.  <a href="../../d0/d22/namespaceHW__04_1_1PRINT.html#af13856ae1c668b2d2a0129242fd9ed55">More...</a><br /></td></tr>
+<tr class="separator:af13856ae1c668b2d2a0129242fd9ed55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0837d08043a4aca314dedf9fca51f956"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a0837d08043a4aca314dedf9fca51f956"><td class="memTemplItemLeft" align="right" valign="top">enable_if_t&lt; is_specialization&lt; typename std::decay&lt; T &gt;::type, tuple &gt;::value, void &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d22/namespaceHW__04_1_1PRINT.html#a0837d08043a4aca314dedf9fca51f956">HW_04::PRINT::print_ip</a> (T arg)</td></tr>
+<tr class="memdesc:a0837d08043a4aca314dedf9fca51f956"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print ip address to stdout from tuple.  <a href="../../d0/d22/namespaceHW__04_1_1PRINT.html#a0837d08043a4aca314dedf9fca51f956">More...</a><br /></td></tr>
+<tr class="separator:a0837d08043a4aca314dedf9fca51f956"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header template print_ip function's. </p>
