@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<char>(0));
+			print_ip(static_cast<int8_t>(0));
 		}),
 		"0\n"
 	);
@@ -70,7 +70,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<char>(1));
+			print_ip(static_cast<int8_t>(1));
 		}),
 		"1\n"
 	);
@@ -79,7 +79,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<char>(-1));
+			print_ip(static_cast<int8_t>(0xFF));
 		}),
 		"255\n"
 	);
@@ -88,7 +88,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<char>(127));
+			print_ip(static_cast<int8_t>(0x7F));
 		}),
 		"127\n"
 	);
@@ -97,7 +97,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<char>(-127));
+			print_ip(static_cast<int8_t>(0x81));
 		}),
 		"129\n"
 	);
@@ -106,7 +106,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<char>(-128));
+			print_ip(static_cast<int8_t>(0x80));
 		}),
 		"128\n"
 	);
@@ -118,7 +118,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<short>(0));
+			print_ip(static_cast<int16_t>(0));
 		}),
 		"0.0\n"
 	);
@@ -127,7 +127,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<short>(1));
+			print_ip(static_cast<int16_t>(1));
 		}),
 		"0.1\n"
 	);
@@ -136,7 +136,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<short>(-1));
+			print_ip(static_cast<int16_t>(0xFFFF));
 		}),
 		"255.255\n"
 	);
@@ -145,7 +145,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<short>(255));
+			print_ip(static_cast<int16_t>(0x00FF));
 		}),
 		"0.255\n"
 	);
@@ -154,7 +154,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<short>(-256));
+			print_ip(static_cast<int16_t>(0xFF00));
 		}),
 		"255.0\n"
 	);
@@ -163,7 +163,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<short>(32767));
+			print_ip(static_cast<int16_t>(0x7FFF));
 		}),
 		"127.255\n"
 	);
@@ -172,7 +172,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<short>(-32768));
+			print_ip(static_cast<int16_t>(0x8000));
 		}),
 		"128.0\n"
 	);
@@ -184,7 +184,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<int>(0));
+			print_ip(static_cast<int32_t>(0));
 		}),
 		"0.0.0.0\n"
 	);
@@ -193,7 +193,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<int>(1));
+			print_ip(static_cast<int32_t>(1));
 		}),
 		"0.0.0.1\n"
 	);
@@ -202,7 +202,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<int>(-1));
+			print_ip(static_cast<int32_t>(0xFFFFFFFF));
 		}),
 		"255.255.255.255\n"
 	);
@@ -211,7 +211,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<int>(255));
+			print_ip(static_cast<int32_t>(0x000000FF));
 		}),
 		"0.0.0.255\n"
 	);
@@ -220,7 +220,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<int>(-256));
+			print_ip(static_cast<int32_t>(0xFFFFFF00));
 		}),
 		"255.255.255.0\n"
 	);
@@ -229,7 +229,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<int>(65535));
+			print_ip(static_cast<int32_t>(0x0000FFFF));
 		}),
 		"0.0.255.255\n"
 	);
@@ -238,7 +238,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<int>(-65536));
+			print_ip(static_cast<int32_t>(0xFFFF0000));
 		}),
 		"255.255.0.0\n"
 	);
@@ -247,7 +247,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<int>(16777215));
+			print_ip(static_cast<int32_t>(0x00FFFFFF));
 		}),
 		"0.255.255.255\n"
 	);
@@ -256,7 +256,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<int>(-16777216));
+			print_ip(static_cast<int32_t>(0xFF000000));
 		}),
 		"255.0.0.0\n"
 	);
@@ -268,7 +268,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(0));
+			print_ip(static_cast<int64_t>(0));
 		}),
 		"0.0.0.0.0.0.0.0\n"
 	);
@@ -277,7 +277,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(1));
+			print_ip(static_cast<int64_t>(1));
 		}),
 		"0.0.0.0.0.0.0.1\n"
 	);
@@ -286,7 +286,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(-1));
+			print_ip(static_cast<int64_t>(0xFFFFFFFFFFFFFFFF));
 		}),
 		"255.255.255.255.255.255.255.255\n"
 	);
@@ -295,7 +295,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(255));
+			print_ip(static_cast<int64_t>(0x00000000000000FF));
 		}),
 		"0.0.0.0.0.0.0.255\n"
 	);
@@ -304,7 +304,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(-256));
+			print_ip(static_cast<int64_t>(0xFFFFFFFFFFFFFF00));
 		}),
 		"255.255.255.255.255.255.255.0\n"
 	);
@@ -313,7 +313,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(65535));
+			print_ip(static_cast<int64_t>(0x000000000000FFFF));
 		}),
 		"0.0.0.0.0.0.255.255\n"
 	);
@@ -322,7 +322,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(-65536));
+			print_ip(static_cast<int64_t>(0xFFFFFFFFFFFF0000));
 		}),
 		"255.255.255.255.255.255.0.0\n"
 	);
@@ -331,7 +331,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(16777215));
+			print_ip(static_cast<int64_t>(0x0000000000FFFFFF));
 		}),
 		"0.0.0.0.0.255.255.255\n"
 	);
@@ -340,7 +340,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(-16777216));
+			print_ip(static_cast<int64_t>(0xFFFFFFFFFF000000));
 		}),
 		"255.255.255.255.255.0.0.0\n"
 	);
@@ -349,7 +349,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(4294967295));
+			print_ip(static_cast<int64_t>(0x00000000FFFFFFFF));
 		}),
 		"0.0.0.0.255.255.255.255\n"
 	);
@@ -358,7 +358,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(-4294967296));
+			print_ip(static_cast<int64_t>(0xFFFFFFFF00000000));
 		}),
 		"255.255.255.255.0.0.0.0\n"
 	);
@@ -367,7 +367,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(1099511627775));
+			print_ip(static_cast<int64_t>(0x000000FFFFFFFFFF));
 		}),
 		"0.0.0.255.255.255.255.255\n"
 	);
@@ -376,7 +376,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(-1099511627776));
+			print_ip(static_cast<int64_t>(0xFFFFFF0000000000));
 		}),
 		"255.255.255.0.0.0.0.0\n"
 	);
@@ -385,7 +385,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(281474976710655));
+			print_ip(static_cast<int64_t>(0x0000FFFFFFFFFFFF));
 		}),
 		"0.0.255.255.255.255.255.255\n"
 	);
@@ -394,7 +394,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(-281474976710656));
+			print_ip(static_cast<int64_t>(0xFFFF000000000000));
 		}),
 		"255.255.0.0.0.0.0.0\n"
 	);
@@ -403,7 +403,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(72057594037927935));
+			print_ip(static_cast<int64_t>(0x00FFFFFFFFFFFFFF));
 		}),
 		"0.255.255.255.255.255.255.255\n"
 	);
@@ -412,7 +412,7 @@ BOOST_AUTO_TEST_CASE(arithmetic)
 	(
 		stdout_capture([]()
 		{
-			print_ip(static_cast<long>(-72057594037927936));
+			print_ip(static_cast<int64_t>(0xFF00000000000000));
 		}),
 		"255.0.0.0.0.0.0.0\n"
 	);
@@ -433,28 +433,18 @@ BOOST_AUTO_TEST_CASE(container)
 	(
 		stdout_capture([]()
 		{
-			print_ip(std::vector<int> {-1, 2130706433, 127, -128, 64, -64});
+			print_ip(std::vector<int32_t> {-1, 2130706433, 127, -128, 64, -64});
 		}),
-		"255.255.255.255\n"
-		"127.0.0.1\n"
-		"0.0.0.127\n"
-		"255.255.255.128\n"
-		"0.0.0.64\n"
-		"255.255.255.192\n"
+		"-1..2130706433..127..-128..64..-64\n"
 	);
 
 	BOOST_CHECK_EQUAL
 	(
 		stdout_capture([]()
 		{
-			print_ip(std::list<int> {-1, 2130706433, 127, -128, 64, -64});
+			print_ip(std::list<int32_t> {-1, 2130706433, 127, -128, 64, -64});
 		}),
-		"255.255.255.255\n"
-		"127.0.0.1\n"
-		"0.0.0.127\n"
-		"255.255.255.128\n"
-		"0.0.0.64\n"
-		"255.255.255.192\n"
+		"-1..2130706433..127..-128..64..-64\n"
 	);
 	/// \endcode
 
@@ -464,28 +454,117 @@ BOOST_AUTO_TEST_CASE(container)
 	(
 		stdout_capture([]()
 		{
-			print_ip(std::vector<long> {-1, 2130706433, 127, -128, 64, -64});
+			print_ip(std::vector<int64_t> {-1, 2130706433, 127, -128, 64, -64});
 		}),
-		"255.255.255.255.255.255.255.255\n"
-		"0.0.0.0.127.0.0.1\n"
-		"0.0.0.0.0.0.0.127\n"
-		"255.255.255.255.255.255.255.128\n"
-		"0.0.0.0.0.0.0.64\n"
-		"255.255.255.255.255.255.255.192\n"
+		"-1..2130706433..127..-128..64..-64\n"
 	);
 
 	BOOST_CHECK_EQUAL
 	(
 		stdout_capture([]()
 		{
-			print_ip(std::list<long> {-1, 2130706433, 127, -128, 64, -64});
+			print_ip(std::list<int64_t> {-1, 2130706433, 127, -128, 64, -64});
 		}),
-		"255.255.255.255.255.255.255.255\n"
-		"0.0.0.0.127.0.0.1\n"
-		"0.0.0.0.0.0.0.127\n"
-		"255.255.255.255.255.255.255.128\n"
-		"0.0.0.0.0.0.0.64\n"
-		"255.255.255.255.255.255.255.192\n"
+		"-1..2130706433..127..-128..64..-64\n"
+	);
+	/// \endcode
+
+	/// Test container with embedded containers
+	/// \code
+	BOOST_CHECK_EQUAL
+	(
+		stdout_capture([]()
+		{
+			print_ip(std::list<std::vector<int64_t>>
+			{
+				{-1, 2130706433, 127, -128, 64, -64},
+				{1,2,3,4}
+			});
+		}),
+		"-1..2130706433..127..-128..64..-64..1..2..3..4\n"
+	);
+
+	BOOST_CHECK_EQUAL
+	(
+		stdout_capture([]()
+		{
+			print_ip(std::vector<std::list<int32_t>>
+			{
+				{-1, 2130706433, 127, -128, 64, -64},
+				{1,2,3,4,5}
+			});
+		}),
+		"-1..2130706433..127..-128..64..-64..1..2..3..4..5\n"
+	);
+
+	BOOST_CHECK_EQUAL
+	(
+		stdout_capture([]()
+		{
+			print_ip(std::vector<std::list<std::vector<int32_t>>>
+			{
+				{
+					{-1, 2130706433, 127, -128, 64, -64},
+					{1,2,3,4,5}
+				},
+				{
+					{
+						{-1, 2130706433, 127, -128, 64, -64},
+						{1,2,3,4,5}
+					}
+				}
+			});
+		}),
+		"-1..2130706433..127..-128..64..-64..1..2..3..4..5..-1..2130706433..127..-128..64..-64..1..2..3..4..5\n"
+	);
+
+
+	BOOST_CHECK_EQUAL
+	(
+		stdout_capture([]()
+		{
+			print_ip(std::list<std::vector<std::list<int64_t>>>
+			{
+				{
+					{1,2},
+					{3,4}
+				},
+				{
+					{
+						{5,6},
+						{7,8}
+					}
+				},
+				{
+					{1,2},
+					{3,4}
+				},
+				{
+					{
+						{5,6},
+						{7,8}
+					}
+				}
+			});
+		}),
+		"1..2..3..4..5..6..7..8..1..2..3..4..5..6..7..8\n"
+	);
+
+	BOOST_CHECK_EQUAL
+	(
+		stdout_capture([]()
+		{
+			print_ip(std::vector<std::string> {"1","2","3","4","5","6"});
+		}),
+		"1..2..3..4..5..6\n"
+	);
+	BOOST_CHECK_EQUAL
+	(
+		stdout_capture([]()
+		{
+			print_ip(std::list<std::string> {"1","2","3","4","5","6"});
+		}),
+		"1..2..3..4..5..6\n"
 	);
 	/// \endcode
 }
@@ -523,16 +602,7 @@ BOOST_AUTO_TEST_CASE(tup)
 		{
 			print_ip(std::make_tuple(256, 4096, 8192, 2048, 128, -1, -256, -1024, -4096, -8192));
 		}),
-		"0.0.1.0\n"
-		"0.0.16.0\n"
-		"0.0.32.0\n"
-		"0.0.8.0\n"
-		"0.0.0.128\n"
-		"255.255.255.255\n"
-		"255.255.255.0\n"
-		"255.255.252.0\n"
-		"255.255.240.0\n"
-		"255.255.224.0\n"
+		"256..4096..8192..2048..128..-1..-256..-1024..-4096..-8192\n"
 	);
 	/// \endcode
 
@@ -542,18 +612,9 @@ BOOST_AUTO_TEST_CASE(tup)
 	(
 		stdout_capture([]()
 		{
-			print_ip(std::make_tuple((long)256, 4096, 8192, 2048, 128, -1, -256, -1024, -4096, -8192));
+			print_ip(std::make_tuple((int64_t)256, "4096", 8192, 2048, "128", -1, -256, "-1024", -4096, -8192));
 		}),
-		"0.0.0.0.0.0.1.0\n"
-		"0.0.0.0.0.0.16.0\n"
-		"0.0.0.0.0.0.32.0\n"
-		"0.0.0.0.0.0.8.0\n"
-		"0.0.0.0.0.0.0.128\n"
-		"255.255.255.255.255.255.255.255\n"
-		"255.255.255.255.255.255.255.0\n"
-		"255.255.255.255.255.255.252.0\n"
-		"255.255.255.255.255.255.240.0\n"
-		"255.255.255.255.255.255.224.0\n"
+		"256..4096..8192..2048..128..-1..-256..-1024..-4096..-8192\n"
 	);
 	/// \endcode
 }

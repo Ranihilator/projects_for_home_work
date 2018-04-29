@@ -108,7 +108,7 @@ struct IP_Address_Sort_Any: public std::deque<ip_address>
 
 /*!
 \brief Get ip address from string stream
-\param[in] line string contain ip address 
+\param[in] line string contain ip address
 \param[in] filter regex string
 \see HW_02::FILTER::ip_address
 \return ip address

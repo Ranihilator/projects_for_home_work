@@ -11,6 +11,7 @@
 
 #include <list>
 #include <vector>
+#include <type_traits>
 
 /// Home work #4 (print ip)
 namespace HW_04
@@ -25,28 +26,40 @@ using namespace TUPLE;
 
 /*!
 \brief Print ip address to stdout
-\details Printing byte sequence to ip address format
+\details Printing(reference) byte sequence to ip address format
 \param[in] arg input data
+\tparam T Type of data
 \return void
 */
 template <class T>
 enable_if_t
 <
-	is_arithmetic<T>::value,
+	is_integral<typename std::decay<T>::type>::value,
 	void
-> print_ip (const T &&arg)
+>
+print_ip (const T arg, bool is_number = true)
 {
-	uint8_t size = sizeof(T);
-	uint8_t *data = (uint8_t*)&arg;
+	const auto size = sizeof(T);
+	static_assert(size > 0, "T must be > 0");
+
+	if (!is_number)
+	{
+		if (size == 1)
+			cout << static_cast<int>(arg);
+		else
+			cout << arg;
+		return;
+	}
 
 	stringstream str;
 
-	for (auto i = size - 1; i >= 0; --i)
-	{
+	for (auto i = 1; i <= size; ++i)
+    {
 		if (str.tellp() != 0)
-			str << ".";
+			str << '.';
 
-		str << static_cast<int64_t>(data[i]);
+		uint8_t raw = arg >> ((size - i) * 8);
+		str << static_cast<int>(raw);
 	}
 
 	cout << str.str() << endl;
@@ -55,17 +68,20 @@ enable_if_t
 /*!
 \brief Print text
 \param[in] arg input data
+\tparam T Type of data
 \return void
 */
 template <class T>
 enable_if_t
 <
-	is_same<T, string>::value,
+	is_same<typename std::decay<T>::type, string>::value,
 	void
 >
-print_ip (const T arg)
+print_ip (const T arg, bool new_line = true)
 {
-	cout << arg << endl;
+	cout << arg;
+	if (new_line)
+		cout << endl;
 }
 
 /*!
@@ -75,24 +91,32 @@ print_ip (const T arg)
 Each element is byte sequence ip address format.
 
 \param[in] arg input data
+\tparam T Type of data
 \return void
 */
 template <class T>
 enable_if_t
 <
-	is_same<T, vector<typename T::value_type>>::value ||
-	is_same<T, list<typename T::value_type>>::value,
+	is_same<typename std::decay<T>::type, vector<typename std::decay<T>::type::value_type>>::value ||
+	is_same<typename std::decay<T>::type, list<typename std::decay<T>::type::value_type>>::value,
 	void
 >
-print_ip (const T &arg)
+print_ip (const T arg, bool is_first = true)
 {
-	for (auto const &i : arg)
-		print_ip(static_cast<typename T::value_type>(i));
+    for (auto i = arg.begin(); i != arg.end(); ++i)
+	{
+		print_ip(*i, false);
+		if (std::next(i)!=arg.end())
+			cout << "..";
+	}
+
+	if (is_first)
+		cout << endl;
 }
 
 /*!
 \brief Print ip address to stdout from tuple
-\details Print each element from tuple's single type format.
+\details Print each element from tuple's any type format.
 
 Each element is byte sequence ip address format.
 
@@ -100,23 +124,20 @@ Each element is byte sequence ip address format.
 \see print_tuple
 
 \param[in] arg input data
+\tparam T Type of data
 \return void
 */
 template <class T>
 enable_if_t
 <
-	is_specialization<T, tuple>::value,
+	is_specialization<typename std::decay<T>::type, tuple>::value,
 	void
-> print_ip (T &&arg)
+> print_ip (T arg)
 {
-	static_assert(std::tuple_size<T>::value > 0, "tuple size must > 0");
+	stringstream buffer;
+	print_tuple<std::tuple_size<T>::value, T>()(arg, buffer);
 
-	using type = typename std::tuple_element<0, T>::type;
-
-	std::list<type> buffer;
-	print_tuple<std::tuple_size<T>::value, T, type>()(arg, buffer);
-
-	print_ip(buffer);
+	cout << buffer.str() << endl;
 }
 
 }

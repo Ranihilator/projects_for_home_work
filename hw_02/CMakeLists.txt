@@ -62,5 +62,7 @@ set(CPACK_DEB_COMPONENT_INSTALL 1)
 
 enable_testing()
 
-add_test(ip_filter_test ip_filter_testing)
-add_test(external_test ip_filter_testing)
+add_test(
+  NAME boost_test
+  COMMAND ip_filter_testing
+)
