@@ -34,10 +34,27 @@ int main(int argc, char* argv[])
 			std::cout << "	simple_uml -v Current version print" << std::endl;
 			std::cout << std::endl;
 		}
-
-
-
 		return 0;
     }
+/*
+    Editor editor;
+
+    editor.Create_Document("untitled");
+    editor["untitled"].Draw(new Line(0, 0, 5, 5));
+	editor["untitled"].Delete(Point(0, 0));
+
+	editor.Create_Document("untitled1");
+    editor["untitled1"].Draw(new Circle(Point(0, 0), 10));
+    editor["untitled1"].Draw(new Line(Point(0, 0), Point(5, 5)));
+    editor["untitled1"].Delete(Point(0, 0));
+    editor.Export(new FILE_FORMAT::dxf("file.dxf"));
+    editor.Close_Document("untitled1");
+
+    editor.Import(new FILE_FORMAT::svg("file.svg"));
+    editor["file.svg"].Draw(new Polyline <Point, Point, Point> (Point(0, 0), Point(1, 1), Point(2, 2)));
+
+    editor.Import(new FILE_FORMAT::cdr("file.cdr"));
+	editor["file.cdr"].Draw(new Polygon <Point, Point, Point, Point> (Point(0, 0), Point(1, 1), Point(2, 2), Point(3, 3)));
+	editor.Close_Document("file.cdr");*/
 }
 
