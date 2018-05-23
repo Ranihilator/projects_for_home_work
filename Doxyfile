@@ -116,7 +116,8 @@ INPUT                  = README.md \
                          hw_01 \
                          hw_02 \
                          hw_03 \
-                         hw_04
+                         hw_04 \
+                         hw_05
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
