@@ -17,13 +17,28 @@ set(HEADER_VERSION_PATH "${PROJECT_SOURCE_DIR}/../hw_01")
 set(HEADER_PATH "${PROJECT_SOURCE_DIR}/include")
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 
-set(HEADER_FILES ${HEADER_PATH}/editor.h ${HEADER_PATH}/format.h ${HEADER_VERSION_PATH}/include/version_library.h)
+set(HEADER_FILES 
+    ${HEADER_PATH}/editor.h 
+    ${HEADER_PATH}/document/document.h 
+    ${HEADER_PATH}/document/format/cdr.h
+    ${HEADER_PATH}/document/format/dxf.h
+    ${HEADER_PATH}/document/format/file_extension.h
+    ${HEADER_PATH}/document/format/format.h
+    ${HEADER_PATH}/document/format/svg.h
+    ${HEADER_PATH}/document/format/vsd.h
+    ${HEADER_PATH}/document/elements/elements.h
+    ${HEADER_PATH}/document/elements/basics/basics.h
+    ${HEADER_PATH}/document/elements/basics/circles.h 
+    ${HEADER_PATH}/document/elements/basics/lines.h 
+    ${HEADER_PATH}/document/elements/basics/polygons.h 
+    ${HEADER_VERSION_PATH}/include/version_library.h
+)
 
 add_executable(simple_uml ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
 add_library(version_lib STATIC IMPORTED)
 
-set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${HEADER_VERSION_PATH}/build/libhelloworld_lib.a)
-#set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/../build/hw_01/libhelloworld_lib.a)
+#set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${HEADER_VERSION_PATH}/build/libhelloworld_lib.a)
+set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/../build/hw_01/libhelloworld_lib.a)
 
 target_include_directories(simple_uml PRIVATE ${HEADER_PATH} ${HEADER_VERSION_PATH}/include)
 

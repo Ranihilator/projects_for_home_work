@@ -6,12 +6,22 @@
 namespace HW_05
 {
 
-class Draw
+class Document_Pool
 {
 public:
-	Draw(Elements_Pool &_elements):
-		elements(_elements)
+	Document_Pool()
 	{}
+
+	Document_Pool(IFormat *path):
+		File(path)
+	{
+		this->File->read(this->elements);
+	}
+
+	void save(IFormat *path)
+	{
+		this->File->write(this->elements);
+	}
 
 	void Draw_Point(int64_t x, int64_t y)
 	{
@@ -41,27 +51,6 @@ public:
 	void Draw_Ellipse(int64_t l_x, int64_t l_y, int64_t r_x, int64_t r_y, int64_t u_x, int64_t u_y, int64_t d_x, int64_t d_y)
 	{
 		this->elements.insert(new Ellipse(Point(l_x, l_y), Point(r_x, r_y), Point(u_x, u_y), Point(d_x, d_y)));
-	}
-
-private:
-	Elements_Pool &elements;
-};
-
-class Document_Pool:
-	public Draw
-{
-public:
-	Document_Pool():
-		Draw(elements)
-	{}
-
-	Document_Pool(IFormat *path):
-		Draw(elements), File(path)
-	{}
-
-	void save()
-	{
-
 	}
 
 private:

@@ -15,11 +15,16 @@ public:
 	    IFormat(path)
 	{}
 
-	void write()
-	{}
+	void write(Elements_Pool &elements)
+	{
+		for (auto i = 0; i < elements.size(); ++i)
+			elements.get(i);
+	}
 
-	void read()
-	{}
+	void read(Elements_Pool &elements)
+	{
+		elements.insert(new Point(0, 0));
+	}
 };
 
 }

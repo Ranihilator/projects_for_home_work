@@ -38,6 +38,16 @@ public:
         this->pool.clear();
     }
 
+    uint64_t size() const
+    {
+    	return pool.size();
+    }
+
+    IElement* get(uint64_t pos)
+    {
+    	return pool[pos].get();
+    }
+
 private:
     std::map <uint32_t, std::unique_ptr<IElement>> pool;
 };
