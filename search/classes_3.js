@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['print_5ftuple',['print_tuple',['../d8/d9d/structHW__04_1_1PRINT_1_1print__tuple.html',1,'HW_04::PRINT']]],
-  ['print_5ftuple_3c_200_2c_20t_2c_20size_20_3e',['print_tuple&lt; 0, T, size &gt;',['../d4/d66/structHW__04_1_1PRINT_1_1print__tuple_3_010_00_01T_00_01size_01_4.html',1,'HW_04::PRINT']]]
+  ['editor',['Editor',['../da/d3d/classHW__05_1_1Editor.html',1,'HW_05']]],
+  ['elements_5fpool',['Elements_Pool',['../db/d54/classHW__05_1_1Elements__Pool.html',1,'HW_05']]],
+  ['ellipse',['Ellipse',['../d4/d42/classHW__05_1_1Ellipse.html',1,'HW_05']]]
 ];

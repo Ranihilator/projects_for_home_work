@@ -1,12 +1,5 @@
 var searchData=
 [
-  ['allocator',['ALLOCATOR',['../d1/dc6/namespaceHW__03_1_1ALLOCATOR.html',1,'HW_03']]],
-  ['container',['CONTAINER',['../d3/d7e/namespaceHW__03_1_1CONTAINER.html',1,'HW_03']]],
-  ['filter',['FILTER',['../d3/d11/namespaceHW__02_1_1FILTER.html',1,'HW_02']]],
-  ['hw_5f01',['HW_01',['../d8/d8a/namespaceHW__01.html',1,'']]],
-  ['hw_5f02',['HW_02',['../d0/d3f/namespaceHW__02.html',1,'']]],
-  ['hw_5f03',['HW_03',['../d8/d62/namespaceHW__03.html',1,'']]],
-  ['hw_5f04',['HW_04',['../da/dbc/namespaceHW__04.html',1,'']]],
-  ['print',['PRINT',['../d0/d22/namespaceHW__04_1_1PRINT.html',1,'HW_04']]],
-  ['tuple',['TUPLE',['../d4/d83/namespaceHW__04_1_1PRINT_1_1TUPLE.html',1,'HW_04::PRINT']]]
+  ['get',['get',['../db/d54/classHW__05_1_1Elements__Pool.html#ac05dd9889da156ce7dc5f4ea047aab36',1,'HW_05::Elements_Pool']]],
+  ['get_5fcoordinate',['Get_Coordinate',['../d8/dd0/classHW__05_1_1IElement.html#aee2e26272fddac81065520c242e213cf',1,'HW_05::IElement::Get_Coordinate()'],['../d4/d53/structHW__05_1_1Point.html#af9894b7aef6e7f507f190be84c9080a6',1,'HW_05::Point::Get_Coordinate()'],['../d4/d42/classHW__05_1_1Ellipse.html#a2817f6344b2e64d78fc1724f847b94c2',1,'HW_05::Ellipse::Get_Coordinate()'],['../d2/d9c/classHW__05_1_1Circle.html#aa5cc5968780ff2c7a23e8a9ddd13f209',1,'HW_05::Circle::Get_Coordinate()'],['../d2/d4c/classHW__05_1_1Polyline.html#a967acad411abc17cd9edf821e271a479',1,'HW_05::Polyline::Get_Coordinate()'],['../d6/ddc/classHW__05_1_1Line.html#af3ba3611e081b415c869cda9ff874d2b',1,'HW_05::Line::Get_Coordinate()'],['../dd/d11/classHW__05_1_1Polygon.html#af178ba80e2b294a0cb09d2b9f4b034a5',1,'HW_05::Polygon::Get_Coordinate()'],['../d1/df8/classHW__05_1_1Rectangle.html#a1f9dd55d04ce442160a9f241d3bdfec3',1,'HW_05::Rectangle::Get_Coordinate()'],['../d3/df0/classHW__05_1_1Square.html#ab87950a06bf2f69ebc285367367a2a6f',1,'HW_05::Square::Get_Coordinate()']]]
 ];
