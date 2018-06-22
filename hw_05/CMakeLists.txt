@@ -17,28 +17,45 @@ set(HEADER_VERSION_PATH "${PROJECT_SOURCE_DIR}/../hw_01")
 set(HEADER_PATH "${PROJECT_SOURCE_DIR}/include")
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 
-set(HEADER_FILES 
-    ${HEADER_PATH}/editor.h 
-    ${HEADER_PATH}/document/document.h 
-    ${HEADER_PATH}/document/format/cdr.h
-    ${HEADER_PATH}/document/format/dxf.h
-    ${HEADER_PATH}/document/format/file_extension.h
-    ${HEADER_PATH}/document/format/format.h
-    ${HEADER_PATH}/document/format/svg.h
-    ${HEADER_PATH}/document/format/vsd.h
-    ${HEADER_PATH}/document/elements/elements.h
-    ${HEADER_PATH}/document/elements/basics/basics.h
-    ${HEADER_PATH}/document/elements/basics/circles.h 
-    ${HEADER_PATH}/document/elements/basics/lines.h 
-    ${HEADER_PATH}/document/elements/basics/polygons.h 
-    ${HEADER_VERSION_PATH}/include/version_library.h
+set(HEADER_FILES
+    ${SOURCE_PATH}/editor.h 
+    ${SOURCE_PATH}/docs/canvas.h 
+    ${SOURCE_PATH}/docs/docs.h 
+    ${SOURCE_PATH}/docs/shapes/elements/ishapes.h 
+    ${SOURCE_PATH}/docs/shapes/elements/points.h 
+    ${SOURCE_PATH}/docs/shapes/elements/lines.h 
+    ${SOURCE_PATH}/docs/shapes/elements/polygons.h 
+    ${SOURCE_PATH}/docs/shapes/elements/circles.h 
+    ${SOURCE_PATH}/docs/shapes/shapes.h 
+    ${SOURCE_PATH}/docs/data/file.h 
+    ${SOURCE_PATH}/docs/data/format/cdr.h
+    ${SOURCE_PATH}/docs/data/format/dxf.h
+    ${SOURCE_PATH}/docs/data/format/ifile.h
+    ${SOURCE_PATH}/docs/data/format/svg.h
+    ${SOURCE_PATH}/docs/data/format/vsd.h
 )
 
-add_executable(simple_uml ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
+set(SOURCE_FILES 
+    ${SOURCE_PATH}/editor.cpp 
+    ${SOURCE_PATH}/docs/canvas.cpp 
+    ${SOURCE_PATH}/docs/docs.cpp 
+    ${SOURCE_PATH}/docs/shapes/elements/points.cpp
+    ${SOURCE_PATH}/docs/shapes/elements/lines.cpp
+    ${SOURCE_PATH}/docs/shapes/elements/polygons.cpp 
+    ${SOURCE_PATH}/docs/shapes/elements/circles.cpp
+    ${SOURCE_PATH}/docs/shapes/shapes.cpp
+    ${SOURCE_PATH}/docs/data/file.cpp 
+    ${SOURCE_PATH}/docs/data/format/cdr.cpp
+    ${SOURCE_PATH}/docs/data/format/dxf.cpp
+    ${SOURCE_PATH}/docs/data/format/svg.cpp
+    ${SOURCE_PATH}/docs/data/format/vsd.cpp
+)
+
+add_executable(simple_uml ${SOURCE_PATH}/main.cpp ${HEADER_FILES} ${SOURCE_FILES})
 add_library(version_lib STATIC IMPORTED)
 
-#set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${HEADER_VERSION_PATH}/build/libhelloworld_lib.a)
-set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/../build/hw_01/libhelloworld_lib.a)
+set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${HEADER_VERSION_PATH}/build/libhelloworld_lib.a)
+#set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/../build/hw_01/libhelloworld_lib.a)
 
 target_include_directories(simple_uml PRIVATE ${HEADER_PATH} ${HEADER_VERSION_PATH}/include)
 

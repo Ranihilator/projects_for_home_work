@@ -14,6 +14,9 @@ Create simple graph elements
 
 using namespace HW_05;
 
+#include <iostream>
+#include <string>
+
 /*!
 \brief Start program
 
@@ -37,7 +40,8 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 
-	Editor editor;
+	SHAPES::Point point;
+	/*Editor editor;
 
 	editor.Create_Documents();
 	editor.Export_Documents("unamed");
@@ -49,7 +53,7 @@ int main(int argc, char* argv[])
         editor.Draw_Element("path")->Draw_Circle(5, 5, 5);
 
         editor.Close_Documents("path");
-
+*/
         return 0;
 }
 
