@@ -81,21 +81,18 @@ $(function() {
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
-<li>cdr()
-: <a class="el" href="dc/d03/classHW__05_1_1cdr.html#a3a55f1a3dcb2c69dbb0a14f912ad15b7">HW_05::cdr</a>
-</li>
 <li>chunks_t
 : <a class="el" href="d7/d54/classHW__03_1_1ALLOCATOR_1_1allocator.html#aaf467595e2047dc7632a0ca2304e37a3">HW_03::ALLOCATOR::allocator&lt; T, S &gt;</a>
 </li>
 <li>Circle()
-: <a class="el" href="d2/d9c/classHW__05_1_1Circle.html#a36cc348c7618de81ef0786a9f43f1455">HW_05::Circle</a>
+: <a class="el" href="dc/d26/classHW__05_1_1SHAPES_1_1Circle.html#a3fe4fc997ce47c36c6ed0e29dce516d9">HW_05::SHAPES::Circle</a>
 </li>
 <li>clear()
 : <a class="el" href="d8/d20/classHW__03_1_1CONTAINER_1_1container.html#a7c96b82f51a4f27a97a0cedd2354444e">HW_03::CONTAINER::container&lt; T, _A &gt;</a>
-, <a class="el" href="db/d54/classHW__05_1_1Elements__Pool.html#ae8752b0a35fedfac803461f26681eb31">HW_05::Elements_Pool</a>
+, <a class="el" href="d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html#a3da73134a0312ac13ad8d97987b2cca0">HW_05::SHAPES::Shapes</a>
 </li>
-<li>Close_Documents()
-: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#a336b214996396b6c8cce4b4097828d54">HW_05::Editor</a>
+<li>Close_Document()
+: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#afb94cf929457bd958c7a246c7083f3a1">HW_05::Editor</a>
 </li>
 <li>const_pointer
 : <a class="el" href="d8/d20/classHW__03_1_1CONTAINER_1_1container.html#a9fb7a49901d4065164582718fbec118d">HW_03::CONTAINER::container&lt; T, _A &gt;</a>
@@ -106,8 +103,11 @@ $(function() {
 <li>container()
 : <a class="el" href="d8/d20/classHW__03_1_1CONTAINER_1_1container.html#a221a218270a41955aea5001368ac245e">HW_03::CONTAINER::container&lt; T, _A &gt;</a>
 </li>
-<li>Create_Documents()
-: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#a1e16baf3d4e0f27bac8a7ff14ac7d32c">HW_05::Editor</a>
+<li>Create_Document()
+: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#aa3e97577a110b1cf9c816bdb8bb7b241">HW_05::Editor</a>
+</li>
+<li>Create_Shape()
+: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#ae381c8b2448a6d888a4e9d7309bc2cd5">HW_05::Editor</a>
 </li>
 </ul>
 
@@ -116,83 +116,80 @@ $(function() {
 <li>deallocate()
 : <a class="el" href="d7/d54/classHW__03_1_1ALLOCATOR_1_1allocator.html#a6e91a718d02e7885956fca0f1f5b2f78">HW_03::ALLOCATOR::allocator&lt; T, S &gt;</a>
 </li>
-<li>Document_Pool()
-: <a class="el" href="d0/d9a/classHW__05_1_1Document__Pool.html#abae87e9ba7323f67d997864f8ce732cc">HW_05::Document_Pool</a>
+<li>Delete_Shape()
+: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#ac3c1f1ee26207d560c54c3e9b9f490c7">HW_05::Editor</a>
 </li>
-<li>Draw_Circle()
-: <a class="el" href="d0/d9a/classHW__05_1_1Document__Pool.html#a7d93e680746828de40e775f5a32e0662">HW_05::Document_Pool</a>
-</li>
-<li>Draw_Element()
-: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#a6386d534b02d1f55141d3a0c5f41b4fe">HW_05::Editor</a>
-</li>
-<li>Draw_Ellipse()
-: <a class="el" href="d0/d9a/classHW__05_1_1Document__Pool.html#a0141b36d794acb23f08a75117437bf6e">HW_05::Document_Pool</a>
-</li>
-<li>Draw_Line()
-: <a class="el" href="d0/d9a/classHW__05_1_1Document__Pool.html#ab020fe92e35f7013f4b7121b28fe3ff4">HW_05::Document_Pool</a>
-</li>
-<li>Draw_Point()
-: <a class="el" href="d0/d9a/classHW__05_1_1Document__Pool.html#ac05482f07933e12a62d74cf7f51f05b8">HW_05::Document_Pool</a>
-</li>
-<li>Draw_Rectangle()
-: <a class="el" href="d0/d9a/classHW__05_1_1Document__Pool.html#a59edcaa4e943462b9953033caa8e1b1f">HW_05::Document_Pool</a>
-</li>
-<li>Draw_Square()
-: <a class="el" href="d0/d9a/classHW__05_1_1Document__Pool.html#a13a1adcf9f0df1a7c4975b84dc8abd5e">HW_05::Document_Pool</a>
-</li>
-<li>dxf()
-: <a class="el" href="d3/db2/classHW__05_1_1dxf.html#a4ee3307a948c7eaafc4582a52f8d16dc">HW_05::dxf</a>
+<li>Draw()
+: <a class="el" href="db/dbc/classHW__05_1_1SHAPES_1_1Ellipse.html#ad9714b7531729a5c192076737150eef0">HW_05::SHAPES::Ellipse</a>
+, <a class="el" href="dc/d1d/classHW__05_1_1SHAPES_1_1IShape.html#aa98d986a52747f05d26cec526a46ff46">HW_05::SHAPES::IShape</a>
+, <a class="el" href="d8/deb/classHW__05_1_1SHAPES_1_1Point.html#a93e9a1f3ef5f90ce0e32f62ac1b579b1">HW_05::SHAPES::Point</a>
+, <a class="el" href="d2/d59/classHW__05_1_1SHAPES_1_1Polygon.html#aad9df9012556e0014d11b2c92d435d89">HW_05::SHAPES::Polygon</a>
+, <a class="el" href="db/d86/classHW__05_1_1SHAPES_1_1Polyline.html#a8edc25dfb20f494aac0b99d92aae18a8">HW_05::SHAPES::Polyline</a>
 </li>
 </ul>
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
+<li>Editor()
+: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#a14dd31ac0d0e21c26f8b089e2a1f7280">HW_05::Editor</a>
+</li>
 <li>Ellipse()
-: <a class="el" href="d4/d42/classHW__05_1_1Ellipse.html#a8dc7f22435840de417a82823fa75e185">HW_05::Ellipse</a>
+: <a class="el" href="db/dbc/classHW__05_1_1SHAPES_1_1Ellipse.html#a12cdf402b4f29d5a9e18309477157670">HW_05::SHAPES::Ellipse</a>
 </li>
 <li>empty()
 : <a class="el" href="d8/d20/classHW__03_1_1CONTAINER_1_1container.html#ab9494b6466553a57bfc5a9c8b9b32826">HW_03::CONTAINER::container&lt; T, _A &gt;</a>
 </li>
-<li>Export_Documents()
-: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#ac9a5fef980605788cad01055ec59df3f">HW_05::Editor</a>
+<li>Export()
+: <a class="el" href="d5/dc8/classHW__05_1_1DATA__STORAGE_1_1cdr.html#a75d8e5cdc82ffbfabe8542a756a15b19">HW_05::DATA_STORAGE::cdr</a>
+, <a class="el" href="d7/d80/classHW__05_1_1DATA__STORAGE_1_1dxf.html#a3b57d4c6f2e754bf31cb3bc115b7e2f0">HW_05::DATA_STORAGE::dxf</a>
+, <a class="el" href="dd/d8c/classHW__05_1_1DATA__STORAGE_1_1File.html#acab1fe94ef5d9a0f9e2107f39dbfc471">HW_05::DATA_STORAGE::File</a>
+, <a class="el" href="dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html#a5f89548d83f11d85077c9a20e206a5db">HW_05::DATA_STORAGE::IFORMAT</a>
+, <a class="el" href="d9/d25/classHW__05_1_1DATA__STORAGE_1_1svg.html#a27c67f2a1b5ce873d86b525eb9d2c92b">HW_05::DATA_STORAGE::svg</a>
+, <a class="el" href="d8/dc8/classHW__05_1_1DATA__STORAGE_1_1vsd.html#ae55268b24e23b861cf7f442799f8cdb8">HW_05::DATA_STORAGE::vsd</a>
 </li>
 </ul>
 
 
 <h3><a id="index_f"></a>- f -</h3><ul>
-<li>file
-: <a class="el" href="df/de8/classHW__05_1_1IFormat.html#aa48e4fb3e8d4eac39b594a1148ead7fb">HW_05::IFormat</a>
+<li>File()
+: <a class="el" href="dd/d8c/classHW__05_1_1DATA__STORAGE_1_1File.html#a0f1dc80757306c0c10ff795d2c4ca29a">HW_05::DATA_STORAGE::File</a>
+</li>
+<li>find()
+: <a class="el" href="d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html#a36c45bafdbbc1c5c69d53336b1e405c9">HW_05::SHAPES::Shapes</a>
 </li>
 </ul>
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
-<li>get()
-: <a class="el" href="db/d54/classHW__05_1_1Elements__Pool.html#ac05dd9889da156ce7dc5f4ea047aab36">HW_05::Elements_Pool</a>
+<li>Get_Color()
+: <a class="el" href="db/dbc/classHW__05_1_1SHAPES_1_1Ellipse.html#aada590e1181a8ff7889e403b7081821b">HW_05::SHAPES::Ellipse</a>
+, <a class="el" href="dc/d1d/classHW__05_1_1SHAPES_1_1IShape.html#a88d7dc2c0a8f5f4a461924230aa7f10b">HW_05::SHAPES::IShape</a>
+, <a class="el" href="d8/deb/classHW__05_1_1SHAPES_1_1Point.html#a55b635fb9ad5ee2cfdda99edf298d326">HW_05::SHAPES::Point</a>
+, <a class="el" href="d2/d59/classHW__05_1_1SHAPES_1_1Polygon.html#ad5268999fcbf1e7152d864a935b70e89">HW_05::SHAPES::Polygon</a>
+, <a class="el" href="db/d86/classHW__05_1_1SHAPES_1_1Polyline.html#af5de84d54931104406378f5230997ccd">HW_05::SHAPES::Polyline</a>
 </li>
 <li>Get_Coordinate()
-: <a class="el" href="d2/d9c/classHW__05_1_1Circle.html#aa5cc5968780ff2c7a23e8a9ddd13f209">HW_05::Circle</a>
-, <a class="el" href="d4/d42/classHW__05_1_1Ellipse.html#a2817f6344b2e64d78fc1724f847b94c2">HW_05::Ellipse</a>
-, <a class="el" href="d8/dd0/classHW__05_1_1IElement.html#aee2e26272fddac81065520c242e213cf">HW_05::IElement</a>
-, <a class="el" href="d6/ddc/classHW__05_1_1Line.html#af3ba3611e081b415c869cda9ff874d2b">HW_05::Line</a>
-, <a class="el" href="d4/d53/structHW__05_1_1Point.html#af9894b7aef6e7f507f190be84c9080a6">HW_05::Point</a>
-, <a class="el" href="dd/d11/classHW__05_1_1Polygon.html#af178ba80e2b294a0cb09d2b9f4b034a5">HW_05::Polygon</a>
-, <a class="el" href="d2/d4c/classHW__05_1_1Polyline.html#a967acad411abc17cd9edf821e271a479">HW_05::Polyline</a>
-, <a class="el" href="d1/df8/classHW__05_1_1Rectangle.html#a1f9dd55d04ce442160a9f241d3bdfec3">HW_05::Rectangle</a>
-, <a class="el" href="d3/df0/classHW__05_1_1Square.html#ab87950a06bf2f69ebc285367367a2a6f">HW_05::Square</a>
+: <a class="el" href="db/dbc/classHW__05_1_1SHAPES_1_1Ellipse.html#adc4220d32f66f618468722ccc47ea5ca">HW_05::SHAPES::Ellipse</a>
+, <a class="el" href="dc/d1d/classHW__05_1_1SHAPES_1_1IShape.html#a2a8bfef42451f6513034fe68efeeea29">HW_05::SHAPES::IShape</a>
+, <a class="el" href="d8/deb/classHW__05_1_1SHAPES_1_1Point.html#a438fab1ebecea6deeae7ef5de6377984">HW_05::SHAPES::Point</a>
+, <a class="el" href="d2/d59/classHW__05_1_1SHAPES_1_1Polygon.html#a0340ae0cda106648f75c3ee911152c73">HW_05::SHAPES::Polygon</a>
+, <a class="el" href="db/d86/classHW__05_1_1SHAPES_1_1Polyline.html#aca0ca887a7265bdf9c1602ad9f4aa3d5">HW_05::SHAPES::Polyline</a>
 </li>
 </ul>
 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
-<li>IFormat()
-: <a class="el" href="df/de8/classHW__05_1_1IFormat.html#a823f0dd760fc01c1df0793413edc13b6">HW_05::IFormat</a>
-</li>
-<li>Import_Documents()
-: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#a5f21b62b951b5974b3b0227d6b64992b">HW_05::Editor</a>
+<li>Import()
+: <a class="el" href="d5/dc8/classHW__05_1_1DATA__STORAGE_1_1cdr.html#a465996c4e7eb3af5656dc66e0282dbc2">HW_05::DATA_STORAGE::cdr</a>
+, <a class="el" href="d7/d80/classHW__05_1_1DATA__STORAGE_1_1dxf.html#af712adeeef87e268e5a4f92b710d4e28">HW_05::DATA_STORAGE::dxf</a>
+, <a class="el" href="dd/d8c/classHW__05_1_1DATA__STORAGE_1_1File.html#a3d6ad12f1fe7649fe349db6acf8df2f7">HW_05::DATA_STORAGE::File</a>
+, <a class="el" href="dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html#a099ff1c5ad39e95003b2846bba25a192">HW_05::DATA_STORAGE::IFORMAT</a>
+, <a class="el" href="d9/d25/classHW__05_1_1DATA__STORAGE_1_1svg.html#a3fcf356e04995f7b8b518ce429593149">HW_05::DATA_STORAGE::svg</a>
+, <a class="el" href="d8/dc8/classHW__05_1_1DATA__STORAGE_1_1vsd.html#a21f665d860af0df8914a0c86dddf0306">HW_05::DATA_STORAGE::vsd</a>
 </li>
 <li>insert()
-: <a class="el" href="db/d54/classHW__05_1_1Elements__Pool.html#a006218294a78d96fa41454f74c49ff42">HW_05::Elements_Pool</a>
+: <a class="el" href="da/def/classHW__05_1_1DOCUMENTS_1_1Docs.html#ad0451f10a5258c715f3956ba71d0294b">HW_05::DOCUMENTS::Docs</a>
+, <a class="el" href="d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html#a7f039d09428e65ecdeb21bbbb42289f9">HW_05::SHAPES::Shapes</a>
 </li>
 <li>IP_Address_Sort()
 : <a class="el" href="dd/d7d/structHW__02_1_1FILTER_1_1IP__Address__Sort.html#a29ddc5756bcb9822ec71ecfdb438cf3e">HW_02::FILTER::IP_Address_Sort</a>
@@ -205,7 +202,10 @@ $(function() {
 
 <h3><a id="index_l"></a>- l -</h3><ul>
 <li>Line()
-: <a class="el" href="d6/ddc/classHW__05_1_1Line.html#a6cdf7d08f2dc7dae4438ab0d3e6c45c1">HW_05::Line</a>
+: <a class="el" href="d3/da0/classHW__05_1_1SHAPES_1_1Line.html#ab18137d2b5e9f87ef2c05b57905e5783">HW_05::SHAPES::Line</a>
+</li>
+<li>Load_Document()
+: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#adab57f30f05e2c961d712c38fc442905">HW_05::Editor</a>
 </li>
 </ul>
 
@@ -246,16 +246,16 @@ $(function() {
 
 <h3><a id="index_p"></a>- p -</h3><ul>
 <li>Point()
-: <a class="el" href="d4/d53/structHW__05_1_1Point.html#a08469101fa34b94d9eada96c206ee651">HW_05::Point</a>
+: <a class="el" href="d8/deb/classHW__05_1_1SHAPES_1_1Point.html#af780b0134f3c4cb86866066e982b893d">HW_05::SHAPES::Point</a>
 </li>
 <li>pointer
 : <a class="el" href="d8/d20/classHW__03_1_1CONTAINER_1_1container.html#abb872e07bc89814af587a667f0d4cef7">HW_03::CONTAINER::container&lt; T, _A &gt;</a>
 </li>
 <li>Polygon()
-: <a class="el" href="dd/d11/classHW__05_1_1Polygon.html#abe62b0cf06450e482dad5bf1f3996575">HW_05::Polygon</a>
+: <a class="el" href="d2/d59/classHW__05_1_1SHAPES_1_1Polygon.html#a78fc13b287ccc09e78eccf0886a8fc00">HW_05::SHAPES::Polygon</a>
 </li>
 <li>Polyline()
-: <a class="el" href="d2/d4c/classHW__05_1_1Polyline.html#a8c4008e803adda203783254bbf80f202">HW_05::Polyline</a>
+: <a class="el" href="db/d86/classHW__05_1_1SHAPES_1_1Polyline.html#a97a1007ba841a6abe5bf3789173182d6">HW_05::SHAPES::Polyline</a>
 </li>
 <li>pop_back()
 : <a class="el" href="d8/d20/classHW__03_1_1CONTAINER_1_1container.html#a9102f44771c905751dad82a983faf6ee">HW_03::CONTAINER::container&lt; T, _A &gt;</a>
@@ -267,48 +267,58 @@ $(function() {
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
-<li>read()
-: <a class="el" href="dc/d03/classHW__05_1_1cdr.html#a6794f08a1e2aeda4ab8e02d80b80b234">HW_05::cdr</a>
-, <a class="el" href="d3/db2/classHW__05_1_1dxf.html#a468ace5b16d02c04eed37f92912c5273">HW_05::dxf</a>
-, <a class="el" href="df/de8/classHW__05_1_1IFormat.html#a6463af26bec5230e5ccb409c61a81e8d">HW_05::IFormat</a>
-, <a class="el" href="d9/da7/classHW__05_1_1svg.html#a06b4e8986d0acac354503203e89f7a89">HW_05::svg</a>
-, <a class="el" href="dd/d24/classHW__05_1_1vsd.html#a6e8f07bcd8560678cdade4abcadecc10">HW_05::vsd</a>
-</li>
 <li>Rectangle()
-: <a class="el" href="d1/df8/classHW__05_1_1Rectangle.html#a32d3006c93614ac872c3d8c8bc097b91">HW_05::Rectangle</a>
+: <a class="el" href="d7/d1b/classHW__05_1_1SHAPES_1_1Rectangle.html#adc39dffb74cef17cc5c55235908d97b4">HW_05::SHAPES::Rectangle</a>
 </li>
 <li>reference
 : <a class="el" href="d8/d20/classHW__03_1_1CONTAINER_1_1container.html#a7c807efff16956f9e6fecb641ea73978">HW_03::CONTAINER::container&lt; T, _A &gt;</a>
 </li>
 <li>remove()
-: <a class="el" href="db/d54/classHW__05_1_1Elements__Pool.html#a47b2cffedab2f6b2065dabbb28e1a6ac">HW_05::Elements_Pool</a>
+: <a class="el" href="d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html#a3f7584082fcb185c44dfb853b54626ec">HW_05::SHAPES::Shapes</a>
+</li>
+<li>replace()
+: <a class="el" href="d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html#a7cae670883ed71148c24227d646717cb">HW_05::SHAPES::Shapes</a>
 </li>
 </ul>
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
-<li>save()
-: <a class="el" href="d0/d9a/classHW__05_1_1Document__Pool.html#a896a7577095fd026fbd2f1fb8dda3936">HW_05::Document_Pool</a>
+<li>Save_Document()
+: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#a77d92cc93ad97fc6d0cd9c03ffa93404">HW_05::Editor</a>
+</li>
+<li>Select()
+: <a class="el" href="db/dbc/classHW__05_1_1SHAPES_1_1Ellipse.html#a43cb8c587c72a2c95481c5d5aec4e41c">HW_05::SHAPES::Ellipse</a>
+, <a class="el" href="dc/d1d/classHW__05_1_1SHAPES_1_1IShape.html#a8e680de51758332b7acb4e5a0c6bc3ab">HW_05::SHAPES::IShape</a>
+, <a class="el" href="d8/deb/classHW__05_1_1SHAPES_1_1Point.html#a147e99d07a7cf68955aa47f9764e4c8e">HW_05::SHAPES::Point</a>
+, <a class="el" href="d2/d59/classHW__05_1_1SHAPES_1_1Polygon.html#ab34c35f83e30081cae1e89736bdf3513">HW_05::SHAPES::Polygon</a>
+, <a class="el" href="db/d86/classHW__05_1_1SHAPES_1_1Polyline.html#a7124371330aa5ca252eece9b91fc806e">HW_05::SHAPES::Polyline</a>
+</li>
+<li>Select_Shape()
+: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#a64cbe9746a44f5f40a006206c303345e">HW_05::Editor</a>
+</li>
+<li>Set_Color()
+: <a class="el" href="db/dbc/classHW__05_1_1SHAPES_1_1Ellipse.html#a1a784508868d8da8dce14c404274b23d">HW_05::SHAPES::Ellipse</a>
+, <a class="el" href="dc/d1d/classHW__05_1_1SHAPES_1_1IShape.html#a1ac9864428cd45b71330dbf34211c169">HW_05::SHAPES::IShape</a>
+, <a class="el" href="d8/deb/classHW__05_1_1SHAPES_1_1Point.html#a8945f34e0f00b33a6d0bc4dc85d46080">HW_05::SHAPES::Point</a>
+, <a class="el" href="d2/d59/classHW__05_1_1SHAPES_1_1Polygon.html#a1b5d94b5f377339308aea97827a6e650">HW_05::SHAPES::Polygon</a>
+, <a class="el" href="db/d86/classHW__05_1_1SHAPES_1_1Polyline.html#ae68b6c8ae4b85b834789091b440c14f6">HW_05::SHAPES::Polyline</a>
+</li>
+<li>Set_Coordinate()
+: <a class="el" href="db/dbc/classHW__05_1_1SHAPES_1_1Ellipse.html#a8093ccae3d0780ed971c68ae5cd8b010">HW_05::SHAPES::Ellipse</a>
+, <a class="el" href="dc/d1d/classHW__05_1_1SHAPES_1_1IShape.html#af83c99d49f17ac1c2ed3c446d46289aa">HW_05::SHAPES::IShape</a>
+, <a class="el" href="d8/deb/classHW__05_1_1SHAPES_1_1Point.html#a329172101c80d9d412ca70e136a72e2f">HW_05::SHAPES::Point</a>
+, <a class="el" href="d2/d59/classHW__05_1_1SHAPES_1_1Polygon.html#a14c1d538d646ba5607c39d2ca752a2fe">HW_05::SHAPES::Polygon</a>
+, <a class="el" href="db/d86/classHW__05_1_1SHAPES_1_1Polyline.html#a922f5fabe40c79b1571a533fb850c7c0">HW_05::SHAPES::Polyline</a>
 </li>
 <li>size()
 : <a class="el" href="d8/d20/classHW__03_1_1CONTAINER_1_1container.html#a3198a406b12847ef644ed5d48728f187">HW_03::CONTAINER::container&lt; T, _A &gt;</a>
-, <a class="el" href="db/d54/classHW__05_1_1Elements__Pool.html#a8bb5c9764de48c061945883ba7cc8ae8">HW_05::Elements_Pool</a>
+, <a class="el" href="d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html#aecba31598cb8c834e6ede6702d4e15e7">HW_05::SHAPES::Shapes</a>
 </li>
 <li>size_type
 : <a class="el" href="d8/d20/classHW__03_1_1CONTAINER_1_1container.html#aae2e841f19dbcf3de8fdfa045e7a9d8c">HW_03::CONTAINER::container&lt; T, _A &gt;</a>
 </li>
 <li>Square()
-: <a class="el" href="d3/df0/classHW__05_1_1Square.html#ae0eb66d995d8ed854c59abe0904fa245">HW_05::Square</a>
-</li>
-<li>svg()
-: <a class="el" href="d9/da7/classHW__05_1_1svg.html#ac67cec96ed51d2eac00b19a005c6268f">HW_05::svg</a>
-</li>
-</ul>
-
-
-<h3><a id="index_t"></a>- t -</h3><ul>
-<li>Type_File
-: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5">HW_05::Editor</a>
+: <a class="el" href="d2/dc5/classHW__05_1_1SHAPES_1_1Square.html#add18d4d9a9c10a1dd8584da3ee4f10ef">HW_05::SHAPES::Square</a>
 </li>
 </ul>
 
@@ -318,19 +328,12 @@ $(function() {
 : <a class="el" href="d7/d54/classHW__03_1_1ALLOCATOR_1_1allocator.html#af37450a4a8b550e12fa526ae4a58b289">HW_03::ALLOCATOR::allocator&lt; T, S &gt;</a>
 , <a class="el" href="d8/d20/classHW__03_1_1CONTAINER_1_1container.html#ae6ad06a9f60b1c2c8fad826c47cf743c">HW_03::CONTAINER::container&lt; T, _A &gt;</a>
 </li>
-<li>vsd()
-: <a class="el" href="dd/d24/classHW__05_1_1vsd.html#a6ed7fea01251d7438cab2bc9e4a32818">HW_05::vsd</a>
-</li>
 </ul>
 
 
-<h3><a id="index_w"></a>- w -</h3><ul>
-<li>write()
-: <a class="el" href="dc/d03/classHW__05_1_1cdr.html#ab70f923e2f81d63c8dde54a68254cc6c">HW_05::cdr</a>
-, <a class="el" href="d3/db2/classHW__05_1_1dxf.html#af7e59e9d6c702cc626de80c05e0d84df">HW_05::dxf</a>
-, <a class="el" href="df/de8/classHW__05_1_1IFormat.html#af0674ec058fc0f1f573e037be44dbb2d">HW_05::IFormat</a>
-, <a class="el" href="d9/da7/classHW__05_1_1svg.html#a51b96d94d30c51f1f7d02bd7c2a43680">HW_05::svg</a>
-, <a class="el" href="dd/d24/classHW__05_1_1vsd.html#a2beca883edd09d4e60704a6f8b72c8f5">HW_05::vsd</a>
+<h3><a id="index_0x7e"></a>- ~ -</h3><ul>
+<li>~Editor()
+: <a class="el" href="da/d3d/classHW__05_1_1Editor.html#a7793b2ea0997358e9c1378d344816dfb">HW_05::Editor</a>
 </li>
 </ul>
 </div><!-- contents -->

@@ -63,7 +63,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../dd/dc6/classHW__05_1_1Editor-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -71,223 +70,191 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html" title="Editor controller. ">Editor</a> controller.  
+ <a href="../../da/d3d/classHW__05_1_1Editor.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../dd/d60/editor_8h_source.html">editor.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:af8209c60989cd90f7690c0449ccfd9e5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5">Type_File</a> : uint8_t { <br />
-&#160;&#160;<a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5a696b031073e74bf2cb98e5ef201d4aa3">Type_File::UNKNOWN</a> = 0, 
-<a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5acd15a75c26008696647b31a3f0de43b3">Type_File::SVG</a> = 1, 
-<a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5a5633ce769142918b330c70f9def43d65">Type_File::VSD</a> = 2, 
-<a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5a95382e19cba08e260c9981e453eda8d0">Type_File::DXF</a> = 3, 
-<br />
-&#160;&#160;<a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5a96e2018b8ce480feee232b6c570aa376">Type_File::CDR</a> = 4, 
-<a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5ae1f2d5134ed2543d38a0de9751cf75d9">Type_File::AUTO</a> = 0xFF
-<br />
- }</td></tr>
-<tr class="separator:af8209c60989cd90f7690c0449ccfd9e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1e16baf3d4e0f27bac8a7ff14ac7d32c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#a1e16baf3d4e0f27bac8a7ff14ac7d32c">Create_Documents</a> ()</td></tr>
-<tr class="separator:a1e16baf3d4e0f27bac8a7ff14ac7d32c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a336b214996396b6c8cce4b4097828d54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#a336b214996396b6c8cce4b4097828d54">Close_Documents</a> (std::string path)</td></tr>
-<tr class="separator:a336b214996396b6c8cce4b4097828d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f21b62b951b5974b3b0227d6b64992b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#a5f21b62b951b5974b3b0227d6b64992b">Import_Documents</a> (std::string path, <a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5">Type_File</a> type=<a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5ae1f2d5134ed2543d38a0de9751cf75d9">Type_File::AUTO</a>)</td></tr>
-<tr class="separator:a5f21b62b951b5974b3b0227d6b64992b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9a5fef980605788cad01055ec59df3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#ac9a5fef980605788cad01055ec59df3f">Export_Documents</a> (std::string path, <a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5">Type_File</a> type=<a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5ae1f2d5134ed2543d38a0de9751cf75d9">Type_File::AUTO</a>)</td></tr>
-<tr class="separator:ac9a5fef980605788cad01055ec59df3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6386d534b02d1f55141d3a0c5f41b4fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d9a/classHW__05_1_1Document__Pool.html">Document_Pool</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#a6386d534b02d1f55141d3a0c5f41b4fe">Draw_Element</a> (std::string path)</td></tr>
-<tr class="separator:a6386d534b02d1f55141d3a0c5f41b4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14dd31ac0d0e21c26f8b089e2a1f7280"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#a14dd31ac0d0e21c26f8b089e2a1f7280">Editor</a> ()</td></tr>
+<tr class="separator:a14dd31ac0d0e21c26f8b089e2a1f7280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7793b2ea0997358e9c1378d344816dfb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#a7793b2ea0997358e9c1378d344816dfb">~Editor</a> ()</td></tr>
+<tr class="separator:a7793b2ea0997358e9c1378d344816dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3e97577a110b1cf9c816bdb8bb7b241"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#aa3e97577a110b1cf9c816bdb8bb7b241">Create_Document</a> ()</td></tr>
+<tr class="separator:aa3e97577a110b1cf9c816bdb8bb7b241"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb94cf929457bd958c7a246c7083f3a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#afb94cf929457bd958c7a246c7083f3a1">Close_Document</a> ()</td></tr>
+<tr class="separator:afb94cf929457bd958c7a246c7083f3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77d92cc93ad97fc6d0cd9c03ffa93404"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#a77d92cc93ad97fc6d0cd9c03ffa93404">Save_Document</a> ()</td></tr>
+<tr class="separator:a77d92cc93ad97fc6d0cd9c03ffa93404"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adab57f30f05e2c961d712c38fc442905"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#adab57f30f05e2c961d712c38fc442905">Load_Document</a> ()</td></tr>
+<tr class="separator:adab57f30f05e2c961d712c38fc442905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae381c8b2448a6d888a4e9d7309bc2cd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#ae381c8b2448a6d888a4e9d7309bc2cd5">Create_Shape</a> ()</td></tr>
+<tr class="separator:ae381c8b2448a6d888a4e9d7309bc2cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3c1f1ee26207d560c54c3e9b9f490c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#ac3c1f1ee26207d560c54c3e9b9f490c7">Delete_Shape</a> ()</td></tr>
+<tr class="separator:ac3c1f1ee26207d560c54c3e9b9f490c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64cbe9746a44f5f40a006206c303345e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#a64cbe9746a44f5f40a006206c303345e">Select_Shape</a> ()</td></tr>
+<tr class="separator:a64cbe9746a44f5f40a006206c303345e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="af8209c60989cd90f7690c0449ccfd9e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8209c60989cd90f7690c0449ccfd9e5">&#9670;&nbsp;</a></span>Type_File</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html" title="Editor controller. ">Editor</a> controller. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a14dd31ac0d0e21c26f8b089e2a1f7280"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14dd31ac0d0e21c26f8b089e2a1f7280">&#9670;&nbsp;</a></span>Editor()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5">HW_05::Editor::Type_File</a> : uint8_t</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af8209c60989cd90f7690c0449ccfd9e5a696b031073e74bf2cb98e5ef201d4aa3"></a>UNKNOWN&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af8209c60989cd90f7690c0449ccfd9e5acd15a75c26008696647b31a3f0de43b3"></a>SVG&#160;</td><td class="fielddoc"><p>Unknown format. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="af8209c60989cd90f7690c0449ccfd9e5a5633ce769142918b330c70f9def43d65"></a>VSD&#160;</td><td class="fielddoc"><p>SVG format. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="af8209c60989cd90f7690c0449ccfd9e5a95382e19cba08e260c9981e453eda8d0"></a>DXF&#160;</td><td class="fielddoc"><p>VSD format. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="af8209c60989cd90f7690c0449ccfd9e5a96e2018b8ce480feee232b6c570aa376"></a>CDR&#160;</td><td class="fielddoc"><p>DXF format. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="af8209c60989cd90f7690c0449ccfd9e5ae1f2d5134ed2543d38a0de9751cf75d9"></a>AUTO&#160;</td><td class="fielddoc"><p>CDR format. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a336b214996396b6c8cce4b4097828d54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a336b214996396b6c8cce4b4097828d54">&#9670;&nbsp;</a></span>Close_Documents()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void HW_05::Editor::Close_Documents </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1e16baf3d4e0f27bac8a7ff14ac7d32c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e16baf3d4e0f27bac8a7ff14ac7d32c">&#9670;&nbsp;</a></span>Create_Documents()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void HW_05::Editor::Create_Documents </td>
+          <td class="memname">HW_05::Editor::Editor </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a6386d534b02d1f55141d3a0c5f41b4fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6386d534b02d1f55141d3a0c5f41b4fe">&#9670;&nbsp;</a></span>Draw_Element()</h2>
+<a id="a7793b2ea0997358e9c1378d344816dfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7793b2ea0997358e9c1378d344816dfb">&#9670;&nbsp;</a></span>~Editor()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d0/d9a/classHW__05_1_1Document__Pool.html">Document_Pool</a>* HW_05::Editor::Draw_Element </td>
+          <td class="memname">HW_05::Editor::~Editor </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ac9a5fef980605788cad01055ec59df3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9a5fef980605788cad01055ec59df3f">&#9670;&nbsp;</a></span>Export_Documents()</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="afb94cf929457bd958c7a246c7083f3a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb94cf929457bd958c7a246c7083f3a1">&#9670;&nbsp;</a></span>Close_Document()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void HW_05::Editor::Export_Documents </td>
+          <td class="memname">void HW_05::Editor::Close_Document </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5">Type_File</a>&#160;</td>
-          <td class="paramname"><em>type</em> = <code><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5ae1f2d5134ed2543d38a0de9751cf75d9">Type_File::AUTO</a></code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a5f21b62b951b5974b3b0227d6b64992b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f21b62b951b5974b3b0227d6b64992b">&#9670;&nbsp;</a></span>Import_Documents()</h2>
+<a id="aa3e97577a110b1cf9c816bdb8bb7b241"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3e97577a110b1cf9c816bdb8bb7b241">&#9670;&nbsp;</a></span>Create_Document()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void HW_05::Editor::Import_Documents </td>
+          <td class="memname">void HW_05::Editor::Create_Document </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5">Type_File</a>&#160;</td>
-          <td class="paramname"><em>type</em> = <code><a class="el" href="../../da/d3d/classHW__05_1_1Editor.html#af8209c60989cd90f7690c0449ccfd9e5ae1f2d5134ed2543d38a0de9751cf75d9">Type_File::AUTO</a></code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae381c8b2448a6d888a4e9d7309bc2cd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae381c8b2448a6d888a4e9d7309bc2cd5">&#9670;&nbsp;</a></span>Create_Shape()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HW_05::Editor::Create_Shape </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3c1f1ee26207d560c54c3e9b9f490c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3c1f1ee26207d560c54c3e9b9f490c7">&#9670;&nbsp;</a></span>Delete_Shape()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HW_05::Editor::Delete_Shape </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adab57f30f05e2c961d712c38fc442905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adab57f30f05e2c961d712c38fc442905">&#9670;&nbsp;</a></span>Load_Document()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HW_05::Editor::Load_Document </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a77d92cc93ad97fc6d0cd9c03ffa93404"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77d92cc93ad97fc6d0cd9c03ffa93404">&#9670;&nbsp;</a></span>Save_Document()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HW_05::Editor::Save_Document </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64cbe9746a44f5f40a006206c303345e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64cbe9746a44f5f40a006206c303345e">&#9670;&nbsp;</a></span>Select_Shape()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HW_05::Editor::Select_Shape </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>hw_05/include/<a class="el" href="../../dd/d60/editor_8h_source.html">editor.h</a></li>
+<li>hw_05/src/<a class="el" href="../../dd/d60/editor_8h_source.html">editor.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
