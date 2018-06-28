@@ -5,8 +5,6 @@
 #include "format/svg.h"
 #include "format/vsd.h"
 
-#include <fstream>
-
 namespace HW_05
 {
 
@@ -20,25 +18,19 @@ namespace DATA_STORAGE
 class File
 {
 public:
-	File(IFORMAT *_format, std::string path);
+	File(std::string path, SHAPES::Shapes *_shapes = nullptr);
 
-	char* Import();
-	char* Export();
+	void Export(std::string &path);
+	void Import(std::string &path);
 
 private:
-	IFORMAT *format;
+	void Load();
+
+private:
+	SHAPES::Shapes *shapes;
+
+	std::unique_ptr<IFORMAT> format;
 	std::fstream file_socket;
-};
-
-/*!
-\brief DB controller
-\details Save and load into network
-*/
-class Network
-{
-public:
-
-private:
 };
 
 }

@@ -19,36 +19,38 @@ set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 
 set(HEADER_FILES
     ${SOURCE_PATH}/editor.h 
-    ${SOURCE_PATH}/docs/canvas.h 
     ${SOURCE_PATH}/docs/docs.h 
-    ${SOURCE_PATH}/docs/shapes/elements/ishapes.h 
-    ${SOURCE_PATH}/docs/shapes/elements/points.h 
-    ${SOURCE_PATH}/docs/shapes/elements/lines.h 
-    ${SOURCE_PATH}/docs/shapes/elements/polygons.h 
-    ${SOURCE_PATH}/docs/shapes/elements/circles.h 
-    ${SOURCE_PATH}/docs/shapes/shapes.h 
-    ${SOURCE_PATH}/docs/data/file.h 
-    ${SOURCE_PATH}/docs/data/format/cdr.h
-    ${SOURCE_PATH}/docs/data/format/dxf.h
-    ${SOURCE_PATH}/docs/data/format/ifile.h
-    ${SOURCE_PATH}/docs/data/format/svg.h
-    ${SOURCE_PATH}/docs/data/format/vsd.h
+    ${SOURCE_PATH}/docs/canvas/canvas.h 
+    ${SOURCE_PATH}/docs/canvas/loader.h 
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/ishape.h 
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/points.h 
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/lines.h 
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/polygons.h 
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/circles.h 
+    ${SOURCE_PATH}/docs/canvas/shapes/shapes.h 
+    ${SOURCE_PATH}/docs/canvas/data/file.h 
+    ${SOURCE_PATH}/docs/canvas/data/format/cdr.h
+    ${SOURCE_PATH}/docs/canvas/data/format/dxf.h
+    ${SOURCE_PATH}/docs/canvas/data/format/iformat.h
+    ${SOURCE_PATH}/docs/canvas/data/format/svg.h
+    ${SOURCE_PATH}/docs/canvas/data/format/vsd.h
 )
 
 set(SOURCE_FILES 
     ${SOURCE_PATH}/editor.cpp 
-    ${SOURCE_PATH}/docs/canvas.cpp 
     ${SOURCE_PATH}/docs/docs.cpp 
-    ${SOURCE_PATH}/docs/shapes/elements/points.cpp
-    ${SOURCE_PATH}/docs/shapes/elements/lines.cpp
-    ${SOURCE_PATH}/docs/shapes/elements/polygons.cpp 
-    ${SOURCE_PATH}/docs/shapes/elements/circles.cpp
-    ${SOURCE_PATH}/docs/shapes/shapes.cpp
-    ${SOURCE_PATH}/docs/data/file.cpp 
-    ${SOURCE_PATH}/docs/data/format/cdr.cpp
-    ${SOURCE_PATH}/docs/data/format/dxf.cpp
-    ${SOURCE_PATH}/docs/data/format/svg.cpp
-    ${SOURCE_PATH}/docs/data/format/vsd.cpp
+    ${SOURCE_PATH}/docs/canvas/canvas.cpp 
+    ${SOURCE_PATH}/docs/canvas/loader.cpp 
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/points.cpp
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/lines.cpp
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/polygons.cpp 
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/circles.cpp
+    ${SOURCE_PATH}/docs/canvas/shapes/shapes.cpp
+    ${SOURCE_PATH}/docs/canvas/data/file.cpp 
+    ${SOURCE_PATH}/docs/canvas/data/format/cdr.cpp
+    ${SOURCE_PATH}/docs/canvas/data/format/dxf.cpp
+    ${SOURCE_PATH}/docs/canvas/data/format/svg.cpp
+    ${SOURCE_PATH}/docs/canvas/data/format/vsd.cpp
 )
 
 add_executable(simple_uml ${SOURCE_PATH}/main.cpp ${HEADER_FILES} ${SOURCE_FILES})
@@ -57,7 +59,7 @@ add_library(version_lib STATIC IMPORTED)
 set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${HEADER_VERSION_PATH}/build/libhelloworld_lib.a)
 #set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/../build/hw_01/libhelloworld_lib.a)
 
-target_include_directories(simple_uml PRIVATE ${HEADER_PATH} ${HEADER_VERSION_PATH}/include)
+target_include_directories(simple_uml PRIVATE ${HEADER_PATH} ${HEADER_VERSION_PATH}/include ${SOURCE_PATH}/docs/canvas/shapes)
 
 set_target_properties(simple_uml version_lib PROPERTIES
   CXX_STANDARD 14

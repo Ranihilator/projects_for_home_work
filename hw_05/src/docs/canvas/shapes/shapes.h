@@ -1,6 +1,5 @@
 #pragma once
 
-#include "elements/ishapes.h"
 #include "elements/points.h"
 #include "elements/lines.h"
 #include "elements/polygons.h"
@@ -21,7 +20,7 @@ namespace SHAPES
 class Shapes
 {
 public:
-	void insert(IShape *shape);
+	void insert(std::unique_ptr<IShape> shape);
 	void replace(uint64_t ID, IShape *shape);
 	void replace(Coordinate_XY coordinate, IShape *shape);
 

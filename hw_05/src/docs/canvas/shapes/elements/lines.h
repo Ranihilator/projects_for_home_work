@@ -1,6 +1,7 @@
 #pragma once
 
-#include "ishapes.h"
+#include "ishape.h"
+#include "points.h"
 
 namespace HW_05
 {
@@ -8,12 +9,11 @@ namespace HW_05
 namespace SHAPES
 {
 
-class Point:
+class Polyline:
 	public IShape
 {
 public:
-	Point();
-	Point(Coordinate_XY _coordinate, Color_RGB _color);
+	Polyline(std::initializer_list<Coordinate_XY> args, Color_RGB _color);
 
 	Coordinate_XY Get_Coordinate() const override;
 	Color_RGB Get_Color() const override;
@@ -25,8 +25,16 @@ public:
 	void Draw() override;
 
 private:
-	Coordinate_XY coordinate;
+	std::vector<Coordinate_XY> polyline;
 	Color_RGB color;
+};
+
+class Line:
+	public Polyline
+{
+public:
+	Line();
+	Line(Coordinate_XY point_1, Coordinate_XY point_2, Color_RGB _color);
 };
 
 }

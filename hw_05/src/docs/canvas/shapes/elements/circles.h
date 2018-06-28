@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ishapes.h"
+#include "ishape.h"
 #include "points.h"
 
 namespace HW_05
@@ -9,12 +9,12 @@ namespace HW_05
 namespace SHAPES
 {
 
-class Polygon:
+class Ellipse:
 	public IShape
 {
 public:
-	Polygon();
-	Polygon(std::initializer_list<Coordinate_XY> args, Color_RGB _color);
+	Ellipse();
+	Ellipse(Coordinate_XY left, Coordinate_XY right, Coordinate_XY up, Coordinate_XY down, Color_RGB _color);
 
 	Coordinate_XY Get_Coordinate() const override;
 	Color_RGB Get_Color() const override;
@@ -26,24 +26,20 @@ public:
 	void Draw() override;
 
 private:
-	std::vector<Coordinate_XY> polygon;
+	std::vector<Coordinate_XY> ellipse;
 	Color_RGB color;
 };
 
-class Rectangle:
-	public Polygon
-{
-public:
-	Rectangle();
-	Rectangle(Coordinate_XY down_left_cornet, Coordinate_XY up_right_cornet);
-};
 
-class Square :
-	public Polygon
+class Circle:
+	public Ellipse
 {
 public:
-	Square();
-	Square(Coordinate_XY down_left_corner, int64_t size);
+	Circle();
+	Circle(Coordinate_XY center, int64_t radius, Color_RGB _color);
+
+private:
+	Ellipse circle;
 };
 
 }

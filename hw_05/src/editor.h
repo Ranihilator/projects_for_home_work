@@ -8,21 +8,29 @@ namespace HW_05
 /*!
 \brief Editor controller
 */
-class Editor
+class Editor:
+	private DOCUMENTS::Docs
 {
 public:
-	Editor();
-	~Editor();
+	void Create_Document(std::string name);
+	void Close_Document(std::string name);
 
-	void Create_Document();
-	void Close_Document();
+	void Save_Document(std::string name, std::string path);
+	void Load_Document(std::string name, std::string path);
 
-	void Save_Document();
-	void Load_Document();
+	void Select_Workspace(std::string name);
 
-	void Create_Shape();
-	void Delete_Shape();
-	void Select_Shape();
+	void Create_Shape(std::unique_ptr<SHAPES::IShape> _shape);
+	void Create_Shape(std::string name, std::unique_ptr<SHAPES::IShape> _shape);
+
+	void Delete_Shape(SHAPES::Coordinate_XY _coordinate);
+	void Delete_Shape(std::string name, SHAPES::Coordinate_XY _coordinate);
+
+	SHAPES::IShape* Select_Shape(SHAPES::Coordinate_XY _coordinate);
+	SHAPES::IShape* Select_Shape(std::string name, SHAPES::Coordinate_XY _coordinate);
+
+private:
+	DOCUMENTS::Canvas* Current_Workspace = nullptr;
 };
 
 }
