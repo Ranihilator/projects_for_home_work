@@ -1,9 +1,22 @@
-<map id="hw_05/src/docs/shapes/shapes.h" name="hw_05/src/docs/shapes/shapes.h">
-<area shape="rect" id="node2" href="$d4/dcf/canvas_8h.html" title="hw_05/src/docs/canvas.h" alt="" coords="109,104,280,131"/>
-<area shape="rect" id="node8" href="$d5/dcc/shapes_8cpp.html" title="hw_05/src/docs/shapes\l/shapes.cpp" alt="" coords="304,97,463,138"/>
-<area shape="rect" id="node3" href="$d0/dc2/canvas_8cpp.html" title="hw_05/src/docs/canvas.cpp" alt="" coords="5,187,189,213"/>
-<area shape="rect" id="node4" href="$d7/d3c/docs_8h.html" title="hw_05/src/docs/docs.h" alt="" coords="215,187,372,213"/>
-<area shape="rect" id="node5" href="$dd/d60/editor_8h.html" title="hw_05/src/editor.h" alt="" coords="229,261,357,288"/>
-<area shape="rect" id="node6" href="$d1/d1f/editor_8cpp.html" title="hw_05/src/editor.cpp" alt="" coords="139,336,281,363"/>
-<area shape="rect" id="node7" href="$d5/d13/hw__05_2src_2main_8cpp.html" title="Create UML diagram from simple vector graph editor. " alt="" coords="307,336,445,363"/>
+<map id="hw_05/src/docs/canvas/shapes/shapes.h" name="hw_05/src/docs/canvas/shapes/shapes.h">
+<area shape="rect" id="node2" href="$d4/dcf/canvas_8h.html" title="hw_05/src/docs/canvas\l/canvas.h" alt="" coords="96,369,255,410"/>
+<area shape="rect" id="node9" href="$d1/d3b/iformat_8h.html" title="hw_05/src/docs/canvas\l/data/format/iformat.h" alt="" coords="615,97,773,138"/>
+<area shape="rect" id="node13" href="$db/db8/loader_8h.html" title="hw_05/src/docs/canvas\l/loader.h" alt="" coords="765,369,924,410"/>
+<area shape="rect" id="node21" href="$d5/dcc/shapes_8cpp.html" title="hw_05/src/docs/canvas\l/shapes/shapes.cpp" alt="" coords="1033,97,1192,138"/>
+<area shape="rect" id="node3" href="$d0/dc2/canvas_8cpp.html" title="hw_05/src/docs/canvas\l/canvas.cpp" alt="" coords="5,459,164,501"/>
+<area shape="rect" id="node4" href="$d7/d3c/docs_8h.html" title="hw_05/src/docs/docs.h" alt="" coords="189,467,347,493"/>
+<area shape="rect" id="node5" href="$d8/d83/docs_8cpp.html" title="hw_05/src/docs/docs.cpp" alt="" coords="96,549,267,576"/>
+<area shape="rect" id="node6" href="$dd/d60/editor_8h.html" title="hw_05/src/editor.h" alt="" coords="291,549,420,576"/>
+<area shape="rect" id="node7" href="$d1/d1f/editor_8cpp.html" title="hw_05/src/editor.cpp" alt="" coords="202,624,344,651"/>
+<area shape="rect" id="node8" href="$d5/d13/hw__05_2src_2main_8cpp.html" title="Create UML diagram from simple vector graph editor. " alt="" coords="369,624,508,651"/>
+<area shape="rect" id="node10" href="$dc/d07/cdr_8h.html" title="hw_05/src/docs/canvas\l/data/format/cdr.h" alt="" coords="615,187,773,229"/>
+<area shape="rect" id="node15" href="$d0/d56/dxf_8h.html" title="hw_05/src/docs/canvas\l/data/format/dxf.h" alt="" coords="799,187,957,229"/>
+<area shape="rect" id="node17" href="$de/d97/svg_8h.html" title="hw_05/src/docs/canvas\l/data/format/svg.h" alt="" coords="247,187,405,229"/>
+<area shape="rect" id="node19" href="$d7/de0/vsd_8h.html" title="hw_05/src/docs/canvas\l/data/format/vsd.h" alt="" coords="431,187,589,229"/>
+<area shape="rect" id="node11" href="$d2/d4d/file_8h.html" title="hw_05/src/docs/canvas\l/data/file.h" alt="" coords="431,278,589,319"/>
+<area shape="rect" id="node14" href="$dc/dbb/cdr_8cpp.html" title="hw_05/src/docs/canvas\l/data/format/cdr.cpp" alt="" coords="615,278,773,319"/>
+<area shape="rect" id="node12" href="$df/dd5/file_8cpp.html" title="hw_05/src/docs/canvas\l/data/file.cpp" alt="" coords="431,369,589,410"/>
+<area shape="rect" id="node16" href="$da/d83/dxf_8cpp.html" title="hw_05/src/docs/canvas\l/data/format/dxf.cpp" alt="" coords="799,278,957,319"/>
+<area shape="rect" id="node18" href="$d4/d0e/svg_8cpp.html" title="hw_05/src/docs/canvas\l/data/format/svg.cpp" alt="" coords="63,278,221,319"/>
+<area shape="rect" id="node20" href="$d1/d4e/vsd_8cpp.html" title="hw_05/src/docs/canvas\l/data/format/vsd.cpp" alt="" coords="247,278,405,319"/>
 </map>

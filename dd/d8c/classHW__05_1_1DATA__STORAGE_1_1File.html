@@ -77,19 +77,19 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0f1dc80757306c0c10ff795d2c4ca29a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d8c/classHW__05_1_1DATA__STORAGE_1_1File.html#a0f1dc80757306c0c10ff795d2c4ca29a">File</a> (<a class="el" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html">IFORMAT</a> *_format, std::string path)</td></tr>
-<tr class="separator:a0f1dc80757306c0c10ff795d2c4ca29a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d6ad12f1fe7649fe349db6acf8df2f7"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d8c/classHW__05_1_1DATA__STORAGE_1_1File.html#a3d6ad12f1fe7649fe349db6acf8df2f7">Import</a> ()</td></tr>
-<tr class="separator:a3d6ad12f1fe7649fe349db6acf8df2f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acab1fe94ef5d9a0f9e2107f39dbfc471"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d8c/classHW__05_1_1DATA__STORAGE_1_1File.html#acab1fe94ef5d9a0f9e2107f39dbfc471">Export</a> ()</td></tr>
-<tr class="separator:acab1fe94ef5d9a0f9e2107f39dbfc471"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a737dd85ebc862486949f8250e715c7df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d8c/classHW__05_1_1DATA__STORAGE_1_1File.html#a737dd85ebc862486949f8250e715c7df">File</a> (std::string path, <a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html">SHAPES::Shapes</a> *_shapes=nullptr)</td></tr>
+<tr class="separator:a737dd85ebc862486949f8250e715c7df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05d406e7f248424c0b2d6349c20d0e2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d8c/classHW__05_1_1DATA__STORAGE_1_1File.html#a05d406e7f248424c0b2d6349c20d0e2f">Export</a> (std::string &amp;path)</td></tr>
+<tr class="separator:a05d406e7f248424c0b2d6349c20d0e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4040071a882098f008e22604d9ee7a72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d8c/classHW__05_1_1DATA__STORAGE_1_1File.html#a4040071a882098f008e22604d9ee7a72">Import</a> (std::string &amp;path)</td></tr>
+<tr class="separator:a4040071a882098f008e22604d9ee7a72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="../../dd/d8c/classHW__05_1_1DATA__STORAGE_1_1File.html" title="File controller. ">File</a> controller. </p>
 <p>Save and load into file system </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0f1dc80757306c0c10ff795d2c4ca29a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f1dc80757306c0c10ff795d2c4ca29a">&#9670;&nbsp;</a></span>File()</h2>
+<a id="a737dd85ebc862486949f8250e715c7df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a737dd85ebc862486949f8250e715c7df">&#9670;&nbsp;</a></span>File()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -97,14 +97,14 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">HW_05::DATA_STORAGE::File::File </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html">IFORMAT</a> *&#160;</td>
-          <td class="paramname"><em>_format</em>, </td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>path</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html">SHAPES::Shapes</a> *&#160;</td>
+          <td class="paramname"><em>_shapes</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -117,16 +117,17 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="acab1fe94ef5d9a0f9e2107f39dbfc471"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acab1fe94ef5d9a0f9e2107f39dbfc471">&#9670;&nbsp;</a></span>Export()</h2>
+<a id="a05d406e7f248424c0b2d6349c20d0e2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05d406e7f248424c0b2d6349c20d0e2f">&#9670;&nbsp;</a></span>Export()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char * HW_05::DATA_STORAGE::File::Export </td>
+          <td class="memname">void HW_05::DATA_STORAGE::File::Export </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -134,16 +135,17 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3d6ad12f1fe7649fe349db6acf8df2f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d6ad12f1fe7649fe349db6acf8df2f7">&#9670;&nbsp;</a></span>Import()</h2>
+<a id="a4040071a882098f008e22604d9ee7a72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4040071a882098f008e22604d9ee7a72">&#9670;&nbsp;</a></span>Import()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char * HW_05::DATA_STORAGE::File::Import </td>
+          <td class="memname">void HW_05::DATA_STORAGE::File::Import </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -152,8 +154,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>hw_05/src/docs/data/<a class="el" href="../../d2/d4d/file_8h_source.html">file.h</a></li>
-<li>hw_05/src/docs/data/<a class="el" href="../../df/dd5/file_8cpp.html">file.cpp</a></li>
+<li>hw_05/src/docs/canvas/data/<a class="el" href="../../d2/d4d/file_8h_source.html">file.h</a></li>
+<li>hw_05/src/docs/canvas/data/<a class="el" href="../../df/dd5/file_8cpp.html">file.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

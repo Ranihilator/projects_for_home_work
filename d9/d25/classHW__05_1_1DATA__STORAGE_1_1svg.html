@@ -90,14 +90,35 @@ Collaboration diagram for HW_05::DATA_STORAGE::svg:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3fcf356e04995f7b8b518ce429593149"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d25/classHW__05_1_1DATA__STORAGE_1_1svg.html#a3fcf356e04995f7b8b518ce429593149">Import</a> (std::string path)</td></tr>
-<tr class="separator:a3fcf356e04995f7b8b518ce429593149"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27c67f2a1b5ce873d86b525eb9d2c92b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d25/classHW__05_1_1DATA__STORAGE_1_1svg.html#a27c67f2a1b5ce873d86b525eb9d2c92b">Export</a> (std::string path, std::string data)</td></tr>
-<tr class="separator:a27c67f2a1b5ce873d86b525eb9d2c92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd0025f9d951cc15726376d15ac9f91a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d25/classHW__05_1_1DATA__STORAGE_1_1svg.html#acd0025f9d951cc15726376d15ac9f91a">svg</a> (std::fstream &amp;_file)</td></tr>
+<tr class="separator:acd0025f9d951cc15726376d15ac9f91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae83274c46c5751ea25f7312399dc7f64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d25/classHW__05_1_1DATA__STORAGE_1_1svg.html#ae83274c46c5751ea25f7312399dc7f64">Import</a> (<a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html">SHAPES::Shapes</a> *shape)</td></tr>
+<tr class="separator:ae83274c46c5751ea25f7312399dc7f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32edd4b398a69b3bcb516d8a1b4bf1c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d25/classHW__05_1_1DATA__STORAGE_1_1svg.html#a32edd4b398a69b3bcb516d8a1b4bf1c3">Export</a> (<a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html">SHAPES::Shapes</a> *shape)</td></tr>
+<tr class="separator:a32edd4b398a69b3bcb516d8a1b4bf1c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="acd0025f9d951cc15726376d15ac9f91a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd0025f9d951cc15726376d15ac9f91a">&#9670;&nbsp;</a></span>svg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HW_05::DATA_STORAGE::svg::svg </td>
+          <td>(</td>
+          <td class="paramtype">std::fstream &amp;&#160;</td>
+          <td class="paramname"><em>_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a27c67f2a1b5ce873d86b525eb9d2c92b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27c67f2a1b5ce873d86b525eb9d2c92b">&#9670;&nbsp;</a></span>Export()</h2>
+<a id="a32edd4b398a69b3bcb516d8a1b4bf1c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32edd4b398a69b3bcb516d8a1b4bf1c3">&#9670;&nbsp;</a></span>Export()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -108,19 +129,9 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void HW_05::DATA_STORAGE::svg::Export </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html">SHAPES::Shapes</a> *&#160;</td>
+          <td class="paramname"><em>shape</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -130,12 +141,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html#a5f89548d83f11d85077c9a20e206a5db">HW_05::DATA_STORAGE::IFORMAT</a>.</p>
+<p>Implements <a class="el" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html#a31935663c73fe5b226f74dcd616d1ef9">HW_05::DATA_STORAGE::IFORMAT</a>.</p>
 
 </div>
 </div>
-<a id="a3fcf356e04995f7b8b518ce429593149"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fcf356e04995f7b8b518ce429593149">&#9670;&nbsp;</a></span>Import()</h2>
+<a id="ae83274c46c5751ea25f7312399dc7f64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae83274c46c5751ea25f7312399dc7f64">&#9670;&nbsp;</a></span>Import()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,10 +155,10 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string HW_05::DATA_STORAGE::svg::Import </td>
+          <td class="memname">void HW_05::DATA_STORAGE::svg::Import </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html">SHAPES::Shapes</a> *&#160;</td>
+          <td class="paramname"><em>shape</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -158,13 +169,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html#a099ff1c5ad39e95003b2846bba25a192">HW_05::DATA_STORAGE::IFORMAT</a>.</p>
+<p>Implements <a class="el" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html#ae730aaf92954b47f425c52d31558a082">HW_05::DATA_STORAGE::IFORMAT</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>hw_05/src/docs/data/format/<a class="el" href="../../de/d97/svg_8h_source.html">svg.h</a></li>
-<li>hw_05/src/docs/data/format/<a class="el" href="../../d4/d0e/svg_8cpp.html">svg.cpp</a></li>
+<li>hw_05/src/docs/canvas/data/format/<a class="el" href="../../de/d97/svg_8h_source.html">svg.h</a></li>
+<li>hw_05/src/docs/canvas/data/format/<a class="el" href="../../d4/d0e/svg_8cpp.html">svg.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

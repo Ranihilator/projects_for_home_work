@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Home Works: hw_05/src/docs/canvas.cpp File Reference</title>
+<title>Home Works: hw_05/src/docs/canvas/canvas.cpp File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -58,10 +58,12 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="../../dir_4e7c75eebff2933f1a8f009e56c47920.html">hw_05</a></li><li class="navelem"><a class="el" href="../../dir_087a405cf7aeef73018909e2a95f2fdc.html">src</a></li><li class="navelem"><a class="el" href="../../dir_61c242ae24c260ed19fdd2172616e57f.html">docs</a></li>  </ul>
+<li class="navelem"><a class="el" href="../../dir_4e7c75eebff2933f1a8f009e56c47920.html">hw_05</a></li><li class="navelem"><a class="el" href="../../dir_087a405cf7aeef73018909e2a95f2fdc.html">src</a></li><li class="navelem"><a class="el" href="../../dir_61c242ae24c260ed19fdd2172616e57f.html">docs</a></li><li class="navelem"><a class="el" href="../../dir_9056b4e1551ceb951d943036586eafe7.html">canvas</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">canvas.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -70,24 +72,32 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for canvas.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d4/de3/canvas_8cpp__incl.png" border="0" usemap="#hw__05_2src_2docs_2canvas_8cpp" alt=""/></div>
-<map name="hw__05_2src_2docs_2canvas_8cpp" id="hw__05_2src_2docs_2canvas_8cpp">
-<area shape="rect" id="node2" href="../../d4/dcf/canvas_8h.html" title="canvas.h" alt="" coords="708,80,781,107"/>
-<area shape="rect" id="node3" href="../../d1/d39/shapes_8h.html" title="shapes/shapes.h" alt="" coords="418,155,539,181"/>
-<area shape="rect" id="node14" href="../../d2/d4d/file_8h.html" title="data/file.h" alt="" coords="914,155,992,181"/>
-<area shape="rect" id="node4" href="../../d9/dc6/ishapes_8h.html" title="elements/ishapes.h" alt="" coords="275,379,409,405"/>
-<area shape="rect" id="node8" href="../../da/d43/points_8h.html" title="elements/points.h" alt="" coords="180,304,305,331"/>
-<area shape="rect" id="node9" href="../../d2/d39/lines_8h.html" title="elements/lines.h" alt="" coords="208,229,324,256"/>
-<area shape="rect" id="node10" href="../../d0/da3/polygons_8h.html" title="elements/polygons.h" alt="" coords="349,229,491,256"/>
-<area shape="rect" id="node11" href="../../d7/d79/circles_8h.html" title="elements/circles.h" alt="" coords="5,229,133,256"/>
-<area shape="rect" id="node15" href="../../dc/d07/cdr_8h.html" title="format/cdr.h" alt="" coords="1177,229,1268,256"/>
-<area shape="rect" id="node18" href="../../d0/d56/dxf_8h.html" title="format/dxf.h" alt="" coords="731,229,823,256"/>
-<area shape="rect" id="node19" href="../../de/d97/svg_8h.html" title="format/svg.h" alt="" coords="847,229,941,256"/>
-<area shape="rect" id="node20" href="../../d7/de0/vsd_8h.html" title="format/vsd.h" alt="" coords="966,229,1060,256"/>
-<area shape="rect" id="node16" href="../../d6/db8/ifile_8h.html" title="ifile.h" alt="" coords="927,304,980,331"/>
+<div class="center"><img src="../../d4/de3/canvas_8cpp__incl.png" border="0" usemap="#hw__05_2src_2docs_2canvas_2canvas_8cpp" alt=""/></div>
+<map name="hw__05_2src_2docs_2canvas_2canvas_8cpp" id="hw__05_2src_2docs_2canvas_2canvas_8cpp">
+<area shape="rect" id="node2" href="../../d4/dcf/canvas_8h.html" title="canvas.h" alt="" coords="392,96,465,123"/>
+<area shape="rect" id="node3" href="../../d1/d39/shapes_8h.html" title="shapes/shapes.h" alt="" coords="289,395,409,421"/>
+<area shape="rect" id="node14" href="../../d2/d4d/file_8h.html" title="data/file.h" alt="" coords="493,171,571,197"/>
+<area shape="rect" id="node4" href="../../da/d43/points_8h.html" title="elements/points.h" alt="" coords="107,544,232,571"/>
+<area shape="rect" id="node9" href="../../d2/d39/lines_8h.html" title="elements/lines.h" alt="" coords="5,469,121,496"/>
+<area shape="rect" id="node10" href="../../d0/da3/polygons_8h.html" title="elements/polygons.h" alt="" coords="198,469,340,496"/>
+<area shape="rect" id="node11" href="../../d7/d79/circles_8h.html" title="elements/circles.h" alt="" coords="365,469,493,496"/>
+<area shape="rect" id="node5" href="../../d5/d0d/ishape_8h.html" title="ishape.h" alt="" coords="183,619,253,645"/>
+<area shape="rect" id="node15" href="../../dc/d07/cdr_8h.html" title="format/cdr.h" alt="" coords="603,245,695,272"/>
+<area shape="rect" id="node19" href="../../d0/d56/dxf_8h.html" title="format/dxf.h" alt="" coords="719,245,811,272"/>
+<area shape="rect" id="node20" href="../../de/d97/svg_8h.html" title="format/svg.h" alt="" coords="366,245,460,272"/>
+<area shape="rect" id="node21" href="../../d7/de0/vsd_8h.html" title="format/vsd.h" alt="" coords="485,245,579,272"/>
+<area shape="rect" id="node16" href="../../d1/d3b/iformat_8h.html" title="iformat.h" alt="" coords="495,320,568,347"/>
 </map>
 </div>
-</div></div><!-- contents -->
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:da/dd2/namespaceHW__05"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd2/namespaceHW__05.html">HW_05</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:de/d1e/namespaceHW__05_1_1DOCUMENTS"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d1e/namespaceHW__05_1_1DOCUMENTS.html">HW_05::DOCUMENTS</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
