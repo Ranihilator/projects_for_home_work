@@ -40,20 +40,26 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 
-	SHAPES::Point point;
-	/*Editor editor;
+	Editor editor;
 
-	editor.Create_Documents();
-	editor.Export_Documents("unamed");
-	editor.Close_Documents("unamed");
+	editor.Create_Document("new");
+	editor.Save_Document("new", "new.cdr");
+	editor.Close_Document("new");
 
-        editor.Import_Documents("path");
+	editor.Create_Document("new1");
+	editor.Select_Workspace("new1");
+	editor.Create_Shape(std::unique_ptr<SHAPES::IShape>(new SHAPES::Point()));
 
-        editor.Draw_Element("path")->Draw_Point(5, 5);
-        editor.Draw_Element("path")->Draw_Circle(5, 5, 5);
+	SHAPES::IShape* ptr = editor.Select_Shape({0,0});
+	ptr->Set_Color(SHAPES::Color_RGB(126,0,0));
+	editor.Save_Document("new1", "new1.cdr");
 
-        editor.Close_Documents("path");
-*/
-        return 0;
+	editor.Delete_Shape({0,0});
+	editor.Close_Document("new1");
+
+	editor.Load_Document("new2", "new.cdr");
+	editor.Close_Document("new2");
+
+	return 0;
 }
 

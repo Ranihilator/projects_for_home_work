@@ -21,7 +21,6 @@ set(HEADER_FILES
     ${SOURCE_PATH}/editor.h 
     ${SOURCE_PATH}/docs/docs.h 
     ${SOURCE_PATH}/docs/canvas/canvas.h 
-    ${SOURCE_PATH}/docs/canvas/loader.h 
     ${SOURCE_PATH}/docs/canvas/shapes/elements/ishape.h 
     ${SOURCE_PATH}/docs/canvas/shapes/elements/points.h 
     ${SOURCE_PATH}/docs/canvas/shapes/elements/lines.h 
@@ -40,7 +39,6 @@ set(SOURCE_FILES
     ${SOURCE_PATH}/editor.cpp 
     ${SOURCE_PATH}/docs/docs.cpp 
     ${SOURCE_PATH}/docs/canvas/canvas.cpp 
-    ${SOURCE_PATH}/docs/canvas/loader.cpp 
     ${SOURCE_PATH}/docs/canvas/shapes/elements/points.cpp
     ${SOURCE_PATH}/docs/canvas/shapes/elements/lines.cpp
     ${SOURCE_PATH}/docs/canvas/shapes/elements/polygons.cpp 
