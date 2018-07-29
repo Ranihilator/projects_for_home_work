@@ -17,6 +17,7 @@ void Canvas::Export(std::string path)
 
 void Canvas::Import(std::string path)
 {
+	this->clear();
 	this->file.Import(path);
 }
 

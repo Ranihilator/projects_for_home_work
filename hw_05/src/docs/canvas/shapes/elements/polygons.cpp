@@ -76,23 +76,20 @@ bool Polygon::Select(Coordinate_XY _coordinate) const
 	return false;
 }
 
-void Polygon::Draw()
-{}
-
 
 
 Rectangle::Rectangle():
 	Polygon()
 {}
 
-Rectangle::Rectangle(Coordinate_XY down_left_cornet, Coordinate_XY up_right_cornet):
+Rectangle::Rectangle(Coordinate_XY down_left_cornet, Coordinate_XY up_right_cornet, Color_RGB _color):
 	Polygon
 	({
 		down_left_cornet,
 		Coordinate_XY(std::get<0>(up_right_cornet), 0),
 		up_right_cornet,
 		Coordinate_XY(0, std::get<1>(down_left_cornet))
-	}, Default_Color)
+	}, _color)
 {}
 
 
@@ -100,12 +97,12 @@ Rectangle::Rectangle(Coordinate_XY down_left_cornet, Coordinate_XY up_right_corn
 Square::Square()
 {}
 
-Square::Square(Coordinate_XY down_left_corner, int64_t size):
+Square::Square(Coordinate_XY down_left_corner, int64_t size, Color_RGB _color):
 	Polygon
 	({
 		down_left_corner,
 		Coordinate_XY(std::get<0>(down_left_corner) + size, std::get<0>(down_left_corner) + size)
-	}, Default_Color)
+	}, _color)
 {}
 
 }
