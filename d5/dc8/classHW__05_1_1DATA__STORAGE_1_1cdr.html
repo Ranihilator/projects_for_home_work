@@ -76,7 +76,7 @@ Inheritance diagram for HW_05::DATA_STORAGE::cdr:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d59/classHW__05_1_1DATA__STORAGE_1_1cdr__inherit__graph.png" border="0" usemap="#HW__05_1_1DATA__STORAGE_1_1cdr_inherit__map" alt="Inheritance graph"/></div>
 <map name="HW__05_1_1DATA__STORAGE_1_1cdr_inherit__map" id="HW__05_1_1DATA__STORAGE_1_1cdr_inherit__map">
-<area shape="rect" id="node2" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html" title="HW_05::DATA_STORAGE\l::IFORMAT" alt="" coords="18,6,200,47"/>
+<area shape="rect" id="node2" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html" title="IFORMAT Polymorphism class. " alt="" coords="18,6,200,47"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -84,17 +84,20 @@ Collaboration diagram for HW_05::DATA_STORAGE::cdr:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d77/classHW__05_1_1DATA__STORAGE_1_1cdr__coll__graph.png" border="0" usemap="#HW__05_1_1DATA__STORAGE_1_1cdr_coll__map" alt="Collaboration graph"/></div>
 <map name="HW__05_1_1DATA__STORAGE_1_1cdr_coll__map" id="HW__05_1_1DATA__STORAGE_1_1cdr_coll__map">
-<area shape="rect" id="node2" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html" title="HW_05::DATA_STORAGE\l::IFORMAT" alt="" coords="18,6,200,47"/>
+<area shape="rect" id="node2" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html" title="IFORMAT Polymorphism class. " alt="" coords="18,6,200,47"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8303cb2c75d955d48853a7e4202de9e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc8/classHW__05_1_1DATA__STORAGE_1_1cdr.html#a8303cb2c75d955d48853a7e4202de9e4">cdr</a> (std::fstream &amp;_file)</td></tr>
+<tr class="memdesc:a8303cb2c75d955d48853a7e4202de9e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">file path  <a href="#a8303cb2c75d955d48853a7e4202de9e4">More...</a><br /></td></tr>
 <tr class="separator:a8303cb2c75d955d48853a7e4202de9e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1269cf984cc7a24387f0ef8d6ed5ccd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc8/classHW__05_1_1DATA__STORAGE_1_1cdr.html#a1269cf984cc7a24387f0ef8d6ed5ccd6">Import</a> (<a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html">SHAPES::Shapes</a> *shape)</td></tr>
+<tr class="memdesc:a1269cf984cc7a24387f0ef8d6ed5ccd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Import parser.  <a href="#a1269cf984cc7a24387f0ef8d6ed5ccd6">More...</a><br /></td></tr>
 <tr class="separator:a1269cf984cc7a24387f0ef8d6ed5ccd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a1ea4ccae6c0c8504125e767a2df2c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc8/classHW__05_1_1DATA__STORAGE_1_1cdr.html#a0a1ea4ccae6c0c8504125e767a2df2c3">Export</a> (<a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html">SHAPES::Shapes</a> *shape)</td></tr>
+<tr class="memdesc:a0a1ea4ccae6c0c8504125e767a2df2c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export parser.  <a href="#a0a1ea4ccae6c0c8504125e767a2df2c3">More...</a><br /></td></tr>
 <tr class="separator:a0a1ea4ccae6c0c8504125e767a2df2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -113,6 +116,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>file path </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_file</td><td>- path to corel draw file </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -141,6 +152,14 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Export parser. </p>
+<p>write file, save all shapes from <a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html" title="Shapes creator class to construct shapes. ">SHAPES::Shapes</a> creator </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">shape</td><td>- pointer to <a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html" title="Shapes creator class to construct shapes. ">SHAPES::Shapes</a> creator class </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implements <a class="el" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html#a31935663c73fe5b226f74dcd616d1ef9">HW_05::DATA_STORAGE::IFORMAT</a>.</p>
 
 </div>
@@ -168,6 +187,14 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Import parser. </p>
+<p>read file, doing parse and create shapes to <a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html" title="Shapes creator class to construct shapes. ">SHAPES::Shapes</a> creator from pointer </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">shape</td><td>- pointer to <a class="el" href="../../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html" title="Shapes creator class to construct shapes. ">SHAPES::Shapes</a> creator class </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="../../dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html#ae730aaf92954b47f425c52d31558a082">HW_05::DATA_STORAGE::IFORMAT</a>.</p>
 

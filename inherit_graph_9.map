@@ -1,7 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html" title="HW_05::DATA_STORAGE\l::IFORMAT" alt="" coords="6,74,189,115"/>
+<area shape="rect" id="node1" href="$dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html" title="IFORMAT Polymorphism class. " alt="" coords="6,74,189,115"/>
 <area shape="rect" id="node2" href="$d5/dc8/classHW__05_1_1DATA__STORAGE_1_1cdr.html" title="HW_05::DATA_STORAGE::cdr" alt="" coords="239,5,447,32"/>
 <area shape="rect" id="node3" href="$d7/d80/classHW__05_1_1DATA__STORAGE_1_1dxf.html" title="HW_05::DATA_STORAGE::dxf" alt="" coords="239,56,447,83"/>
 <area shape="rect" id="node4" href="$d9/d25/classHW__05_1_1DATA__STORAGE_1_1svg.html" title="HW_05::DATA_STORAGE::svg" alt="" coords="237,107,448,133"/>
-<area shape="rect" id="node5" href="$d8/dc8/classHW__05_1_1DATA__STORAGE_1_1vsd.html" title="HW_05::DATA_STORAGE::vsd" alt="" coords="237,157,448,184"/>
+<area shape="rect" id="node5" href="$d8/dc8/classHW__05_1_1DATA__STORAGE_1_1vsd.html" title="Visio format class. " alt="" coords="237,157,448,184"/>
 </map>
