@@ -72,8 +72,6 @@ bool Polyline::Select(Coordinate_XY _coordinate) const
 	return false;
 }
 
-void Polyline::Draw()
-{}
 
 
 Line::Line():

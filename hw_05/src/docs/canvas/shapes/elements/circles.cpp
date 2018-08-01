@@ -75,9 +75,6 @@ bool Ellipse::Select(Coordinate_XY _coordinate) const
 	return false;
 }
 
-void Ellipse::Draw()
-{}
-
 
 Circle::Circle():
 	Ellipse()

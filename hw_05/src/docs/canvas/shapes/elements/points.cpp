@@ -42,8 +42,6 @@ bool Point::Select(Coordinate_XY _coordinate) const
 	return false;
 }
 
-void Point::Draw()
-{}
 
 }
 

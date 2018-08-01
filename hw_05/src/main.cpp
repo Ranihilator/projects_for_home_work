@@ -16,6 +16,7 @@ using namespace HW_05;
 
 #include <iostream>
 #include <string>
+#include <fstream>
 
 /*!
 \brief Start program
