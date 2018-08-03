@@ -2,7 +2,7 @@
 \file
 \brief Develop application to sorting ip address
 
-In input stream ip address, application outputing it's to lexicographic sorting 
+In input stream ip address, application outputing it's to lexicographic sorting
 - IP address in backward order.
 - IP address in backward order, where first byte equal 1
 - IP address in backward order, where first byte equal 46 and second byte equal 70
@@ -23,8 +23,8 @@ using namespace HW_02::FILTER;
 \return process code
 */
 int main(int argc, char* argv[])
-{   
-    /// Regex value to search ip address in input stream
+{
+	/// Regex value to search ip address in input stream
 	/// \code
 	std::regex ip_filter (FILTER_REGEX);
 	/// \endcode
@@ -37,26 +37,29 @@ int main(int argc, char* argv[])
 	auto data_filter_task3 = IP_Address_Sort_Any(46);
 	/// \endcode
 
-    /// Filling container
+	/// Filling container
 	/// \code
 	for(std::string line; std::getline(std::cin, line);)
 	{
 		auto value = ip_address();
 		try
 		{
-			value = split_ip(std::move(line), ip_filter);
+			value = split_ip(line, ip_filter);
 			data << value;
 		}
-		catch (std::invalid_argument &e) {}
+		catch (std::invalid_argument &e)
+		{
+			return 1;
+		}
 	}
 	/// \endcode
 
 	/// \code lexicographic sorting containers in backward order
-	std::sort(data.rbegin(), data.rend());  
+	std::sort(data.rbegin(), data.rend());
 	/// \endcode
 
 	/// \code copy data to other containers
-	for (auto &i : data) 
+	for (auto &i : data)
 	{
 		data_filter_task1 << i;
 		data_filter_task2 << i;
@@ -76,7 +79,7 @@ int main(int argc, char* argv[])
 
 	for (auto &i : data_filter_task3)
 		std::cout << i;
-    /// \endcode 
+	/// \endcode
 
 	return 0;
 

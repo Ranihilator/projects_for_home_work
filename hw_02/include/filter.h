@@ -113,7 +113,7 @@ struct IP_Address_Sort_Any: public std::deque<ip_address>
 \see HW_02::FILTER::ip_address
 \return ip address
 */
-auto split_ip(std::string &&line, std::regex &filter)
+auto split_ip(const std::string &line, std::regex &filter)
 {
 	static std::smatch pieces;
 

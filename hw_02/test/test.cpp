@@ -12,35 +12,6 @@
 #include <boost/test/unit_test.hpp>
 
 using namespace HW_02::FILTER;
-/*
-auto random_test(std::string left_dust = std::string(), std::string right_dust = std::string())
-{
-	auto result = std::tuple<ip_address, std::string>();
-	std::stringstream ss;
-	static auto counter = 0;
-
-	std::mt19937 gen(std::time(0) + counter);
-	counter++;
-
-	ss << left_dust;
-
-	auto ip = ip_address();
-	std::get<0>(ip) = gen();
-	std::get<1>(ip) = gen();
-	std::get<2>(ip) = gen();
-	std::get<3>(ip) = gen();
-
-	ss << std::to_string(std::get<0>(ip)) << ".";
-	ss << std::to_string(std::get<1>(ip)) << ".";
-	ss << std::to_string(std::get<2>(ip)) << ".";
-	ss << std::to_string(std::get<3>(ip));
-	ss << right_dust;
-
-	std::get<0>(result) = std::move(ip);
-	std::get<1>(result) = ss.str();
-
-	return std::move(result);
-}*/
 
 BOOST_AUTO_TEST_SUITE(test_suite_main)
 
