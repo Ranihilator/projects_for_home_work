@@ -6,8 +6,8 @@ namespace HW_05
 namespace DATA_STORAGE
 {
 
-dxf::dxf(std::fstream &_file):
-	file(_file)
+dxf::dxf(std::vector<uint8_t> &_buffer):
+	buffer(_buffer)
 {}
 
 void dxf::Import(SHAPES::Shapes *shape)
@@ -19,7 +19,7 @@ void dxf::Import(SHAPES::Shapes *shape)
 
 void dxf::Export(SHAPES::Shapes *shape)
 {
-	if (this->file.is_open())
+	if (!this->buffer.empty())
 	{}
 }
 

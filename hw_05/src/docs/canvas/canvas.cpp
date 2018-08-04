@@ -7,18 +7,18 @@ namespace DOCUMENTS
 {
 
 Canvas::Canvas(std::string path):
-	file(path, this)
+	link(path, this)
 {}
 
 void Canvas::Export(std::string path)
 {
-	this->file.Export(path);
+	this->link.Export(path);
 }
 
 void Canvas::Import(std::string path)
 {
 	this->clear();
-	this->file.Import(path);
+	this->link.Import(path);
 }
 
 }

@@ -6,8 +6,8 @@ namespace HW_05
 namespace DATA_STORAGE
 {
 
-vsd::vsd(std::fstream &_file):
-	file(_file)
+vsd::vsd(std::vector<uint8_t> &_buffer):
+	buffer(_buffer)
 {}
 
 void vsd::Import(SHAPES::Shapes *shape)
@@ -19,7 +19,7 @@ void vsd::Import(SHAPES::Shapes *shape)
 
 void vsd::Export(SHAPES::Shapes *shape)
 {
-	if (this->file.is_open())
+	if (!this->buffer.empty())
 	{}
 }
 

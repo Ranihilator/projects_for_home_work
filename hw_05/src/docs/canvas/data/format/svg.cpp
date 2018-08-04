@@ -6,8 +6,8 @@ namespace HW_05
 namespace DATA_STORAGE
 {
 
-svg::svg(std::fstream &_file):
-	file(_file)
+svg::svg(std::vector<uint8_t> &_buffer):
+	buffer(_buffer)
 {}
 
 void svg::Import(SHAPES::Shapes *shape)
@@ -19,7 +19,7 @@ void svg::Import(SHAPES::Shapes *shape)
 
 void svg::Export(SHAPES::Shapes *shape)
 {
-	if (this->file.is_open())
+	if (!this->buffer.empty())
 	{}
 }
 

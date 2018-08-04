@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ishape.h"
 #include "points.h"
 
 namespace HW_05
@@ -43,6 +42,12 @@ public:
 	Color_RGB Get_Color() const override;
 
 	/*!
+	\brief Getting the size of Polygon
+	\return size of Polygon
+	*/
+	uint64_t Get_Size() const override;
+
+	/*!
 	\brief Set new color
 	\param[in] _color - new color code SHAPES::Color_RGB
 	*/
@@ -53,6 +58,12 @@ public:
 	\param[in] _coordinate - new coordinate SHAPES::Coordinate_XY
 	*/
 	void Set_Coordinate(Coordinate_XY _coordinate) override;
+
+	/*!
+	\brief Setting the size of Polygon
+	\param[in] _size - size of Polygon
+	*/
+	void Set_Size(uint64_t _size) override;
 
 	/*!
 	\brief Try to select Polygon

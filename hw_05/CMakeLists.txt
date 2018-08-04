@@ -2,13 +2,12 @@ cmake_minimum_required(VERSION 3.2)
 
 if($ENV{TRAVIS_BUILD_NUMBER})
     set(VERSION_BUILD $ENV{TRAVIS_BUILD_NUMBER})
-    set(VERSION_BUILD_MAJOR 1)
-    set(VERSION_BUILD_MINOR 0)
 else()
     set(VERSION_BUILD 1)
-    set(VERSION_BUILD_MAJOR 1)
-    set(VERSION_BUILD_MINOR 0)
 endif()
+
+set(VERSION_BUILD_MAJOR 1)
+set(VERSION_BUILD_MINOR 0)
 
 project(simple_uml VERSION ${VERSION_BUILD_MAJOR}.${VERSION_BUILD_MINOR}.${VERSION_BUILD})
 
@@ -18,16 +17,21 @@ set(HEADER_PATH "${PROJECT_SOURCE_DIR}/include")
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 
 set(HEADER_FILES
-    ${SOURCE_PATH}/editor.h 
-    ${SOURCE_PATH}/docs/docs.h 
-    ${SOURCE_PATH}/docs/canvas/canvas.h 
-    ${SOURCE_PATH}/docs/canvas/shapes/elements/ishape.h 
-    ${SOURCE_PATH}/docs/canvas/shapes/elements/points.h 
-    ${SOURCE_PATH}/docs/canvas/shapes/elements/lines.h 
-    ${SOURCE_PATH}/docs/canvas/shapes/elements/polygons.h 
-    ${SOURCE_PATH}/docs/canvas/shapes/elements/circles.h 
-    ${SOURCE_PATH}/docs/canvas/shapes/shapes.h 
-    ${SOURCE_PATH}/docs/canvas/data/file.h 
+    ${SOURCE_PATH}/editor.h
+    ${SOURCE_PATH}/docs/docs.h
+    ${SOURCE_PATH}/docs/canvas/canvas.h
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/ishape.h
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/points.h
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/lines.h
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/polygons.h
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/circles.h
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/star.h
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/pentagon.h
+    ${SOURCE_PATH}/docs/canvas/shapes/shapes.h
+    ${SOURCE_PATH}/docs/canvas/data/istore.h
+    ${SOURCE_PATH}/docs/canvas/data/data_link.h
+    ${SOURCE_PATH}/docs/canvas/data/file.h
+    ${SOURCE_PATH}/docs/canvas/data/database.h
     ${SOURCE_PATH}/docs/canvas/data/format/cdr.h
     ${SOURCE_PATH}/docs/canvas/data/format/dxf.h
     ${SOURCE_PATH}/docs/canvas/data/format/iformat.h
@@ -43,8 +47,12 @@ set(SOURCE_FILES
     ${SOURCE_PATH}/docs/canvas/shapes/elements/lines.cpp
     ${SOURCE_PATH}/docs/canvas/shapes/elements/polygons.cpp 
     ${SOURCE_PATH}/docs/canvas/shapes/elements/circles.cpp
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/star.cpp
+    ${SOURCE_PATH}/docs/canvas/shapes/elements/pentagon.cpp
     ${SOURCE_PATH}/docs/canvas/shapes/shapes.cpp
-    ${SOURCE_PATH}/docs/canvas/data/file.cpp 
+    ${SOURCE_PATH}/docs/canvas/data/data_link.cpp
+    ${SOURCE_PATH}/docs/canvas/data/file.cpp
+    ${SOURCE_PATH}/docs/canvas/data/database.cpp
     ${SOURCE_PATH}/docs/canvas/data/format/cdr.cpp
     ${SOURCE_PATH}/docs/canvas/data/format/dxf.cpp
     ${SOURCE_PATH}/docs/canvas/data/format/svg.cpp
@@ -54,18 +62,14 @@ set(SOURCE_FILES
 add_executable(simple_uml ${SOURCE_PATH}/main.cpp ${HEADER_FILES} ${SOURCE_FILES})
 add_library(version_lib STATIC IMPORTED)
 
-set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${HEADER_VERSION_PATH}/build/libhelloworld_lib.a)
-#set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/../build/hw_01/libhelloworld_lib.a)
-
-target_include_directories(simple_uml PRIVATE ${HEADER_PATH} ${HEADER_VERSION_PATH}/include ${SOURCE_PATH}/docs/canvas/shapes)
+#set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${HEADER_VERSION_PATH}/build/libhelloworld_lib.a)
+set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/../build/hw_01/libhelloworld_lib.a)
 
 set_target_properties(simple_uml version_lib PROPERTIES
-  CXX_STANDARD 14
+  CXX_STANDARD 17
   CXX_STANDARD_REQUIRED ON
-  COMPILE_OPTIONS -Wpedantic -Wall -Wextra
-)
-
-target_link_libraries(simple_uml version_lib
+  INCLUDE_DIRECTORIES "${HEADER_PATH};${HEADER_VERSION_PATH}/include;${SOURCE_PATH}/docs/canvas/shapes"
+  LINK_LIBRARIES version_lib
 )
 
 install(TARGETS simple_uml RUNTIME DESTINATION bin COMPONENT simple_uml)
@@ -77,6 +81,8 @@ set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 
 set(CPACK_PACKAGE_CONTACT ranihilaltor@gmail.com)
+set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 
 include (CPack)
+
 set(CPACK_DEB_COMPONENT_INSTALL 1)
