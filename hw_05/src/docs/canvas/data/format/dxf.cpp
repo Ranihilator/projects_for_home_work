@@ -12,9 +12,9 @@ dxf::dxf(std::vector<uint8_t> &_buffer):
 
 void dxf::Import(SHAPES::Shapes *shape)
 {
-	shape->insert(std::unique_ptr<SHAPES::IShape>(new SHAPES::Point()));
-	shape->insert(std::unique_ptr<SHAPES::IShape>(new SHAPES::Circle()));
-	shape->insert(std::unique_ptr<SHAPES::IShape>(new SHAPES::Line()));
+	shape->insert(new SHAPES::Point());
+	shape->insert(new SHAPES::Circle());
+	shape->insert(new SHAPES::Line());
 }
 
 void dxf::Export(SHAPES::Shapes *shape)

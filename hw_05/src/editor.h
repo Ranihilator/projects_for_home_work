@@ -49,14 +49,14 @@ public:
 	\brief Create shape into current workspace
 	\param[in] _shape - allocate new SHAPES::Shape class
 	*/
-	void Create_Shape(std::unique_ptr<SHAPES::IShape> _shape);
+	void Create_Shape(SHAPES::IShape* _shape);
 
 	/*!
 	\brief Create shape into current name documents
 	\param[in] name - name of documents
 	\param[in] _shape - allocate new SHAPES::Shape class
 	*/
-	void Create_Shape(std::string name, std::unique_ptr<SHAPES::IShape> _shape);
+	void Create_Shape(std::string name, SHAPES::IShape* _shape);
 
 	/*!
 	\brief Delete shape into current workspace

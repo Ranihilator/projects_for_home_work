@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
 
 	editor.Create_Document("new1");
 	editor.Select_Workspace("new1");
-	editor.Create_Shape(std::unique_ptr<SHAPES::IShape>(new SHAPES::Point()));
+	editor.Create_Shape(new SHAPES::Point());
 
 	SHAPES::IShape* ptr = editor.Select_Shape({0,0});
 	ptr->Set_Color(SHAPES::Color_RGB(126,0,0));

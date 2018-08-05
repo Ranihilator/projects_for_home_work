@@ -6,10 +6,10 @@ namespace HW_05
 namespace SHAPES
 {
 
-void Shapes::insert(std::unique_ptr<IShape> shape)
+void Shapes::insert(IShape* shape)
 {
 	uint32_t insert_id = this->shapes.size();
-	this->shapes[insert_id] = std::move(shape);
+	this->shapes[insert_id] = std::unique_ptr<IShape>(shape);
 }
 
 bool Shapes::remove(uint64_t ID)

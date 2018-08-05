@@ -40,7 +40,7 @@ public:
 	void Import(std::string path);
 
 private:
-	DATA_STORAGE::Data_Link link;														///< link handler
+	DATA_STORAGE::Data_Link link;													///< link handler
 
 private:
 	SHAPES::Coordinate_XY canvas_size;												///< size of canvas

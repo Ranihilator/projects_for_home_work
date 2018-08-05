@@ -26,6 +26,7 @@ Color_RGB Point::Get_Color() const
 
 uint64_t Point::Get_Size() const
 {
+	return 0;
 }
 
 void Point::Set_Color(Color_RGB _color)
