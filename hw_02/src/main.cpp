@@ -41,44 +41,25 @@ int main(int argc, char* argv[])
 	/// \code
 	for(std::string line; std::getline(std::cin, line);)
 	{
-		auto value = ip_address();
+		auto value = ip_address<uint8_t>();
 		try
 		{
 			value = split_ip(line, ip_filter);
 			data << value;
+			data_filter_task1 << value;
+			data_filter_task2 << value;
+			data_filter_task3 << value;
 		}
 		catch (std::invalid_argument &e)
-		{
-			return 1;
-		}
-	}
-	/// \endcode
-
-	/// \code lexicographic sorting containers in backward order
-	std::sort(data.rbegin(), data.rend());
-	/// \endcode
-
-	/// \code copy data to other containers
-	for (auto &i : data)
-	{
-		data_filter_task1 << i;
-		data_filter_task2 << i;
-		data_filter_task3 << i;
+		{}
 	}
 	/// \endcode
 
 	/// \code output result from containers
-	for (auto &i : data)
-		std::cout << i;
-
-	for (auto &i : data_filter_task1)
-		std::cout << i;
-
-	for (auto &i : data_filter_task2)
-		std::cout << i;
-
-	for (auto &i : data_filter_task3)
-		std::cout << i;
+	std::cout << data.dump().str();
+	std::cout << data_filter_task1.dump().str();
+	std::cout << data_filter_task2.dump().str();
+	std::cout << data_filter_task3.dump().str();
 	/// \endcode
 
 	return 0;

@@ -57,36 +57,28 @@ BOOST_AUTO_TEST_CASE(filter_test)
 	data << std::make_tuple(0,0,0,64);
 	data << std::make_tuple(0,0,0,254);
 
-	const std::deque<ip_address> model
+	const std::string model =
 	{
-		{std::make_tuple(255,255,127,255)},
-		{std::make_tuple(127,1,1,1)},
-		{std::make_tuple(0,0,0,254)},
-		{std::make_tuple(0,0,0,127)},
-		{std::make_tuple(0,0,0,64)},
-		{std::make_tuple(0,0,0,1)},
-		{std::make_tuple(0,0,0,0)}
+		"255.255.127.255\n"
+		"127.1.1.1\n"
+		"0.0.0.254\n"
+		"0.0.0.127\n"
+		"0.0.0.64\n"
+		"0.0.0.1\n"
+		"0.0.0.0\n"
 	};
 
-	std::sort(data.rbegin(), data.rend());
-
-	std::deque<ip_address> object;
-	for (auto &i : data)
-	{
-		object.emplace_back(i);
-	}
-
-	BOOST_CHECK(model == object);
+	BOOST_CHECK(model == data.dump().str());
 	/// \endcode
 
 	/// Sorting with filtering
 	/// \code
 	auto data_s = IP_Address_Sort(-1,-1,-1,1);
 
-	const std::deque<ip_address> model_s
+	const std::string model_s =
 	{
-		{std::make_tuple(127,1,1,1)},
-		{std::make_tuple(0,0,0,1)},
+		"127.1.1.1\n"
+		"0.0.0.1\n"
 	};
 
 	data_s << std::make_tuple(0,0,0,0);
@@ -97,28 +89,21 @@ BOOST_AUTO_TEST_CASE(filter_test)
 	data_s << std::make_tuple(0,0,0,64);
 	data_s << std::make_tuple(0,0,0,254);
 
-	std::sort(data_s.rbegin(), data_s.rend());
+	BOOST_CHECK(model_s == data_s.dump().str());
 
-	std::deque<ip_address> object_s;
-	for (auto &i : data_s)
-	{
-		object_s.emplace_back(i);
-	}
-
-	BOOST_CHECK(model_s == object_s);
 	/// \endocde
 
 	/// Sorting with filtering any byte
 	/// \code
 	auto data_a = IP_Address_Sort_Any(0);
 
-	const std::deque<ip_address> model_a
+	const std::string model_a =
 	{
-		{std::make_tuple(0,0,0,254)},
-		{std::make_tuple(0,0,0,127)},
-		{std::make_tuple(0,0,0,64)},
-		{std::make_tuple(0,0,0,1)},
-		{std::make_tuple(0,0,0,0)}
+		"0.0.0.254\n"
+		"0.0.0.127\n"
+		"0.0.0.64\n"
+		"0.0.0.1\n"
+		"0.0.0.0\n"
 	};
 
 	data_a << std::make_tuple(0,0,0,0);
@@ -129,15 +114,7 @@ BOOST_AUTO_TEST_CASE(filter_test)
 	data_a << std::make_tuple(0,0,0,64);
 	data_a << std::make_tuple(0,0,0,254);
 
-	std::sort(data_a.rbegin(), data_a.rend());
-
-	std::deque<ip_address> object_a;
-	for (auto &i : data_a)
-	{
-		object_a.emplace_back(i);
-	}
-
-	BOOST_CHECK(model_a == object_a);
+	BOOST_CHECK(model_a == data_a.dump().str());
 	/// \endocde
 }
 
