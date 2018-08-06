@@ -28,6 +28,15 @@ public:
 	Canvas(std::string path = std::string());
 
 	/*!
+	\brief Canvas sql path
+	\param[in] path - path to sql url
+	\param[in] name - name of database
+	\param[in] user - user name
+	\param[in] password - password of base
+	*/
+	Canvas(std::string path, std::string name, std::string user, std::string password);
+
+	/*!
 	\brief Export
 	\param[in] path - path to save file (Export), saveAs new file
 	*/
