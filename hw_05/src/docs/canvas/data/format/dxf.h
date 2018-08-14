@@ -13,10 +13,10 @@ class dxf : public IFORMAT
 public:
 
 	/*!
-	\brief file path
-	\param[in] _file - path to autocad file
+	\brief raw buffer
+	\param[in] _buffer - autocad raw data
 	*/
-	dxf(std::fstream &_file);
+	dxf(std::vector<uint8_t> &_buffer);
 
 	/*!
 	\brief Import parser
@@ -33,7 +33,7 @@ public:
 	void Export(SHAPES::Shapes *shape);
 
 private:
-	std::fstream &file;
+	std::vector<uint8_t> &buffer;
 };
 
 }

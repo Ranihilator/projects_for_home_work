@@ -32,6 +32,10 @@ Color_RGB Ellipse::Get_Color() const
 	return this->color;
 }
 
+uint64_t Ellipse::Get_Size() const
+{
+}
+
 void Ellipse::Set_Color(Color_RGB _color)
 {
 	this->color = _color;
@@ -56,6 +60,10 @@ void Ellipse::Set_Coordinate(Coordinate_XY _coordinate)
 		std::get<0>(i) += std::get<0>(_coord);
 		std::get<1>(i) += std::get<1>(_coord);
 	}
+}
+
+void Ellipse::Set_Size(uint64_t _size)
+{
 }
 
 bool Ellipse::Select(Coordinate_XY _coordinate) const

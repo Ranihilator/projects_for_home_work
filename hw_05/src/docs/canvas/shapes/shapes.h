@@ -31,7 +31,7 @@ public:
 	\brief insert shape
 	\param[in] shape - create shape
 	*/
-	void insert(std::unique_ptr<IShape> shape);
+	void insert(IShape* shape);
 
 	/*!
 	\brief replace shape by ID

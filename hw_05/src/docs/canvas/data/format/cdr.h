@@ -13,10 +13,10 @@ class cdr : public IFORMAT
 public:
 
 	/*!
-	\brief file path
-	\param[in] _file - path to corel draw file
+	\brief raw buffer
+	\param[in] _buffer - corel draw raw data
 	*/
-	cdr(std::fstream &_file);
+	cdr(std::vector<uint8_t> &_buffer);
 
 	/*!
 	\brief Import parser
@@ -33,7 +33,7 @@ public:
 	void Export(SHAPES::Shapes *shape);
 
 private:
-	std::fstream &file;
+	std::vector<uint8_t> &buffer;
 };
 
 }

@@ -42,6 +42,12 @@ public:
 	Color_RGB Get_Color() const override;
 
 	/*!
+	\brief Getting the size of point
+	\return size of point
+	*/
+	uint64_t Get_Size() const override;
+
+	/*!
 	\brief Set new point color
 	\param[in] _color - new color code SHAPES::Color_RGB
 	*/
@@ -52,6 +58,12 @@ public:
 	\param[in] _coordinate - new coordinate SHAPES::Coordinate_XY
 	*/
 	void Set_Coordinate(Coordinate_XY _coordinate) override;
+
+	/*!
+	\brief Setting the size of point
+	\param[in] _size - size of point
+	*/
+	void Set_Size(uint64_t _size) override;
 
 	/*!
 	\brief Try to select point

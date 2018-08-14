@@ -29,6 +29,10 @@ Color_RGB Polyline::Get_Color() const
 	return this->color;
 }
 
+uint64_t Polyline::Get_Size() const
+{
+}
+
 void Polyline::Set_Color(Color_RGB _color)
 {
 	this->color = _color;
@@ -53,6 +57,10 @@ void Polyline::Set_Coordinate(Coordinate_XY _coordinate)
 		std::get<0>(i) += std::get<0>(_coord);
 		std::get<1>(i) += std::get<1>(_coord);
 	}
+}
+
+void Polyline::Set_Size(uint64_t _size)
+{
 }
 
 bool Polyline::Select(Coordinate_XY _coordinate) const

@@ -33,6 +33,10 @@ Color_RGB Polygon::Get_Color() const
 	return this->color;
 }
 
+uint64_t Polygon::Get_Size() const
+{
+}
+
 void Polygon::Set_Color(Color_RGB _color)
 {
 	this->color = _color;
@@ -57,6 +61,10 @@ void Polygon::Set_Coordinate(Coordinate_XY _coordinate)
 		std::get<0>(i) += std::get<0>(_coord);
 		std::get<1>(i) += std::get<1>(_coord);
 	}
+}
+
+void Polygon::Set_Size(uint64_t _size)
+{
 }
 
 bool Polygon::Select(Coordinate_XY _coordinate) const

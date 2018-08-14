@@ -54,6 +54,12 @@ public:
 	virtual void Set_Coordinate(Coordinate_XY coord) = 0;
 
 	/*!
+	\brief Setting the size of shape
+	\param[in] _size - size of shape
+	*/
+	virtual void Set_Size(uint64_t _size) = 0;
+
+	/*!
 	\brief Get the coordinate of shape
 	\return SHAPES::Coordinate_XY coordinate
 	*/
@@ -64,6 +70,12 @@ public:
 	\return SHAPES::Color_RGB code
 	*/
 	virtual Color_RGB Get_Color() const = 0;
+
+	/*!
+	\brief Getting the size of shape
+	\return size of shape
+	*/
+	virtual uint64_t Get_Size() const = 0;
 
 	/*!
 	\brief Select figure to the coordinate
