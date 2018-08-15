@@ -9,7 +9,8 @@ Matrix can iterrate all node
 Matrix can return default value from sparse space
 */
 
-#include "version_library.h" 
+#include "version_library.h"
+#include "matrix.hpp"
 
 using namespace HW_06;
 
