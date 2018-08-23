@@ -9,22 +9,28 @@ endif()
 set(VERSION_BUILD_MAJOR 1)
 set(VERSION_BUILD_MINOR 0)
 
-project(simple_uml VERSION ${VERSION_BUILD_MAJOR}.${VERSION_BUILD_MINOR}.${VERSION_BUILD})
+project(matrix VERSION ${VERSION_BUILD_MAJOR}.${VERSION_BUILD_MINOR}.${VERSION_BUILD})
+
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 set(HEADER_VERSION_PATH "${PROJECT_SOURCE_DIR}/../hw_01")
 
 set(HEADER_PATH "${PROJECT_SOURCE_DIR}/include")
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
+set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
 set(HEADER_FILES
     ${HEADER_PATH}/matrix.hpp
+    ${HEADER_PATH}/matrix_iterator.hpp
 )
 
 set(SOURCE_FILES 
     ${SOURCE_PATH}/main.cpp 
 )
 
-add_executable(matrix ${SOURCE_PATH}/main.cpp ${HEADER_FILES} ${SOURCE_FILES})
+add_executable(matrix ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
+add_executable(matrix_test ${TEST_PATH}/test.cpp  ${HEADER_FILES})
+
 add_library(version_lib STATIC IMPORTED)
 
 set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}/../build/hw_01/libhelloworld_lib.a)
@@ -34,6 +40,12 @@ set_target_properties(matrix version_lib PROPERTIES
   CXX_STANDARD_REQUIRED ON
   INCLUDE_DIRECTORIES "${HEADER_PATH};${HEADER_VERSION_PATH}/include"
   LINK_LIBRARIES version_lib
+)
+
+set_target_properties(matrix_test PROPERTIES
+  COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+  INCLUDE_DIRECTORIES "${HEADER_PATH};${Boost_INCLUDE_DIR}"
+  LINK_LIBRARIES ${Boost_LIBRARIES} 
 )
 
 install(TARGETS matrix RUNTIME DESTINATION bin COMPONENT matrix)

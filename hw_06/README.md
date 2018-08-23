@@ -12,6 +12,7 @@ Matrix can return default value from sparse space
 ### Build, Test & Run
 ```
 cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release
+cmake --build build --target matrix_test
 cmake --build build --target package
 build/matrix
 ```

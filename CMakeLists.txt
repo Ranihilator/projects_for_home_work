@@ -16,8 +16,9 @@ add_subdirectory(hw_01 hw_01)
 add_subdirectory(hw_02 hw_02)
 add_subdirectory(hw_03 hw_03)
 add_subdirectory(hw_04 hw_04)
+add_subdirectory(hw_06 hw_06)
 
-set(CPACK_COMPONENTS_ALL helloworld ip_filter allocator print_ip)
+set(CPACK_COMPONENTS_ALL helloworld ip_filter allocator print_ip matrix)
 
 set(CPACK_GENERATOR DEB)
 set(CPACK_DEB_COMPONENT_INSTALL ON)
