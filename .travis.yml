@@ -26,5 +26,7 @@ deploy:
     on:
       branch: dev/hw_06
   - provider: script
+    on:
+      branch: dev/hw_06
     skip_cleanup: true
     script: bash ./.travis_script.sh deploy
