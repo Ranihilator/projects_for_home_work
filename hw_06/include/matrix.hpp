@@ -14,16 +14,71 @@
 namespace HW_06
 {
 
-/*!
-\brief Matrix class
-\details N dimension sequency chain matrix
-\tparam T Type of data elements in matrix
-\tparam N Replace digit (sparse number) in matrix
-*/
-template <class T, T N>
+
+template<size_t N, class... REST>
+struct Matrix_Coordinate
+{
+	using type = typename Matrix_Coordinate<N-1, size_t, REST...>::type;
+};
+
+template<class... REST>
+struct Matrix_Coordinate<0, REST...>
+{
+	using type = std::tuple<REST...>;
+};
+
+template<size_t index, class T, size_t size = index>
+struct Get_Matrix_Coordinate
+{
+	void operator()(const T &arg, std::stringstream &buffer) const
+	{
+		Get_Matrix_Coordinate < index - 1, T, size> ()(arg, buffer);
+		buffer << std::get < index - 1 > (arg);
+
+		if (index < size)
+			buffer << ":";
+	}
+};
+
+template<class T, size_t size>
+struct Get_Matrix_Coordinate<0, T, size>
+{
+	void operator()(const T &arg, std::stringstream &buffer) const
+	{}
+};
+
+template<size_t index, class D, class S, size_t size = index>
+struct Set_Matrix_Coordinate
+{
+	void operator()(D &dest, S &src)
+	{
+		std::get< index - 1 > (dest) = src[index - 1];
+		Set_Matrix_Coordinate < index - 1, D, S, size> ()(dest, src);
+	}
+};
+
+template<class D, class S, size_t size>
+struct Set_Matrix_Coordinate<0, D, S, size>
+{
+	void operator()(D &dest, S &src)
+	{}
+};
+
+
+template <class T, T N=T(), size_t D = 2>
 class Matrix
 {
-friend Matrix_Iterator<Matrix, T>;
+using Matrix_t = typename Matrix_Coordinate<D>::type;
+
+struct Matrix_Hash
+{
+	size_t operator()(const Matrix_t &s) const
+	{
+		std::stringstream ss;
+		Get_Matrix_Coordinate<std::tuple_size<Matrix_t>::value, Matrix_t>()(s, ss);
+		return std::hash<std::string>()(ss.str());
+	}
+};
 
 public:
 	Matrix() = default;
@@ -39,14 +94,24 @@ public:
 	\brief get access to matrix value stored in node
 	\return return value
 	*/
-	operator const T() const;
+	operator const T();
 
 	/*!
 	\brief write new value in matrix node
 	\param[in] _data input
 	\return return reference value in matrix node
 	*/
-	T& operator=(const T& _data);
+	const T& operator=(const T& _data);
+
+	/*!
+	\brief clear matrix
+	*/
+	void clear();
+
+	/*!
+	\brief get actual stored elements in matrix
+	*/
+	size_t size() const;
 
 	/*!
 	\brief begin iterator
@@ -60,103 +125,68 @@ public:
 	*/
 	auto end();
 
-	/*!
-	\brief clear matrix
-	*/
-	void clear();
-
-	/*!
-	\brief get actual stored elements in matrix
-	*/
-	size_t size() const;
-
 private:
-	Matrix_Space<Matrix> sequences;					/// sequences chain matrix nodes
-	unique_ptr<T> data;								/// value in matrix node
+	const T sparse_data = N;
+	std::vector<size_t> coordinate;
+	std::unordered_map<Matrix_t, T, Matrix_Hash> data;
 };
 
-template <class T, T N>
-Matrix<T, N>& Matrix<T, N>::operator[](size_t index)
+template <class T, T N, size_t D>
+Matrix<T, N, D>& Matrix<T, N, D>::operator[](size_t index)
 {
-	Matrix* ptr = nullptr;
-
-	try
-	{
-		auto coordinate = this->sequences.find(index);
-
-		if (coordinate == this->sequences.end())
-			this->sequences[index] = unique_ptr<Matrix>(new Matrix);
-
-		ptr = this->sequences[index].get();
-
-		if (ptr == nullptr)
-			return *this;
-	}
-	catch (...)
-	{
-		return *this;
-	}
-
-	return *ptr;
+	this->coordinate.emplace_back(index);
+	return *this;
 }
 
-template <class T, T N>
-T& Matrix<T, N>::operator=(const T& _data)
+template <class T, T N, size_t D>
+Matrix<T, N, D>::operator const T()
 {
-	this->data.reset(new T(_data));
-}
+	Matrix_t dest;
+	std::vector<size_t> src(std::move(this->coordinate));
+	Set_Matrix_Coordinate<std::tuple_size<Matrix_t>::value, Matrix_t, std::vector<size_t>>()(dest, src);
 
-template <class T, T N>
-Matrix<T, N>::operator const T() const
-{
-	T* ptr = this->data.get();
+	auto iter = this->data.find(dest);
 
-	if (ptr == nullptr)
+	if (iter == this->data.end())
 		return N;
 
-	return *ptr;
+	return iter->second;
 }
 
-template <class T, T N>
-size_t Matrix<T, N>::size() const
+template <class T, T N, size_t D>
+const T& Matrix<T, N, D>::operator=(const T& _data)
 {
-	size_t _size = 0;
-	for (const auto &i : this->sequences)
-	{
-		Matrix* ptr = std::get<1>(i).get();
-		if (ptr == nullptr)
-			continue;
+	Matrix_t dest;
+	std::vector<size_t> src(std::move(this->coordinate));
+	Set_Matrix_Coordinate<std::tuple_size<Matrix_t>::value, Matrix_t, std::vector<size_t>>()(dest, src);
 
-		if (ptr->sequences.size() == 0 && ptr->data.get() != nullptr)
-		{
-			if (*ptr->data.get() != N)
-			_size++;
-		}
+	if (_data == N)
+		return this->sparse_data;
 
-		if (ptr->sequences.size() != 0 && ptr->data.get() == nullptr)
-			_size += ptr->size();
-	}
-
-	return _size;
+	this->data[dest] = _data;
+	return this->data[dest];
 }
 
-template <class T, T N>
-void Matrix<T, N>::clear()
+template <class T, T N, size_t D>
+size_t Matrix<T, N, D>::size() const
 {
-	this->sequences.clear();
-	this->data.reset(nullptr);
+	return this->data.size();
 }
 
-template <class T, T N>
-auto Matrix<T, N>::begin()
+template <class T, T N, size_t D>
+void Matrix<T, N, D>::clear()
 {
-	return Matrix_Iterator<Matrix, T>(&(this->sequences), N);
+	this->data.clear();
 }
 
-template <class T, T N>
-auto Matrix<T, N>::end()
+template <class T, T N, size_t D>
+auto Matrix<T, N, D>::begin()
 {
-	return Matrix_Iterator<Matrix, T>(nullptr, N);
+}
+
+template <class T, T N, size_t D>
+auto Matrix<T, N, D>::end()
+{
 }
 
 }

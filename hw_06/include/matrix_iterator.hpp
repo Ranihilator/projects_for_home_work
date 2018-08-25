@@ -6,18 +6,22 @@
 #pragma once
 
 #include <iostream>
+#include <sstream>
 #include <functional>
 #include <tuple>
-#include <deque>
+#include <vector>
 #include <initializer_list>
 #include <memory>
 #include <unordered_map>
 
 namespace HW_06
 {
+
+#if 0
+
 using std::unordered_map;
 using std::unique_ptr;
-using std::deque;
+using std::vector;
 
 template <class T, class D>
 struct Matrix_Iterator;
@@ -52,12 +56,12 @@ public:
 	bool operator==(const Matrix_Iterator& other);
 
 private:
-	static std::deque<M*> list;
-	typename std::deque<M*>::iterator pos;
+	static std::vector<M*> list;
+	typename std::vector<M*>::iterator pos;
 };
 
 template <class M, class T>
-std::deque<M*> Matrix_Iterator<M, T>::list;
+std::vector<M*> Matrix_Iterator<M, T>::list;
 
 template <class M, class T>
 Matrix_Iterator<M, T>::Matrix_Iterator(Matrix_Space<M>* sequences_ptr, T sparse_number)
@@ -94,7 +98,7 @@ Matrix_Iterator<M, T>::Matrix_Iterator(Matrix_Space<M>* sequences_ptr, T sparse_
 template <class M, class T>
 bool Matrix_Iterator<M, T>::operator!=(const Matrix_Iterator<M, T>& other)
 {
-	return !(this->pos == other.pos);
+	return !(*this == other);
 }
 
 template <class M, class T>
@@ -135,5 +139,5 @@ Matrix_Iterator<M, T>& Matrix_Iterator<M, T>::operator++()
 	this->pos++;
 	return *this;
 }
-
+#endif
 }
