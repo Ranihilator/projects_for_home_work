@@ -15,7 +15,6 @@
 #include <unordered_map>
 
 #include "matrix_node.hpp"
-#include "matrix_iterator.hpp"
 
 /*!
 \brief HW_06 namespace
@@ -41,16 +40,8 @@ struct Matrix_Hash
 };
 
 public:
-	Matrix():
-		iterator(data, sparse_data)
-	{}
-
-	Matrix(Matrix& other):
-		iterator(data, sparse_data)
-	{
-		this->data = other.data;
-		other.coordinate.clear();
-	}
+	Matrix() = default;
+	Matrix(Matrix& other);
 
 	/*!
 	\brief get access to matrix node
@@ -99,8 +90,16 @@ private:
 	std::vector<size_t> coordinate;
 	std::unordered_map<Matrix_t, T, Matrix_Hash> data;
 
-	Matrix_Iterator<T, Matrix_t, Matrix_Value_t, Matrix_Hash> iterator;
+	std::vector<Matrix_Value_t> iterator_data;
 };
+
+
+template <class T, T N, size_t D>
+Matrix<T, N, D>::Matrix(Matrix& other)
+{
+	this->data = other.data;
+	other.coordinate.clear();
+}
 
 template <class T, T N, size_t D>
 Matrix<T, N, D>& Matrix<T, N, D>::operator[](size_t index)
@@ -161,13 +160,19 @@ void Matrix<T, N, D>::clear()
 template <class T, T N, size_t D>
 auto Matrix<T, N, D>::begin()
 {
-	//return iterator.begin();
+	this->iterator_data.clear();
+	this->iterator_data.reserve(this->data.size());
+
+	for (const auto& i : this->data)
+		this->iterator_data.emplace_back(std::tuple_cat(std::get<0>(i), std::make_tuple(std::get<1>(i))));
+
+	return this->iterator_data.begin();
 }
 
 template <class T, T N, size_t D>
 auto Matrix<T, N, D>::end()
 {
-	//return iterator.end();
+	return this->iterator_data.end();
 }
 
 }

@@ -21,7 +21,7 @@ set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
 set(HEADER_FILES
     ${HEADER_PATH}/matrix.hpp
-    ${HEADER_PATH}/matrix_iterator.hpp
+    ${HEADER_PATH}/matrix_node.hpp
 )
 
 set(SOURCE_FILES 
