@@ -19,33 +19,66 @@ BOOST_AUTO_TEST_CASE(matrix_main)
 {
 	Matrix <int, -1> matrix;
 
-	BOOST_CHECK_EQUAL(matrix.size(), 0);
-	BOOST_CHECK_EQUAL(matrix[0][0], -1);
+	BOOST_CHECK(matrix.size() == 0);
+	BOOST_CHECK(matrix[0][0] == -1);
 
 	matrix[100][100] = 314;
 
-	BOOST_CHECK_EQUAL(matrix.size(), 1);
-	BOOST_CHECK_EQUAL(matrix[0][0], -1);
-	BOOST_CHECK_EQUAL(matrix[0][100], -1);
-	BOOST_CHECK_EQUAL(matrix[100][0], -1);
-	BOOST_CHECK_EQUAL(matrix[100][100], 314);
+	BOOST_CHECK(matrix.size() == 1);
+	BOOST_CHECK(matrix[0][0] == -1);
+	BOOST_CHECK(matrix[0][100] == -1);
+	BOOST_CHECK(matrix[100][0] == -1);
+	BOOST_CHECK(matrix[100][100] == 314);
 
 	matrix.clear();
 
-	BOOST_CHECK_EQUAL(matrix.size(), 0);
-	BOOST_CHECK_EQUAL(matrix[0][0], -1);
-	BOOST_CHECK_EQUAL(matrix[0][0], -1);
-	BOOST_CHECK_EQUAL(matrix[0][100], -1);
-	BOOST_CHECK_EQUAL(matrix[100][0], -1);
-	BOOST_CHECK_EQUAL(matrix[100][100], -1);
+	BOOST_CHECK(matrix.size() == 0);
+	BOOST_CHECK(matrix[0][0] == -1);
+	BOOST_CHECK(matrix[0][0] == -1);
+	BOOST_CHECK(matrix[0][100] == -1);
+	BOOST_CHECK(matrix[100][0] == -1);
+	BOOST_CHECK(matrix[100][100] == -1);
 
 	matrix[100][100] = 217;
-	BOOST_CHECK_EQUAL(matrix.size(), 1);
-	BOOST_CHECK_EQUAL(matrix[100][100], 217);
+	BOOST_CHECK(matrix.size() == 1);
+	BOOST_CHECK(matrix[100][100] == 217);
 
 	matrix.clear();
-	BOOST_CHECK_EQUAL(matrix.size(), 0);
-	BOOST_CHECK_EQUAL(matrix[100][100], -1);
+	BOOST_CHECK(matrix.size() == 0);
+	BOOST_CHECK(matrix[100][100] == -1);
+}
+
+BOOST_AUTO_TEST_CASE(matrix_3x_dimension)
+{
+	Matrix <int, -1, 3> matrix;
+
+	BOOST_CHECK(matrix.size() == 0);
+	BOOST_CHECK(matrix[0][0][0] == -1);
+
+	matrix[100][100][100] = 314;
+
+	BOOST_CHECK(matrix.size() == 1);
+	BOOST_CHECK(matrix[0][0][0] == -1);
+	BOOST_CHECK(matrix[0][100][0] == -1);
+	BOOST_CHECK(matrix[100][0][0] == -1);
+	BOOST_CHECK(matrix[100][100][100] == 314);
+
+	matrix.clear();
+
+	BOOST_CHECK(matrix.size() == 0);
+	BOOST_CHECK(matrix[0][0][0] == -1);
+	BOOST_CHECK(matrix[0][0][0] == -1);
+	BOOST_CHECK(matrix[0][100][00] == -1);
+	BOOST_CHECK(matrix[100][0][100] == -1);
+	BOOST_CHECK(matrix[100][100][100] == -1);
+
+	matrix[100][100][100] = 217;
+	BOOST_CHECK(matrix.size() == 1);
+	BOOST_CHECK(matrix[100][100][100] == 217);
+
+	matrix.clear();
+	BOOST_CHECK(matrix.size() == 0);
+	BOOST_CHECK(matrix[100][100][100] == -1);
 }
 
 BOOST_AUTO_TEST_CASE(matrix_task)
@@ -74,24 +107,23 @@ BOOST_AUTO_TEST_CASE(matrix_task)
 	matrix[8][1] = 1;
 	matrix[9][0] = 0;
 
-	BOOST_CHECK_EQUAL(matrix.size(), 20);
-
+	BOOST_CHECK(matrix.size() == 20);
 
 	for (auto i = 0; i <= 9; ++i)
 	{
-		BOOST_CHECK_EQUAL(matrix[i][i], i);
+		BOOST_CHECK(matrix[i][i] == i);
 	}
 	for (auto i = 10; i <= 100; ++i)
 	{
-		BOOST_CHECK_EQUAL(matrix[i][i], -1);
+		BOOST_CHECK(matrix[i][i] == -1);
 	}
 	for (auto i = 0; i <= 9; ++i)
 	{
-		BOOST_CHECK_EQUAL(matrix[i][9-i], 9-i);
+		BOOST_CHECK(matrix[i][9-i] == 9-i);
 	}
 	for (auto i = 10; i <= 100; ++i)
 	{
-		BOOST_CHECK_EQUAL(matrix[i][100-i], -1);
+		BOOST_CHECK(matrix[i][100-i] == -1);
 	}
 
 	matrix.clear();
@@ -118,10 +150,10 @@ BOOST_AUTO_TEST_CASE(matrix_task)
 	matrix[8][1] = 1;
 	matrix[9][0] = -1;
 
-	BOOST_CHECK_EQUAL(matrix.size(), 18);
+	BOOST_CHECK(matrix.size() == 18);
 
 	matrix.clear();
-	BOOST_CHECK_EQUAL(matrix.size(), 0);
+	BOOST_CHECK(matrix.size() == 0);
 }
 
 BOOST_AUTO_TEST_CASE(matrix_iterator)
@@ -143,8 +175,9 @@ BOOST_AUTO_TEST_CASE(matrix_iterator)
 
 	for (const auto &i : matrix)
 	{
-		result.insert(i);
+		result.insert(std::get<2>(i));
 	}
+
 	BOOST_CHECK(result == result_model);
 }
 

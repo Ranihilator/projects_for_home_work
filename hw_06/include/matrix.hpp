@@ -51,14 +51,14 @@ struct Matrix_Hash
 
 public:
 	Matrix() = default;
-	Matrix(Matrix& other);
+	Matrix(const Matrix& other);
 
 	/*!
 	\brief get access to matrix node
 	\param[in] index matrix node index
 	\return return matrix node
 	*/
-	Matrix& operator[](size_t index);
+	Matrix& operator[](const size_t index);
 
 	/*!
 	\brief get access to matrix value stored in node
@@ -97,28 +97,34 @@ public:
 
 private:
 	const T sparse_data = N;							///< Sparse number
-	std::vector<size_t> coordinate;						///< Current coordinate to get access to data
 	std::unordered_map<Matrix_t, T, Matrix_Hash> data;	///< Matrix data buffer
+
+	mutable std::vector<size_t> coordinate;				///< Current coordinate to get access to data
 };
 
 
 template <class T, T N, size_t D>
-Matrix<T, N, D>::Matrix(Matrix& other)
+Matrix<T, N, D>::Matrix(const Matrix& other)
 {
 	this->data = other.data;
 	other.coordinate.clear();
 }
 
 template <class T, T N, size_t D>
-Matrix<T, N, D>& Matrix<T, N, D>::operator[](size_t index)
+Matrix<T, N, D>& Matrix<T, N, D>::operator[](const size_t index)
 {
-	this->coordinate.emplace_back(index);
+	if (this->coordinate.size() != D)
+		this->coordinate.emplace_back(index);
+
 	return *this;
 }
 
 template <class T, T N, size_t D>
 Matrix<T, N, D>::operator const T()
 {
+	if (this->coordinate.size() != D)
+		return this->sparse_data;
+
 	Matrix_t dest;
 	if (!Set_Matrix_Coordinate<std::tuple_size<Matrix_t>::value, Matrix_t, std::vector<size_t>>()(dest, this->coordinate))
 		return this->sparse_data;
@@ -134,6 +140,9 @@ Matrix<T, N, D>::operator const T()
 template <class T, T N, size_t D>
 const T& Matrix<T, N, D>::operator=(const T& _data)
 {
+	if (this->coordinate.size() != D)
+		return this->sparse_data;
+
 	Matrix_t dest;
 	if (!Set_Matrix_Coordinate<std::tuple_size<Matrix_t>::value, Matrix_t, std::vector<size_t>>()(dest, this->coordinate))
 		return this->sparse_data;

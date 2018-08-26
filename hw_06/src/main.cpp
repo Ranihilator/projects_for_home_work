@@ -53,6 +53,8 @@ int main(int argc, char* argv[])
 	assert(matrix[100][100] == 314);
 	assert(matrix.size() == 1);
 
+	//((matrix[100][100] = 314) = 0) = 217;
+
 	for(auto c: matrix)
 	{
 		int x;
@@ -106,6 +108,32 @@ int main(int argc, char* argv[])
 		std::cout << std::endl;
 	}
 	std::cout << "matrix size:" << matrix.size() << std::endl;
+
+	for(auto c: matrix)
+	{
+		int x;
+		int y;
+		int v;
+
+		std::tie(x, y, v) = c;
+		std::cout << x << y << v << std::endl;
+	}
+
+	Matrix <int, 0> matrix1;
+	matrix1[0][0] = 1;
+	matrix1[0][1] = 2;
+	matrix1[1][0] = 3;
+
+	Matrix <int, 0> matrix2;
+	matrix2[0][0] = 4;
+	matrix2[0][1] = 5;
+	matrix2[1][0] = 6;
+
+	for (const auto &i1 : matrix1)
+		std::cout << std::get<2>(i1) << std::endl;
+
+	for (const auto &i2 : matrix2)
+		std::cout << std::get<2>(i2) << std::endl;
 
 	return 0;
 }
