@@ -5,6 +5,16 @@
 */
 #pragma once
 
+#include <iostream>
+#include <sstream>
+#include <functional>
+#include <tuple>
+#include <vector>
+#include <initializer_list>
+#include <memory>
+#include <unordered_map>
+
+#include "matrix_node.hpp"
 #include "matrix_iterator.hpp"
 
 /*!
@@ -14,61 +24,11 @@
 namespace HW_06
 {
 
-
-template<size_t N, class... REST>
-struct Matrix_Coordinate
-{
-	using type = typename Matrix_Coordinate<N-1, size_t, REST...>::type;
-};
-
-template<class... REST>
-struct Matrix_Coordinate<0, REST...>
-{
-	using type = std::tuple<REST...>;
-};
-
-template<size_t index, class T, size_t size = index>
-struct Get_Matrix_Coordinate
-{
-	void operator()(const T &arg, std::stringstream &buffer) const
-	{
-		Get_Matrix_Coordinate < index - 1, T, size> ()(arg, buffer);
-		buffer << std::get < index - 1 > (arg);
-
-		if (index < size)
-			buffer << ":";
-	}
-};
-
-template<class T, size_t size>
-struct Get_Matrix_Coordinate<0, T, size>
-{
-	void operator()(const T &arg, std::stringstream &buffer) const
-	{}
-};
-
-template<size_t index, class D, class S, size_t size = index>
-struct Set_Matrix_Coordinate
-{
-	void operator()(D &dest, S &src)
-	{
-		std::get< index - 1 > (dest) = src[index - 1];
-		Set_Matrix_Coordinate < index - 1, D, S, size> ()(dest, src);
-	}
-};
-
-template<class D, class S, size_t size>
-struct Set_Matrix_Coordinate<0, D, S, size>
-{
-	void operator()(D &dest, S &src)
-	{}
-};
-
-
 template <class T, T N=T(), size_t D = 2>
 class Matrix
 {
 using Matrix_t = typename Matrix_Coordinate<D>::type;
+using Matrix_Value_t = typename Matrix_Coordinate<D, T>::type;
 
 struct Matrix_Hash
 {
@@ -81,7 +41,16 @@ struct Matrix_Hash
 };
 
 public:
-	Matrix() = default;
+	Matrix():
+		iterator(data, sparse_data)
+	{}
+
+	Matrix(Matrix& other):
+		iterator(data, sparse_data)
+	{
+		this->data = other.data;
+		other.coordinate.clear();
+	}
 
 	/*!
 	\brief get access to matrix node
@@ -129,6 +98,8 @@ private:
 	const T sparse_data = N;
 	std::vector<size_t> coordinate;
 	std::unordered_map<Matrix_t, T, Matrix_Hash> data;
+
+	Matrix_Iterator<T, Matrix_t, Matrix_Value_t, Matrix_Hash> iterator;
 };
 
 template <class T, T N, size_t D>
@@ -142,13 +113,13 @@ template <class T, T N, size_t D>
 Matrix<T, N, D>::operator const T()
 {
 	Matrix_t dest;
-	std::vector<size_t> src(std::move(this->coordinate));
-	Set_Matrix_Coordinate<std::tuple_size<Matrix_t>::value, Matrix_t, std::vector<size_t>>()(dest, src);
+	if (!Set_Matrix_Coordinate<std::tuple_size<Matrix_t>::value, Matrix_t, std::vector<size_t>>()(dest, this->coordinate))
+		return this->sparse_data;
 
 	auto iter = this->data.find(dest);
 
 	if (iter == this->data.end())
-		return N;
+		return this->sparse_data;
 
 	return iter->second;
 }
@@ -157,11 +128,19 @@ template <class T, T N, size_t D>
 const T& Matrix<T, N, D>::operator=(const T& _data)
 {
 	Matrix_t dest;
-	std::vector<size_t> src(std::move(this->coordinate));
-	Set_Matrix_Coordinate<std::tuple_size<Matrix_t>::value, Matrix_t, std::vector<size_t>>()(dest, src);
-
-	if (_data == N)
+	if (!Set_Matrix_Coordinate<std::tuple_size<Matrix_t>::value, Matrix_t, std::vector<size_t>>()(dest, this->coordinate))
 		return this->sparse_data;
+
+	auto iter = this->data.find(dest);
+
+	if (iter == this->data.end() && _data == this->sparse_data)
+		return this->sparse_data;
+
+	if (_data == this->sparse_data)
+	{
+		this->data.erase(iter);
+		return this->sparse_data;
+	}
 
 	this->data[dest] = _data;
 	return this->data[dest];
@@ -182,11 +161,13 @@ void Matrix<T, N, D>::clear()
 template <class T, T N, size_t D>
 auto Matrix<T, N, D>::begin()
 {
+	//return iterator.begin();
 }
 
 template <class T, T N, size_t D>
 auto Matrix<T, N, D>::end()
 {
+	//return iterator.end();
 }
 
 }

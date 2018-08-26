@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
 	Matrix <int, sparse_digit> matrix;
 	assert(matrix.size() == 0);
 
-	int a = matrix[0][0];
+	auto a = matrix[0][0];
 	assert(a == sparse_digit);
 	assert(matrix.size() == 0);
 
@@ -76,6 +76,10 @@ int main(int argc, char* argv[])
 	matrix[7][2] = 2;
 	matrix[8][1] = 1;
 	matrix[9][0] = 0;
+
+//	for (auto i : matrix)
+	{
+	}
 
 	std::cout << "matrix size:" << matrix.size() << std::endl;
 	for (auto j = 0; j <= 9; ++j)
