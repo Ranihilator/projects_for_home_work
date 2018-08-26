@@ -24,12 +24,21 @@
 namespace HW_06
 {
 
+/*!
+\brief N dimension matrix
+\tparam T - Type of data in matrix
+\tparam N - sparse number
+\tparam D - Dimension of matrix
+*/
 template <class T, T N=T(), size_t D = 2>
 class Matrix
 {
-using Matrix_t = typename Matrix_Coordinate<D>::type;
-using Matrix_Value_t = typename Matrix_Coordinate<D, T>::type;
+using Matrix_t = typename Matrix_Coordinate<D>::type;				///< Matrix coordinate
+using Matrix_Value_t = typename Matrix_Coordinate<D, T>::type;		///< Matrix coordinate + Value
 
+/*!
+\brief Custom Hash class to key of Matrix coordinate
+*/
 struct Matrix_Hash
 {
 	size_t operator()(const Matrix_t &s) const
@@ -87,9 +96,9 @@ public:
 	auto end();
 
 private:
-	const T sparse_data = N;
-	std::vector<size_t> coordinate;
-	std::unordered_map<Matrix_t, T, Matrix_Hash> data;
+	const T sparse_data = N;							///< Sparse number
+	std::vector<size_t> coordinate;						///< Current coordinate to get access to data
+	std::unordered_map<Matrix_t, T, Matrix_Hash> data;	///< Matrix data buffer
 };
 
 

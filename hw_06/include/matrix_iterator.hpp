@@ -1,7 +1,6 @@
 /*!
 \file
 \brief matrix iterator header
-
 */
 
 #pragma once
@@ -9,6 +8,11 @@
 namespace HW_06
 {
 
+/*!
+\brief Matrix iterator helper
+\tparam I - Matrix data buffer iterator
+\tparam T - Type of data in matrix
+*/
 template <class I, class T>
 class Matrix_Iterator
 {
