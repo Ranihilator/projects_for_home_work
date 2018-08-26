@@ -15,6 +15,7 @@
 #include <unordered_map>
 
 #include "matrix_node.hpp"
+#include "matrix_iterator.hpp"
 
 /*!
 \brief HW_06 namespace
@@ -89,8 +90,6 @@ private:
 	const T sparse_data = N;
 	std::vector<size_t> coordinate;
 	std::unordered_map<Matrix_t, T, Matrix_Hash> data;
-
-	std::vector<Matrix_Value_t> iterator_data;
 };
 
 
@@ -160,19 +159,13 @@ void Matrix<T, N, D>::clear()
 template <class T, T N, size_t D>
 auto Matrix<T, N, D>::begin()
 {
-	this->iterator_data.clear();
-	this->iterator_data.reserve(this->data.size());
-
-	for (const auto& i : this->data)
-		this->iterator_data.emplace_back(std::tuple_cat(std::get<0>(i), std::make_tuple(std::get<1>(i))));
-
-	return this->iterator_data.begin();
+	return Matrix_Iterator<typename std::unordered_map<Matrix_t, T, Matrix_Hash>::iterator, Matrix_Value_t>(data.begin(), data.end());
 }
 
 template <class T, T N, size_t D>
 auto Matrix<T, N, D>::end()
 {
-	return this->iterator_data.end();
+	return Matrix_Iterator<typename std::unordered_map<Matrix_t, T, Matrix_Hash>::iterator, Matrix_Value_t>(data.end(), data.end());
 }
 
 }
