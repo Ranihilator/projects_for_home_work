@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['matrix',['Matrix',['../de/d81/classHW__06_1_1Matrix.html',1,'HW_06']]],
-  ['matrix_5fiterator',['Matrix_Iterator',['../dd/dcf/structHW__06_1_1Matrix__Iterator.html',1,'HW_06']]]
+  ['line',['Line',['../d3/da0/classHW__05_1_1SHAPES_1_1Line.html',1,'HW_05::SHAPES']]]
 ];

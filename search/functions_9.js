@@ -4,6 +4,6 @@ var searchData=
   ['malloc',['malloc',['../d1/dc6/namespaceHW__03_1_1ALLOCATOR.html#a01d30d412a2ae66b9e924e0eeebf05a8',1,'HW_03::ALLOCATOR']]],
   ['map_5fcustom',['Map_Custom',['../d8/d62/namespaceHW__03.html#af881e956efdbd4ba92243e421d46feff',1,'HW_03']]],
   ['map_5fstandart',['Map_Standart',['../d8/d62/namespaceHW__03.html#a1016aa8e45f4a65daa0846a3a0d4a732',1,'HW_03']]],
-  ['matrix',['Matrix',['../de/d81/classHW__06_1_1Matrix.html#ad23d6bbafb6add21e544e321b1c84bd2',1,'HW_06::Matrix']]],
-  ['matrix_5fiterator',['Matrix_Iterator',['../dd/dcf/structHW__06_1_1Matrix__Iterator.html#adeb619f37e0dff866fdabe1a6ba12080',1,'HW_06::Matrix_Iterator']]]
+  ['matrix',['Matrix',['../de/d81/classHW__06_1_1Matrix.html#aaca7132ce8aaf36d6579604eac4803c1',1,'HW_06::Matrix::Matrix()=default'],['../de/d81/classHW__06_1_1Matrix.html#a74c4032d4b6a4907520c448502e6adf1',1,'HW_06::Matrix::Matrix(const Matrix &amp;other)']]],
+  ['matrix_5fiterator',['Matrix_Iterator',['../dc/dbc/classHW__06_1_1Matrix__Iterator.html#a1d13c67efe6285f34f99dc89ee5f9c40',1,'HW_06::Matrix_Iterator']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['size_5ftype',['size_type',['../d8/d20/classHW__03_1_1CONTAINER_1_1container.html#aae2e841f19dbcf3de8fdfa045e7a9d8c',1,'HW_03::CONTAINER::container::size_type()'],['../d1/dc6/namespaceHW__03_1_1ALLOCATOR.html#a203333bc4dac240b185ec48cf73eb1d9',1,'HW_03::ALLOCATOR::size_type()']]]
+  ['type',['type',['../d3/d76/structHW__06_1_1Matrix__Coordinate.html#a1d6f901ecabd2785c82327079690c492',1,'HW_06::Matrix_Coordinate::type()'],['../d7/d6a/structHW__06_1_1Matrix__Coordinate_3_010_00_01REST_8_8_8_01_4.html#abab6ba7d04cb7c4915f97db47c1339d8',1,'HW_06::Matrix_Coordinate&lt; 0, REST... &gt;::type()']]]
 ];
