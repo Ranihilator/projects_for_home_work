@@ -18,7 +18,10 @@ namespace HW_04
 namespace PRINT
 {
 
-using namespace std;
+using std::stringstream;
+using std::get;
+using std::false_type;
+using std::true_type;
 
 /// Tuple template
 namespace TUPLE
@@ -66,13 +69,13 @@ namespace TUPLE
 template<size_t index, class T, size_t size = index>
 struct print_tuple
 {
-	void operator()(T &arg, stringstream &buffer)
+	void operator()(const T &arg, stringstream &buffer)
 	{
 		print_tuple < index - 1, T, size> ()(arg, buffer);
 		buffer << get < index - 1 > (arg);
 
 		if (index < size)
-			buffer << "..";
+			buffer << '.';
 	}
 };
 
@@ -88,7 +91,7 @@ struct print_tuple
 template<class T, size_t size>
 struct print_tuple<0, T, size>
 {
-	void operator()(T &arg, stringstream &buffer)
+	void operator()(const T &arg, stringstream &buffer)
 	{}
 };
 

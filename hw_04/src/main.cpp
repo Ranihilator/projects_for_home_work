@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 	/// Output string
 	/// \code
 	try
-    {
+	{
 		print_ip(std::string("1.2.3.4"));
 	}
 	catch (std::bad_alloc)
