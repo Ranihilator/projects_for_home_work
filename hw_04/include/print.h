@@ -21,7 +21,20 @@ namespace HW_04
 namespace PRINT
 {
 
-using namespace std;
+using std::cout;
+using std::next;
+using std::endl;
+using std::decay;
+using std::is_integral;
+using std::stringstream;
+using std::enable_if_t;
+using std::is_same;
+using std::string;
+using std::vector;
+using std::list;
+using std::tuple;
+using std::tuple_size;
+
 using namespace TUPLE;
 
 /*!
@@ -34,13 +47,12 @@ using namespace TUPLE;
 template <class T>
 enable_if_t
 <
-	is_integral<typename std::decay<T>::type>::value,
+	is_integral<typename decay<T>::type>::value,
 	void
 >
 print_ip (const T arg, bool is_number = true)
 {
 	const auto size = sizeof(T);
-	static_assert(size > 0, "T must be > 0");
 
 	if (!is_number)
 	{
@@ -54,7 +66,7 @@ print_ip (const T arg, bool is_number = true)
 	stringstream str;
 
 	for (auto i = 1; i <= size; ++i)
-    {
+	{
 		if (str.tellp() != 0)
 			str << '.';
 
@@ -74,7 +86,7 @@ print_ip (const T arg, bool is_number = true)
 template <class T>
 enable_if_t
 <
-	is_same<typename std::decay<T>::type, string>::value,
+	is_same<typename decay<T>::type, string>::value,
 	void
 >
 print_ip (const T arg, bool new_line = true)
@@ -97,8 +109,8 @@ Each element is byte sequence ip address format.
 template <class T>
 enable_if_t
 <
-	is_same<typename std::decay<T>::type, vector<typename std::decay<T>::type::value_type>>::value ||
-	is_same<typename std::decay<T>::type, list<typename std::decay<T>::type::value_type>>::value,
+	is_same<typename decay<T>::type, vector<typename decay<T>::type::value_type>>::value ||
+	is_same<typename decay<T>::type, list<typename decay<T>::type::value_type>>::value,
 	void
 >
 print_ip (const T arg, bool is_first = true)
@@ -106,8 +118,8 @@ print_ip (const T arg, bool is_first = true)
     for (auto i = arg.begin(); i != arg.end(); ++i)
 	{
 		print_ip(*i, false);
-		if (std::next(i)!=arg.end())
-			cout << "..";
+		if (next(i)!=arg.end())
+			cout << '.';
 	}
 
 	if (is_first)
@@ -130,12 +142,12 @@ Each element is byte sequence ip address format.
 template <class T>
 enable_if_t
 <
-	is_specialization<typename std::decay<T>::type, tuple>::value,
+	is_specialization<typename decay<T>::type, tuple>::value,
 	void
 > print_ip (T arg)
 {
 	stringstream buffer;
-	print_tuple<std::tuple_size<T>::value, T>()(arg, buffer);
+	print_tuple<tuple_size<T>::value, T>()(arg, buffer);
 
 	cout << buffer.str() << endl;
 }
