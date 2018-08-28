@@ -10,7 +10,6 @@ var searchData=
   ['hw_5f03',['HW_03',['../d8/d62/namespaceHW__03.html',1,'']]],
   ['hw_5f04',['HW_04',['../da/dbc/namespaceHW__04.html',1,'']]],
   ['hw_5f05',['HW_05',['../da/dd2/namespaceHW__05.html',1,'']]],
-  ['hw_5f06',['HW_06',['../dc/d65/namespaceHW__06.html',1,'']]],
   ['print',['PRINT',['../d0/d22/namespaceHW__04_1_1PRINT.html',1,'HW_04']]],
   ['shapes',['SHAPES',['../db/d35/namespaceHW__05_1_1SHAPES.html',1,'HW_05']]],
   ['tuple',['TUPLE',['../d4/d83/namespaceHW__04_1_1PRINT_1_1TUPLE.html',1,'HW_04::PRINT']]]
