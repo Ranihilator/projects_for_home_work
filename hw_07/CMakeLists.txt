@@ -19,10 +19,19 @@ set(HEADER_PATH "${PROJECT_SOURCE_DIR}/include")
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
-set(HEADER_FILES "${HEADER_PATH}/bulk.hpp")
+set(HEADER_FILES "${HEADER_PATH}/bulk.hpp"
+                 "${HEADER_PATH}/parser.hpp"
+                 "${HEADER_PATH}/output/log.hpp"
+                 "${HEADER_PATH}/output/file_log.hpp"
+                 "${HEADER_PATH}/output/console_log.hpp"
+)
 
-add_executable(bulk ${SOURCE_PATH}/main.cpp ${HEADER_FILES})
-add_executable(bulk_test ${TEST_PATH}/test.cpp ${HEADER_FILES})
+set(SOURCE_FILES "${SOURCE_PATH}/bulk.cpp"
+                 "${SOURCE_PATH}/parser.cpp"
+)
+
+add_executable(bulk ${SOURCE_PATH}/main.cpp ${HEADER_FILES} ${SOURCE_FILES})
+add_executable(bulk_test ${TEST_PATH}/test.cpp ${HEADER_FILES} ${SOURCE_FILES})
 
 add_library(version_lib STATIC IMPORTED)
 
@@ -31,7 +40,7 @@ set_property(TARGET version_lib PROPERTY IMPORTED_LOCATION ${PROJECT_SOURCE_DIR}
 set_target_properties(bulk version_lib PROPERTIES
   CXX_STANDARD 17
   CXX_STANDARD_REQUIRED ON
-  INCLUDE_DIRECTORIES "${HEADER_PATH};${HEADER_VERSION_PATH}/include}"
+  INCLUDE_DIRECTORIES "${HEADER_PATH};${HEADER_VERSION_PATH}/include"
   LINK_LIBRARIES version_lib
 )
 
