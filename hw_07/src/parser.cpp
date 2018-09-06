@@ -21,6 +21,8 @@ bool Parser::Act(std::string _cmd)
 	{
 		if (this->depth == 0 && this->cmd_sequence.begin() != this->cmd_sequence.end())
 			this->pos = std::prev(this->cmd_sequence.end());
+		else
+			this->pos = this->cmd_sequence.begin();
 
 		this->depth++;
 	}

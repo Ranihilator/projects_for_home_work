@@ -27,7 +27,8 @@ void Bulk::Act(std::string _cmd)
 				ss << ", ";
 		}
 
-		ss << std::endl;
+		if (!this->cmd_sequence.empty())
+			ss << std::endl;
 
 		this->cmd_sequence.clear();
 		for (const auto &i : this->_subscribe)

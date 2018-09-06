@@ -39,17 +39,26 @@ public:
 	void Act(std::ostringstream &ss)
 	{
 		if (time.count() == 0)
+		{
 			time = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch());
+			path = std::string("bulk") + std::to_string(time.count()) + std::string(".log");
+		}
 
-		std::ofstream fout(std::string("bulk") + std::to_string(time.count()) + std::string(".log"), std::ofstream::app);
+		std::ofstream fout(path, std::ofstream::app);
 		fout << ss.str();
 		fout.close();
+	}
+
+	std::string Get_file()
+	{
+		return this->path;
 	}
 
 private:
 	Observer *_node;
 
 	std::chrono::seconds time;
+	std::string path;
 };
 
 }
