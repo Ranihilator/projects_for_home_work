@@ -19,15 +19,17 @@ set(HEADER_PATH "${PROJECT_SOURCE_DIR}/include")
 set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
 set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
-set(HEADER_FILES "${HEADER_PATH}/bulk.hpp"
-                 "${HEADER_PATH}/parser.hpp"
-                 "${HEADER_PATH}/output/log.hpp"
-                 "${HEADER_PATH}/output/file_log.hpp"
-                 "${HEADER_PATH}/output/console_log.hpp"
+set(HEADER_FILES "${HEADER_PATH}/bulk.h"
+                 "${HEADER_PATH}/parser.h"
+                 "${HEADER_PATH}/output/log.h"
+                 "${HEADER_PATH}/output/file_log.h"
+                 "${HEADER_PATH}/output/console_log.h"
 )
 
 set(SOURCE_FILES "${SOURCE_PATH}/bulk.cpp"
                  "${SOURCE_PATH}/parser.cpp"
+                 "${SOURCE_PATH}/output/file_log.cpp"
+                 "${SOURCE_PATH}/output/console_log.cpp"
 )
 
 add_executable(bulk ${SOURCE_PATH}/main.cpp ${HEADER_FILES} ${SOURCE_FILES})

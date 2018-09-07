@@ -1,4 +1,4 @@
-#include "parser.hpp"
+#include "parser.h"
 
 namespace HW_07
 {
@@ -7,7 +7,7 @@ Parser::Parser(size_t _size):
 	cmd_packets_size(_size), depth(0), pos(cmd_sequence.begin())
 {}
 
-bool Parser::Act(std::string _cmd)
+bool Parser::Act(const std::string &_cmd)
 {
 	if (_cmd.empty())
 	{

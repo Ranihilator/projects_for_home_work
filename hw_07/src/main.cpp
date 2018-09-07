@@ -9,7 +9,7 @@ Matrix can return default value from sparse space
 */
 
 #include "version_library.h"
-#include "bulk.hpp"
+#include "bulk.h"
 
 #include <iostream>
 

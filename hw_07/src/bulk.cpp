@@ -1,13 +1,15 @@
-#include "bulk.hpp"
+#include "bulk.h"
+
+#include <assert.h>
 
 namespace HW_07
 {
 
 Bulk::Bulk(size_t _size, std::initializer_list<Bulk_Command> aCommands):
-	Parser(_size), _commands(aCommands)
+	Parser(_size), commands(aCommands)
 {}
 
-void Bulk::Act(std::string _cmd)
+void Bulk::Act(const std::string &_cmd)
 {
 	std::ostringstream ss;
 	if (this->Parser::Act(_cmd))
@@ -17,8 +19,8 @@ void Bulk::Act(std::string _cmd)
 
 		for (auto it = this->cmd_sequence.cbegin(); it != this->cmd_sequence.cend(); ++it)
 		{
-			auto cur_cmd = this->_commands.find(*it);
-			if (cur_cmd != this->_commands.end())
+			auto cur_cmd = this->commands.find(*it);
+			if (cur_cmd != this->commands.end())
 				cur_cmd->second(&ss);
 			else
 				ss << *it;
@@ -31,25 +33,33 @@ void Bulk::Act(std::string _cmd)
 			ss << std::endl;
 
 		this->cmd_sequence.clear();
-		for (const auto &i : this->_subscribe)
+		for (const auto &i : this->subscribe)
 			i->Act(ss);
 	}
 }
 
-void Bulk::subscribe(LOG::Log *node)
+void Bulk::Subscribe(LOG::Log *node)
 {
+	#ifndef NDEBUG
+	assert(node != nullptr);
+	#endif
+
 	if (node != nullptr)
-		this->_subscribe.insert(node);
+		this->subscribe.insert(node);
 }
 
-void Bulk::unsubscribe(LOG::Log *node)
+void Bulk::Unsubscribe(LOG::Log *node)
 {
+	#ifndef NDEBUG
+	assert(node != nullptr);
+	#endif
+
 	if (node == nullptr)
 		return;
 
-	auto it = this->_subscribe.find(node);
-	if (it != this->_subscribe.end())
-		this->_subscribe.erase(it);
+	auto it = this->subscribe.find(node);
+	if (it != this->subscribe.end())
+		this->subscribe.erase(it);
 }
 
 

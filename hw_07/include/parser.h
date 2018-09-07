@@ -38,7 +38,7 @@ protected:
 	\param[in] _cmd input data
 	\return result to act commands
 	*/
-	bool Act(std::string _cmd);
+	bool Act(const std::string &_cmd);
 
 	std::vector<std::string> cmd_sequence;						///< sequence command list, ready to act
 

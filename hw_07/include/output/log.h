@@ -4,6 +4,7 @@
 */
 #pragma once
 
+#include <iostream>
 #include <sstream>
 
 namespace HW_07
@@ -40,8 +41,8 @@ friend Console;
 friend File;
 
 protected:
-	virtual void subscribe(LOG::Log *node) = 0;
-	virtual void unsubscribe(LOG::Log *node) = 0;
+	virtual void Subscribe(LOG::Log *node) = 0;
+	virtual void Unsubscribe(LOG::Log *node) = 0;
 
 };
 

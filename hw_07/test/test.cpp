@@ -7,7 +7,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "bulk.hpp"
+#include "bulk.h"
 #include <chrono>
 #include <thread>
 

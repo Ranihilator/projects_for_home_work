@@ -24,9 +24,9 @@ deploy:
     keep-history: true
     local-dir: doc
     on:
-      branch: dev/hw_07
+      branch: master
   - provider: script
     skip_cleanup: true
     on:
-      branch: dev/hw_07
+      branch: master
     script: bash ./.travis_script.sh deploy
