@@ -53,6 +53,8 @@ public:
 	Matrix() = default;
 	Matrix(const Matrix& other);
 
+	Matrix& operator=(const Matrix& other);
+
 	/*!
 	\brief get access to matrix node
 	\param[in] index matrix node index
@@ -118,6 +120,16 @@ Matrix<T, N, D>& Matrix<T, N, D>::operator[](const size_t index)
 
 	return *this;
 }
+
+template <class T, T N, size_t D>
+Matrix<T, N, D>& Matrix<T, N, D>::operator=(const Matrix& other)
+{
+	this->data = other.data;
+	other.coordinate.clear();
+
+	return *this;
+}
+
 
 template <class T, T N, size_t D>
 Matrix<T, N, D>::operator const T()

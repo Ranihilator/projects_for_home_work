@@ -173,7 +173,7 @@ BOOST_AUTO_TEST_CASE(matrix_iterator)
 	matrix[8][8] = 8;
 	matrix[9][9] = 9;
 
-	for (const auto &i : matrix)
+	for (auto i : matrix)
 	{
 		result.insert(std::get<2>(i));
 	}
