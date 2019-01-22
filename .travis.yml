@@ -26,5 +26,7 @@ deploy:
     on:
       branch: master
   - provider: script
+    on:
+      branch: master
     skip_cleanup: true
     script: bash ./.travis_script.sh deploy
