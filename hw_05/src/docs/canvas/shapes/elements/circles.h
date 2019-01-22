@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ishape.h"
 #include "points.h"
 
 namespace HW_05
@@ -46,6 +45,12 @@ public:
 	Color_RGB Get_Color() const override;
 
 	/*!
+	\brief Getting the size of Ellipse
+	\return size of Ellipse
+	*/
+	uint64_t Get_Size() const override;
+
+	/*!
 	\brief Set new color
 	\param[in] _color - new color code SHAPES::Color_RGB
 	*/
@@ -58,7 +63,13 @@ public:
 	void Set_Coordinate(Coordinate_XY _coordinate) override;
 
 	/*!
-	\brief Try to select Polygon
+	\brief Setting the size of Ellipse
+	\param[in] _size - size of Ellipse
+	*/
+	void Set_Size(uint64_t _size) override;
+
+	/*!
+	\brief Try to select Ellipse
 	\param[in] _coordinate - selected cursor position
 	\return result of select
 	*/

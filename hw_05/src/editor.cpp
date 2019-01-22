@@ -28,22 +28,22 @@ void Editor::Select_Workspace(std::string name)
 	this->Current_Workspace = this->find(name);
 }
 
-void Editor::Create_Shape(std::unique_ptr<SHAPES::IShape> _shape)
+void Editor::Create_Shape(SHAPES::IShape* _shape)
 {
 	if (this->Current_Workspace == nullptr)
 		return;
 
-	this->Current_Workspace->insert(std::move(_shape));
+	this->Current_Workspace->insert(_shape);
 }
 
-void Editor::Create_Shape(std::string name, std::unique_ptr<SHAPES::IShape> _shape)
+void Editor::Create_Shape(std::string name, SHAPES::IShape* _shape)
 {
 	auto it = this->find(name);
 
 	if (it == nullptr)
 		return;
 
-	it->insert(std::move(_shape));
+	it->insert(_shape);
 }
 
 void Editor::Delete_Shape(SHAPES::Coordinate_XY _coordinate)

@@ -6,20 +6,20 @@ namespace HW_05
 namespace DATA_STORAGE
 {
 
-cdr::cdr(std::fstream &_file):
-	file(_file)
+cdr::cdr(std::vector<uint8_t> &_buffer):
+	buffer(_buffer)
 {}
 
 void cdr::Import(SHAPES::Shapes *shape)
 {
-	shape->insert(std::unique_ptr<SHAPES::IShape>(new SHAPES::Point()));
-	shape->insert(std::unique_ptr<SHAPES::IShape>(new SHAPES::Circle()));
-	shape->insert(std::unique_ptr<SHAPES::IShape>(new SHAPES::Line()));
+	shape->insert(new SHAPES::Point());
+	shape->insert(new SHAPES::Circle());
+	shape->insert(new SHAPES::Line());
 }
 
 void cdr::Export(SHAPES::Shapes *shape)
 {
-	if (this->file.is_open())
+	if (!this->buffer.empty())
 	{}
 }
 

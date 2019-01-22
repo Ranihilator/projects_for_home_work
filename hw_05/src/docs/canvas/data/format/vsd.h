@@ -17,10 +17,10 @@ class vsd : public IFORMAT
 public:
 
 	/*!
-	\brief file path
-	\param[in] _file - path to visio file
+	\brief raw buffer
+	\param[in] _buffer - visio raw data
 	*/
-	vsd(std::fstream &_file);
+	vsd(std::vector<uint8_t> &_buffer);
 
 	/*!
 	\brief Import parser
@@ -37,7 +37,7 @@ public:
 	void Export(SHAPES::Shapes *shape);
 
 private:
-	std::fstream &file;
+	std::vector<uint8_t> &buffer;
 };
 
 }

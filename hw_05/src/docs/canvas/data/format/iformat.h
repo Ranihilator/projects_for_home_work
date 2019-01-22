@@ -1,8 +1,9 @@
 #pragma once
 
+#include <cstdint>
 #include <string>
+#include <vector>
 #include "shapes.h"
-#include <fstream>
 
 
 namespace HW_05

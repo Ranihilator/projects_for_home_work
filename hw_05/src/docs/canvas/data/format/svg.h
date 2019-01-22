@@ -13,10 +13,10 @@ class svg : public IFORMAT
 public:
 
 	/*!
-	\brief file path
-	\param[in] _file - path to svg file
+	\brief raw buffer
+	\param[in] _buffer - svg raw data
 	*/
-	svg(std::fstream &_file);
+	svg(std::vector<uint8_t> &_buffer);
 
 	/*!
 	\brief Import parser
@@ -33,7 +33,7 @@ public:
 	void Export(SHAPES::Shapes *shape);
 
 private:
-	std::fstream &file;
+	std::vector<uint8_t> &buffer;
 };
 
 }

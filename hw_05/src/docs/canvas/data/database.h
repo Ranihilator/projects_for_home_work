@@ -6,7 +6,6 @@
 #include "format/vsd.h"
 
 #include "istore.h"
-#include <fstream>
 
 namespace HW_05
 {
@@ -15,19 +14,25 @@ namespace DATA_STORAGE
 {
 
 /*!
+\brief It's just empty struct
+*/
+struct db_type
+{};
+
+/*!
 \brief Database controller
 \details Save and load shapes
 */
-class File:
+class DataBase:
 	public IStore
 {
 public:
 	/*!
-	\brief File controller
+	\brief DataBase controller
 	\param[in] path - file shape container path
 	\param[in] _shapes - pointer to SHAPES::Shapes class creator
 	*/
-	File(std::string path, SHAPES::Shapes *_shapes = nullptr);
+	DataBase(std::string path, std::string name, std::string user, std::string password, SHAPES::Shapes *_shapes = nullptr);
 
 	/*!
 	\brief Export
@@ -44,16 +49,16 @@ public:
 private:
 
 	/*!
-	\brief Loading shapes from file
+	\brief Loading shapes from DataBase
 	*/
 	void Load();
 
 private:
 	SHAPES::Shapes *shapes;									///< Current works SHAPES::Shapes creator
 
-	std::unique_ptr<IFORMAT> format;						///< File format shapes
+	std::unique_ptr<IFORMAT> format;						///< DataBase format shapes
 
-	std::fstream file_socket;								///< File socket
+	db_type db_socket;										///< DataBase socket
 
 	std::vector<uint8_t> buffer;							///< Raw Buffer
 };
