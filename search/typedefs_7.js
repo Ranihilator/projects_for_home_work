@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_5ftype',['value_type',['../d7/d54/classHW__03_1_1ALLOCATOR_1_1allocator.html#af37450a4a8b550e12fa526ae4a58b289',1,'HW_03::ALLOCATOR::allocator::value_type()'],['../d8/d20/classHW__03_1_1CONTAINER_1_1container.html#ae6ad06a9f60b1c2c8fad826c47cf743c',1,'HW_03::CONTAINER::container::value_type()']]]
+  ['type',['type',['../d3/d76/structHW__06_1_1Matrix__Coordinate.html#a1d6f901ecabd2785c82327079690c492',1,'HW_06::Matrix_Coordinate::type()'],['../d7/d6a/structHW__06_1_1Matrix__Coordinate_3_010_00_01REST_8_8_8_01_4.html#abab6ba7d04cb7c4915f97db47c1339d8',1,'HW_06::Matrix_Coordinate&lt; 0, REST... &gt;::type()']]]
 ];

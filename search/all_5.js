@@ -7,6 +7,8 @@ var searchData=
   ['filter_2eh',['filter.h',['../dd/de7/filter_8h.html',1,'']]],
   ['filter_5fregex',['FILTER_REGEX',['../dd/de7/filter_8h.html#a31ea63cbc82677e65f08406bcba8626b',1,'filter.h']]],
   ['find',['find',['../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html#a36c45bafdbbc1c5c69d53336b1e405c9',1,'HW_05::SHAPES::Shapes::find(uint64_t ID)'],['../d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html#ad513671e4c473e2565bb9f329b98703f',1,'HW_05::SHAPES::Shapes::find(Coordinate_XY coordinate)'],['../da/def/classHW__05_1_1DOCUMENTS_1_1Docs.html#a3b2f224f04aa4505d6583b6faccea594',1,'HW_05::DOCUMENTS::Docs::find()']]],
+  ['first_5foctet',['FIRST_OCTET',['../d3/d11/namespaceHW__02_1_1FILTER.html#aaa3d8530f7c88e83712d1a7d91c24e59a840887022f086d9f43bc5de852b3f0d0',1,'HW_02::FILTER']]],
   ['formats',['FORMATS',['../d7/db1/namespaceHW__05_1_1DATA__STORAGE.html#a8144fd4f6d58f4e291096dafb20f86bd',1,'HW_05::DATA_STORAGE']]],
+  ['four_5focter',['FOUR_OCTER',['../d3/d11/namespaceHW__02_1_1FILTER.html#aaa3d8530f7c88e83712d1a7d91c24e59a9cfd7174aa57258b9edead4ee2545d12',1,'HW_02::FILTER']]],
   ['free',['free',['../d1/dc6/namespaceHW__03_1_1ALLOCATOR.html#a99df735b3da524a2d123c19bc4b0362c',1,'HW_03::ALLOCATOR']]]
 ];

@@ -1,0 +1,13 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$dc/d1d/classHW__05_1_1SHAPES_1_1IShape.html" title="IShapes Polymorphism class. " alt="" coords="5,120,184,147"/>
+<area shape="rect" id="node2" href="$db/dbc/classHW__05_1_1SHAPES_1_1Ellipse.html" title="Ellipse primitive. " alt="" coords="236,19,412,45"/>
+<area shape="rect" id="node4" href="$d8/deb/classHW__05_1_1SHAPES_1_1Point.html" title="Point primitive. " alt="" coords="241,95,407,121"/>
+<area shape="rect" id="node5" href="$d2/d59/classHW__05_1_1SHAPES_1_1Polygon.html" title="Polygon primitive. " alt="" coords="232,145,416,172"/>
+<area shape="rect" id="node10" href="$db/d86/classHW__05_1_1SHAPES_1_1Polyline.html" title="Polyline primitive. " alt="" coords="233,221,415,248"/>
+<area shape="rect" id="node3" href="$dc/d26/classHW__05_1_1SHAPES_1_1Circle.html" title="Circle primitive. " alt="" coords="477,5,648,32"/>
+<area shape="rect" id="node6" href="$df/d5c/classHW__05_1_1SHAPES_1_1Pentagon.html" title="Pentagon primitive. " alt="" coords="467,56,659,83"/>
+<area shape="rect" id="node7" href="$d7/d1b/classHW__05_1_1SHAPES_1_1Rectangle.html" title="Rectangle primitive. " alt="" coords="465,107,661,133"/>
+<area shape="rect" id="node8" href="$d2/dc5/classHW__05_1_1SHAPES_1_1Square.html" title="Square primitive. " alt="" coords="473,157,652,184"/>
+<area shape="rect" id="node9" href="$d6/d7c/classHW__05_1_1SHAPES_1_1Star.html" title="Star primitive. " alt="" coords="482,208,643,235"/>
+<area shape="rect" id="node11" href="$d3/da0/classHW__05_1_1SHAPES_1_1Line.html" title="Line primitive. " alt="" coords="482,259,643,285"/>
+</map>

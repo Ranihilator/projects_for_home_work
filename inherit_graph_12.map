@@ -1,4 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d6/d6b/classHW__05_1_1SHAPES_1_1Shapes.html" title="Shapes creator class to construct shapes. " alt="" coords="5,5,187,32"/>
-<area shape="rect" id="node2" href="$d2/dd4/classHW__05_1_1DOCUMENTS_1_1Canvas.html" title="Canvas workspace controller. " alt="" coords="235,5,450,32"/>
+<area shape="rect" id="node1" href="$d9/d4c/classHW__05_1_1DATA__STORAGE_1_1IStore.html" title="HW_05::DATA_STORAGE\l::IStore" alt="" coords="6,38,189,79"/>
+<area shape="rect" id="node2" href="$d6/d28/classHW__05_1_1DATA__STORAGE_1_1DataBase.html" title="Database controller. " alt="" coords="238,5,421,46"/>
+<area shape="rect" id="node3" href="$dd/d8c/classHW__05_1_1DATA__STORAGE_1_1File.html" title="Database controller. " alt="" coords="238,70,421,111"/>
 </map>

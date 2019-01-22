@@ -1,5 +1,7 @@
 <map id="HW_05::SHAPES::Polygon" name="HW_05::SHAPES::Polygon">
-<area shape="rect" id="node3" href="$d7/d1b/classHW__05_1_1SHAPES_1_1Rectangle.html" title="Rectangle primitive. " alt="" coords="5,155,200,181"/>
-<area shape="rect" id="node4" href="$d2/dc5/classHW__05_1_1SHAPES_1_1Square.html" title="Square primitive. " alt="" coords="225,155,404,181"/>
-<area shape="rect" id="node2" href="$dc/d1d/classHW__05_1_1SHAPES_1_1IShape.html" title="IShapes Polymorphism class. " alt="" coords="119,5,297,32"/>
+<area shape="rect" id="node3" href="$df/d5c/classHW__05_1_1SHAPES_1_1Pentagon.html" title="Pentagon primitive. " alt="" coords="467,5,659,32"/>
+<area shape="rect" id="node4" href="$d7/d1b/classHW__05_1_1SHAPES_1_1Rectangle.html" title="Rectangle primitive. " alt="" coords="465,56,661,83"/>
+<area shape="rect" id="node5" href="$d2/dc5/classHW__05_1_1SHAPES_1_1Square.html" title="Square primitive. " alt="" coords="473,107,652,133"/>
+<area shape="rect" id="node6" href="$d6/d7c/classHW__05_1_1SHAPES_1_1Star.html" title="Star primitive. " alt="" coords="482,157,643,184"/>
+<area shape="rect" id="node2" href="$dc/d1d/classHW__05_1_1SHAPES_1_1IShape.html" title="IShapes Polymorphism class. " alt="" coords="5,81,184,108"/>
 </map>

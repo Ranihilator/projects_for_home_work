@@ -1,11 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$dc/d1d/classHW__05_1_1SHAPES_1_1IShape.html" title="IShapes Polymorphism class. " alt="" coords="5,81,184,108"/>
-<area shape="rect" id="node2" href="$db/dbc/classHW__05_1_1SHAPES_1_1Ellipse.html" title="Ellipse primitive. " alt="" coords="236,5,412,32"/>
-<area shape="rect" id="node4" href="$d8/deb/classHW__05_1_1SHAPES_1_1Point.html" title="Point primitive. " alt="" coords="241,56,407,83"/>
-<area shape="rect" id="node5" href="$d2/d59/classHW__05_1_1SHAPES_1_1Polygon.html" title="Polygon primitive. " alt="" coords="232,107,416,133"/>
-<area shape="rect" id="node8" href="$db/d86/classHW__05_1_1SHAPES_1_1Polyline.html" title="Polyline primitive. " alt="" coords="233,157,415,184"/>
-<area shape="rect" id="node3" href="$dc/d26/classHW__05_1_1SHAPES_1_1Circle.html" title="Circle primitive. " alt="" coords="477,5,648,32"/>
-<area shape="rect" id="node6" href="$d7/d1b/classHW__05_1_1SHAPES_1_1Rectangle.html" title="Rectangle primitive. " alt="" coords="465,56,661,83"/>
-<area shape="rect" id="node7" href="$d2/dc5/classHW__05_1_1SHAPES_1_1Square.html" title="Square primitive. " alt="" coords="473,107,652,133"/>
-<area shape="rect" id="node9" href="$d3/da0/classHW__05_1_1SHAPES_1_1Line.html" title="Line primitive. " alt="" coords="482,157,643,184"/>
+<area shape="rect" id="node1" href="$dc/d4d/classHW__05_1_1DATA__STORAGE_1_1IFORMAT.html" title="IFORMAT Polymorphism class. " alt="" coords="6,74,189,115"/>
+<area shape="rect" id="node2" href="$d5/dc8/classHW__05_1_1DATA__STORAGE_1_1cdr.html" title="HW_05::DATA_STORAGE::cdr" alt="" coords="239,5,447,32"/>
+<area shape="rect" id="node3" href="$d7/d80/classHW__05_1_1DATA__STORAGE_1_1dxf.html" title="HW_05::DATA_STORAGE::dxf" alt="" coords="239,56,447,83"/>
+<area shape="rect" id="node4" href="$d9/d25/classHW__05_1_1DATA__STORAGE_1_1svg.html" title="HW_05::DATA_STORAGE::svg" alt="" coords="237,107,448,133"/>
+<area shape="rect" id="node5" href="$d8/dc8/classHW__05_1_1DATA__STORAGE_1_1vsd.html" title="Visio format class. " alt="" coords="237,157,448,184"/>
 </map>

@@ -1,6 +1,7 @@
 <map id="hw_05/src/docs/docs.h" name="hw_05/src/docs/docs.h">
 <area shape="rect" id="node2" href="$d8/d83/docs_8cpp.html" title="hw_05/src/docs/docs.cpp" alt="" coords="5,80,176,107"/>
 <area shape="rect" id="node3" href="$dd/d60/editor_8h.html" title="hw_05/src/editor.h" alt="" coords="201,80,329,107"/>
-<area shape="rect" id="node4" href="$d1/d1f/editor_8cpp.html" title="hw_05/src/editor.cpp" alt="" coords="111,155,253,181"/>
-<area shape="rect" id="node5" href="$d5/d13/hw__05_2src_2main_8cpp.html" title="Create UML diagram from simple vector graph editor. " alt="" coords="279,155,417,181"/>
+<area shape="rect" id="node4" href="$d1/d1f/editor_8cpp.html" title="hw_05/src/editor.cpp" alt="" coords="29,155,171,181"/>
+<area shape="rect" id="node5" href="$d5/d13/hw__05_2src_2main_8cpp.html" title="Create UML diagram from simple vector graph editor. " alt="" coords="196,155,335,181"/>
+<area shape="rect" id="node6" href="$d4/dec/hw__05_2src_2test_8cpp.html" title="Test for UML_Example. " alt="" coords="359,155,492,181"/>
 </map>
